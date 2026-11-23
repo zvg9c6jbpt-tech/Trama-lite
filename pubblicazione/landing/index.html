@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trama Lite</title>
+<meta name="description" content="Porta i fogli Excel degli inventari d'archivio in un modello a 28 colonne. Corregge solo ciò che è certo e mostra ogni cambiamento prima di scriverlo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="banner">
+  <div class="container"><span class="tag tag--out">Beta</span><p>Il motore è stabile. Windows è stato provato solo in una macchina virtuale, non ancora su un PC reale.</p></div>
+</div>
+<header class="bar">
+  <div class="container">
+    <a class="wordmark" href="#">Trama Lite</a>
+    <nav aria-label="Principale">
+      <a href="#percorso">Il percorso</a>
+      <a href="#stati">I tre stati</a>
+      <a href="#provalo">Provalo</a>
+      <a class="btn btn--primary btn--small" href="../guida/guida-trama-lite.html">Leggi la guida</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="corridor">
+        <h1>Pulisce i fogli d’inventario e ti mostra ogni cambiamento prima di scriverlo.</h1>
+        <p class="lead">Porta i fogli Excel in un modello a 28 colonne. Corregge ciò che è certo; il resto lo decidi tu.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="../guida/guida-trama-lite.html">Leggi la guida</a>
+          <a class="btn" href="#percorso">Come lavora</a>
+        </div>
+        <div class="sample" role="table" aria-label="Tre celle prima e dopo il passaggio in Trama Lite">
+          <div class="sample-head" role="row"><span role="columnheader">Prima</span><span role="columnheader">Dopo</span><span role="columnheader">Stato</span></div>
+          <div class="sample-row" role="row"><span class="cell" role="cell">L’Aquila</span><span class="cell" role="cell">L'Aquila</span><span class="tag tag--in" role="cell">automatica</span></div>
+          <div class="sample-row" role="row"><span class="cell" role="cell">Rossi, Paolo</span><span class="cell" role="cell">Paolo Rossi</span><span class="tag tag--on" role="cell">proposta</span></div>
+          <div class="sample-row" role="row"><span class="cell" role="cell">regesto a mano</span><span class="cell" role="cell">invariato</span><span class="tag tag--out" role="cell">intoccabile</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="percorso">
+    <div class="container">
+      <div class="section-head">
+        <h2>Otto strati in ordine fisso, poi il controllo.</h2>
+      </div>
+      <ol class="map">
+        <li><span class="n" aria-hidden="true">1</span><h3>Lettura</h3><p>Intestazioni, righe senza identificativo, numeri.</p></li>
+        <li><span class="n" aria-hidden="true">2</span><h3>Carattere</h3><p>Unicode, spazi, apostrofi.</p></li>
+        <li><span class="n" aria-hidden="true">3</span><h3>Celle con più valori</h3><p>Separatori giusti, ordine mai toccato.</p></li>
+        <li><span class="n" aria-hidden="true">4</span><h3>Forma del valore</h3><p>Maiuscole, particelle, forma di enti e luoghi.</p></li>
+        <li><span class="n" aria-hidden="true">5</span><h3>Vocabolario</h3><p>Valori noti e refusi.</p></li>
+        <li><span class="n" aria-hidden="true">6</span><h3>Coerenza fra colonne</h3><p>Lo stesso nome scritto in due modi: decidi tu.</p></li>
+        <li><span class="n" aria-hidden="true">7</span><h3>Coerenza di riga</h3><p>Date e numeri in sequenza. Solo segnalazioni.</p></li>
+        <li><span class="n" aria-hidden="true">8</span><h3>Composizione</h3><p>Titolo e regesto dai campi; quelli scritti a mano restano.</p></li>
+        <li><span class="n" aria-hidden="true">9</span><h3>Controllo</h3><p>La finestra di revisione, prima di scrivere.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--well" id="stati">
+    <div class="container">
+      <div class="section-head">
+        <h2>Tre stati per ogni correzione.</h2>
+      </div>
+      <ul class="ruled states">
+        <li><span class="tag tag--in">automatica</span><p>Si applica da sola. Nella revisione è già spuntata e puoi toglierla.</p><p class="eg">Spazi doppi, apostrofo.</p></li>
+        <li><span class="tag tag--on">proposta</span><p>La decidi tu. Non viene scritta senza il tuo sì.</p><p class="eg">Due nomi: stessa persona o omonimi?</p></li>
+        <li><span class="tag tag--out">intoccabile</span><p>Si controlla solo la forma.</p><p class="eg">Testo libero, regesti, titoli in latino.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="controllo">
+    <div class="container">
+      <div class="section-head">
+        <h2>Prima di scrivere, vedi che cosa cambia.</h2>
+        <p class="lead">Le correzioni sicure sono già spuntate, quelle da decidere no. Per ognuna c’è «Lascia com’è».</p>
+      </div>
+      <figure class="shot">
+        <img src="img/revisione.png" width="1138" height="655" loading="lazy" alt="La finestra di revisione di Trama Lite: tre correzioni proposte, sei cose da decidere, otto righe toccate. Ogni correzione mostra la cella prima e dopo, con il motivo.">
+        <figcaption>La finestra di revisione su un fondo inventato.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--well">
+    <div class="container">
+      <div class="section-head">
+        <h2>Quello che non fa.</h2>
+      </div>
+      <ul class="ruled limits">
+        <li>Non stabilisce chi sia «Paolo Rossi»: te lo chiede.</li>
+        <li>Non corregge il testo libero.</li>
+        <li>Non sostituisce il sistema di descrizione: prepara i dati che ci entreranno.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="provalo">
+    <div class="container">
+      <div class="section-head">
+        <h2>Gira sul tuo computer, senza rete.</h2>
+      </div>
+      <dl class="runs">
+        <div><dt>Mac</dt><dd>Serve R. Doppio clic su <span class="cell">avvia.command</span>.</dd></div>
+        <div><dt>Windows</dt><dd>Serve R 4.6. Si installa da uno zip con le librerie incluse. Provato in una macchina virtuale.</dd></div>
+        <div><dt>I tuoi dati</dt><dd>Nella cartella Trama Lite dentro Documenti: database e copie di sicurezza.</dd></div>
+        <div><dt>Esportazioni</dt><dd>Un fondo alla volta, in xlsx, CSV, JSON, SQL o SQLite.</dd></div>
+      </dl>
+      <div class="close">
+        <div class="actions"><a class="btn btn--primary" href="../guida/guida-trama-lite.html">Leggi la guida</a><a class="btn" href="../../docs/METODO.md">Il metodo</a></div>
+        <p class="fine">Per provarlo c’è un fondo inventato. Il codice è sotto licenza MIT; il repository è ancora privato.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="container">
+    <p class="foot-mark">Trama Lite</p>
+    <nav class="foot-links" aria-label="Piè di pagina">
+      <a href="../guida/guida-trama-lite.html">La guida</a>
+      <a href="../../docs/METODO.md">Il metodo</a>
+      <a href="../../docs/PROFILO.md">Il profilo</a>
+    </nav>
+    <p class="fine">Progetto autonomo, separato da Trama.</p>
+  </div>
+</footer>
+
+</body>
+</html>

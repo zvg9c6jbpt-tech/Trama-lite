@@ -1,0 +1,132 @@
+/* Fascicoli ridisegnato (26/10/2026, dopo la critica del mockup): testata, barra unica, filtri a pillola, buste come gruppi, azioni in basso. */
+.fasc-testa { display: flex; align-items: center; justify-content: space-between; }
+.fasc-titolo { margin: 0; font-size: var(--rg-text-xl); font-weight: 600; letter-spacing: -.02em; line-height: 1.2; }
+.fasc-barra { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.fasc-barra .cerca-fascicoli { flex: 1 1 22rem; max-width: 42rem; }
+.fasc-righe { display: inline-flex; align-items: center; gap: .45rem; }
+.fasc-righe-et { font-size: var(--rg-text-sm); color: var(--bs-secondary-color); }
+.fasc-filtri { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .6rem; margin: .75rem 0 .6rem; }
+.fasc-chips { display: inline-flex; flex-wrap: wrap; gap: .4rem; }
+.fasc-chips .shiny-html-output { display: contents; }
+.chip-filtro { gap: .5rem; }
+.chip-filtro .n { font-weight: 500; font-variant-numeric: tabular-nums; color: var(--bs-secondary-color); }
+.chip-filtro.attiva .n { color: inherit; }
+.chip-filtro.chip-avviso { color: var(--rg-segnale); }
+.chip-filtro.chip-avviso .n { color: inherit; }
+.chip-filtro.chip-avviso.attiva { background: color-mix(in srgb, var(--rg-segnale) 16%, var(--bs-body-bg)); border-color: var(--rg-segnale); color: var(--rg-segnale); }
+.chip-filtro.chip-errore { color: var(--rg-pericolo); }
+.chip-filtro.chip-errore .n { color: inherit; }
+.chip-filtro.chip-errore.attiva { background: color-mix(in srgb, var(--rg-pericolo) 12%, var(--bs-body-bg)); border-color: var(--rg-pericolo); color: var(--rg-pericolo); }
+.fasc-filtri .chip-dettagli > summary { padding: .25rem .75rem; border: 1px solid var(--rg-bordo); border-radius: var(--rg-raggio); background: var(--bs-body-bg); font-weight: 600; }
+.fasc-filtri .chip-dettagli[open] { flex: 1 0 100%; order: 10; }
+.fasc-filtri .chip-dettagli[open] > summary { margin-bottom: .5rem; }
+.fasc-conto { margin-left: auto; font-variant-numeric: tabular-nums; }
+/* Le persone stanno sotto il titolo; con le righe compatte non si vedono. */
+.cella-sub { display: block; max-width: 32rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--bs-secondary-color); font-size: .8125rem; }
+.pagina-fascicoli:not(.leggibile) .cella-sub { display: none; }
+.pagina-fascicoli .cella-titolo { max-width: 32rem; }
+/* Dentro una busta la segnatura è «fasc. 7»; se l'elenco è ordinato per altro (niente gruppi) torna intera. */
+.segn-piena { display: none; }
+table.elenco-piatto .segn-piena { display: inline; }
+table.elenco-piatto .segn-breve { display: none; }
+/* Righe compatte: il primo reato e «+N», senza il «…» che tagliava a metà. */
+.reato-piu { display: none; font-size: var(--rg-text-sm); font-weight: 600; color: var(--bs-secondary-color); font-variant-numeric: tabular-nums; }
+.pagina-fascicoli:not(.leggibile) .reato-chip:not(:first-child) { display: none; }
+.pagina-fascicoli:not(.leggibile) .reato-piu { display: inline; }
+/* La testa di ogni busta: nome, quanti fascicoli, a che punto è. Completa = una parola, non una barra piena. */
+table.dataTable tbody tr.gruppo-busta td { background: var(--rg-pagina) !important; border-top: 1px solid var(--rg-bordo); border-bottom: 1px solid var(--rg-bordo);
+  padding: .55rem .75rem; white-space: nowrap; font-weight: 600; cursor: default; font-size: var(--rg-text-md); text-transform: none; letter-spacing: 0; color: var(--bs-body-color); }
+.busta-spunta { display: inline-flex; margin: 0 .85rem 0 -.2rem; vertical-align: middle; position: relative; }
+.busta-spunta::after { content: ''; position: absolute; inset: -.7rem; }
+.busta-spunta input { position: relative; z-index: 1; width: 1.5rem; height: 1.5rem; accent-color: var(--bs-primary); }
+.busta-nome { font-size: var(--rg-text-md); }
+.busta-n, .busta-pct, .busta-ok { margin-left: .75rem; font-weight: 500; color: var(--bs-secondary-color); font-size: var(--rg-text-sm); }
+.busta-ok { color: var(--rg-verde); font-weight: 600; }
+.busta-barra { display: inline-block; width: 8rem; height: 6px; margin-left: 1.25rem; vertical-align: middle; border-radius: 999px; background: var(--rg-bordo); overflow: hidden; }
+.busta-barra > span { display: block; height: 100%; background: var(--rg-verde); }
+/* Sotto i 600 px la testa di busta va a capo e la barra si accorcia: una cella a una riga sola, larga come nome + conteggi + barra, allargherebbe la colonna del titolo oltre lo schermo. */
+@media (max-width: 600px) {
+  table.dataTable tbody tr.gruppo-busta td { white-space: normal; }
+  .busta-barra { width: 4rem; margin-left: .75rem; }
+}
+/* Le azioni sulle righe spuntate: una barra ferma in basso, solo quando c'è una selezione. */
+.barra-selezione:empty { display: none; }
+.barra-selezione:not(:empty) {
+  position: fixed; z-index: 1040; bottom: 1rem; left: 50%; translate: -50% 0; margin: 0; width: max-content; max-width: calc(100vw - 2rem);
+  padding: .5rem .6rem .5rem 1rem; border-radius: var(--rg-radius-md); box-shadow: 0 10px 30px var(--rg-ombra);
+  background: var(--bs-body-color); color: var(--bs-body-bg);
+}
+.barra-selezione:not(:empty) .btn-pillola { background: transparent; color: inherit; border-color: color-mix(in srgb, var(--bs-body-bg) 35%, transparent); }
+.barra-selezione:not(:empty) .btn-pillola:hover { background: color-mix(in srgb, var(--bs-body-bg) 16%, transparent); border-color: color-mix(in srgb, var(--bs-body-bg) 60%, transparent); color: inherit; }
+.barra-selezione:not(:empty) .text-danger { color: color-mix(in srgb, var(--rg-pericolo) 35%, var(--bs-body-bg)) !important; }
+.barra-selezione-via { border-color: transparent !important; }
+.barra-selezione-n { font-variant-numeric: tabular-nums; margin-right: .25rem; }
+
+/* Studio contemporaneo, proposta B (26/10/2026).
+   La navigazione originale diventa laterale: nessuna copia dei comandi, nessun input spostato o ricreato. */
+.bslib-page-navbar { font-size: var(--rg-text-base); }
+.navbar-brand { cursor: pointer; }
+.navbar-brand .marchio-trama { padding: 0; }
+.bslib-page-navbar > .navbar .navbar-nav {  padding: 0; margin: 0; border: 0; background: transparent; }
+.navbar-nav .nav-link {
+  display: flex; align-items: center;
+    margin: 0;
+     white-space: nowrap;
+}
+.navbar-nav .nav-link.active,
+body:has(.tab-pane.active[data-value='Scheda']) .navbar-nav .nav-link[data-value='Fascicoli'] {
+  color: var(--bs-primary); background: var(--rg-fascia); font-weight: 600;
+}
+.navbar-nav .nav-link i, .navbar-nav .nav-link svg { width: 1.1rem; flex-shrink: 0; text-align: center; }
+.conta-nav { margin-left: auto; font-size: var(--rg-text-xs); font-variant-numeric: tabular-nums; color: var(--bs-secondary-color); }
+/* Le voci sono sempre raggiungibili: su schermo piccolo scorre solo il menu, non la pagina. */
+.bslib-page-navbar > .navbar .navbar-toggler { display: none; }
+.bslib-page-navbar > .navbar .navbar-collapse {  min-width: 0; }
+/* Finché la barra ha altre voci da scorrere, il bordo destro sfuma (la classe la mette R/testata_ui.R). */
+.navbar .navbar-nav.scorre-ancora { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 1.75rem), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 1.75rem), transparent); }
+.barra-contesto { padding: 1rem 0; gap: .6rem; }
+.contesto-fondo { border-radius: var(--rg-radius-sm); background: transparent; border-color: transparent; padding-left: 0; min-width: 0; }
+.contesto-fondo .fondo-apri { min-width: 0; }
+.contesto-backup { white-space: normal; flex-wrap: wrap; }
+.contesto-interruttori .dropdown-toggle { background: var(--bs-body-bg); }
+/* Superfici piane e gerarchia leggibile: i campi facoltativi restano nei loro riquadri. */
+.card, .colonna-principale, .colonna-contesto, .scheda-voce, .riquadro-doppioni {
+  border-radius: var(--rg-radius-md); box-shadow: none; border-color: var(--rg-bordo);
+}
+.colonna-titolo {  font-weight: 600; margin-bottom: 1.25rem; padding-bottom: .85rem; }
+.carta-scheda .control-label { color: var(--bs-body-color); }
+.carta-scheda .form-control, .carta-scheda .form-select, .carta-scheda .selectize-input {
+   border-radius: var(--rg-radius-sm); box-shadow: none;
+}
+.carta-scheda .form-control:focus-visible, .carta-scheda .form-select:focus-visible,
+.carta-scheda .selectize-input.focus {
+  outline: 2px solid var(--bs-primary); outline-offset: 2px; border-color: var(--bs-primary);
+}
+.carta-scheda .selectize-control.multi .selectize-input > div { border-radius: var(--rg-radius-sm) !important; }
+.carta-scheda .riga-pillole { gap: .45rem; }
+.carta-scheda .pillola { padding: .35rem .6rem; border-radius: var(--rg-radius-sm); background: var(--bs-body-bg); }
+.carta-scheda .pillola.scelta { background: var(--rg-fascia); }
+.carta-scheda .striscia-tipologia { background: transparent; border: 0; border-radius: 0; }
+.carta-scheda .striscia-tipologia .control-label { color: var(--bs-body-color); }
+.carta-scheda .riquadro-estremi { border: 0; border-left: 0 !important; padding: 0; border-radius: var(--rg-radius-sm); }
+.carta-scheda .riquadro-estremi.da-compilare { padding: .75rem; }
+.carta-scheda .riquadro-estremi input[type=number] { font-size: var(--rg-text-base) !important; font-weight: 500 !important; min-height: 2.5rem; letter-spacing: 0; }
+.carta-scheda .riquadro-estremi .sottotitolo-colonna { color: var(--bs-body-color); }
+.testa-scheda { padding: .9rem 0; background: var(--rg-pagina); margin-bottom: 1rem; }
+.testa-scheda .testa-titolo { flex-basis: 17rem; }
+.testa-scheda .testa-titolo h5 { font-size: var(--rg-text-xl); letter-spacing: -.025em; line-height: 1.4; }
+.testa-scheda .testa-titolo h5 > .text-muted { display: block; font-size: var(--rg-text-sm); letter-spacing: 0; overflow: hidden; text-overflow: ellipsis; }
+.testa-posizione, .completezza-scheda { background: transparent; border-color: transparent; }
+.barra-fondo-scheda { bottom: 0; padding: .85rem; border-radius: var(--rg-radius-md) var(--rg-radius-md) 0 0; box-shadow: 0 -3px 12px var(--rg-ombra); margin-bottom: 0; }
+.carta-scheda #regesto { min-height: 9rem; }
+.carta-scheda #note { min-height: 7rem; }
+@media (min-width: 1150px) and (max-width: 1399.98px) {
+  .campo-flag { flex-wrap: wrap; }
+  .campo-flag > .shiny-input-container { flex-basis: 100%; }
+}
+
+/* Tra 601 e 960 px la tabella (918 px) allargava tutta la pagina (23/11/2026). Non può scorrere dentro il suo riquadro (l'intestazione fissa vuole
+   overflow visibile, tema/09): lascia le colonne meno urgenti, come già sopra i 1150 e i 1300 px. Luoghi e reati restano nella Scheda. */
+@media (min-width: 601px) and (max-width: 960px) { table.tabella-fascicoli .col-luoghi { display: none; } }
+@media (min-width: 601px) and (max-width: 800px) { table.tabella-fascicoli .col-reato { display: none; } }

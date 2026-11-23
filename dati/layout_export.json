@@ -1,0 +1,97 @@
+{
+  "fonte": "nuovo modello Modulo Tab.xlsx (Stefano, 02/10/2026)",
+  "intestazioni": {
+    "colore": "00FF00",
+    "grassetto": true,
+    "corpo": 12,
+    "bordo": "thin"
+  },
+  "altezza_intestazione": 15.5,
+  "altezza_predefinita": 14.5,
+  "colonne": {
+    "Segnatura": {
+      "larghezza": 37.7265625
+    },
+    "Altra segnatura": {
+      "larghezza": 47.54296875
+    },
+    "Titolo": {
+      "larghezza": 37
+    },
+    "Estremo remoto": {
+      "larghezza": 18.26953125
+    },
+    "Estremo recente": {
+      "larghezza": 16.08984375
+    },
+    "definizione.tipologia": {
+      "larghezza": 17.1796875
+    },
+    "Supporto (materiale)": {
+      "larghezza": 36
+    },
+    "dimensioni/altezza": {
+      "larghezza": 18.7265625
+    },
+    "dimensioni/larghezza": {
+      "larghezza": 17.6328125
+    },
+    "tipo di numerazione": {
+      "larghezza": 23.453125
+    },
+    "Numerazione": {
+      "larghezza": 25.453125
+    },
+    "epoca numerazione": {
+      "larghezza": 27
+    },
+    "consistenza.quantità": {
+      "larghezza": 24.7265625
+    },
+    "consistenza.unitàMisura": {
+      "larghezza": 24.81640625
+    },
+    "Tipologia documentaria": {
+      "larghezza": 23.81640625
+    },
+    "Regesto o descrizione sintetica": {
+      "larghezza": 45.26953125
+    },
+    "Persone citate o indicizzate": {
+      "larghezza": 35
+    },
+    "Luogo di conservazione": {
+      "larghezza": 28.08984375
+    },
+    "Luogo di produzione (data topica)": {
+      "larghezza": 34.36328125
+    },
+    "Luoghi citati o indicizzati": {
+      "larghezza": 35.7265625
+    },
+    "Soggetto produttore": {
+      "larghezza": 29.54296875
+    },
+    "Soggetti citati o indicizzati": {
+      "larghezza": 30.7265625
+    },
+    "Soggettario": {
+      "larghezza": 21.1796875
+    },
+    "Eventi": {
+      "larghezza": 8.43
+    },
+    "Note libere": {
+      "larghezza": 42.7265625
+    },
+    "Lingua": {
+      "larghezza": 21.08984375
+    },
+    "Manifest IIIF": {
+      "larghezza": 24.90625
+    },
+    "Identificativo immagine o cartella": {
+      "larghezza": 35.453125
+    }
+  }
+}

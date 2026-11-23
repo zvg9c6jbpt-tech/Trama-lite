@@ -1,0 +1,138 @@
+/* Indietro (5/10): a sinistra della barra del contesto, spento se non c'è un posto prima. */
+.btn-indietro { display: inline-flex; align-items: center; gap: .35rem; }
+.btn-indietro:disabled { opacity: .4; cursor: default; }
+
+/* Persone e Luoghi: il riepilogo prima di scegliere una voce. */
+.riepilogo-numeri { display: flex; flex-wrap: wrap; gap: 1.6rem; margin: .5rem 0 .2rem; }
+.riepilogo-numeri > div { display: flex; flex-direction: column; }
+.riepilogo-numeri b { font-size: var(--rg-text-xl); font-weight: 600; line-height: 1.15; }
+.riepilogo-numeri span { font-size: var(--rg-text-xs); color: var(--bs-secondary-color); }
+.lista-riepilogo { max-width: 34rem; }
+
+/* Storia della scheda. */
+.storia-elenco { list-style: none; padding: 0; margin: .7rem 0 0; display: flex; flex-direction: column; gap: .3rem; font-size: var(--rg-text-sm); }
+.storia-elenco li { display: flex; flex-wrap: wrap; gap: .35rem .6rem; align-items: baseline; }
+.storia-elenco li:first-child .storia-quando { color: var(--bs-body-color); font-weight: 600; }
+.storia-quando { color: var(--bs-secondary-color); font-variant-numeric: tabular-nums; min-width: 8.5rem; }
+.storia-campo { border: 1px solid var(--rg-bordo); border-radius: var(--rg-raggio); padding: 0 .5rem; font-size: var(--rg-text-xs); margin-right: .25rem; white-space: nowrap; }
+
+/* Restyling 7/10: filetti, non ombre. Schede su fondo rialzato con bordo sottile,
+   raggi 10px, etichette in maiuscoletto distanziato, titoli in serif più leggeri. */
+.card, .carta-scheda, .scheda-voce, .riquadro-doppioni { box-shadow: none !important; }
+.card-header, .colonna-titolo, .scheda-voce-titolo, .ripiegabile > summary { font-weight: 600; }
+.form-control, .form-select, .selectize-input { border-color: var(--rg-controllo); }
+.link-segnatura { font-variant-numeric: tabular-nums; }
+.riquadro-estremi {  border: 1px solid var(--rg-bordo); }
+.riquadro-estremi .sottotitolo-colonna { color: var(--bs-secondary-color); }
+.riquadro-estremi.da-compilare .sottotitolo-colonna { color: var(--bs-primary); }
+
+/* Critica di design (13/10): Import, Gestione, Qualità. */
+/* Modalità dell'import: «Sostituisci tutto» in rosso, lo strumento che non scrive staccato in fondo. */
+#modo_import .form-check, #modo_import .radio { display: block; }
+#modo_import .modo-pericolo { color: var(--rg-pericolo); font-weight: 600; }
+#modo_import .modo-pericolo .fa, #modo_import .modo-pericolo svg { margin-right: .35rem; }
+#modo_import .form-check:last-child, #modo_import .radio:last-child { margin-top: .7rem; padding-top: .7rem; border-top: 1px solid var(--rg-bordo); }
+#modo_import .form-check-label, #modo_import label { cursor: pointer; }
+.card:has(#modo_import input[value=sostituisci]:checked) #esegui_import { background: var(--rg-pericolo); border-color: var(--rg-pericolo); color: var(--bs-body-bg); }
+/* Gli scarichi: una riga, stessa altezza. */
+.azioni-scarico { gap: .4rem !important; }
+.azioni-scarico .btn { display: inline-flex; align-items: center; gap: .35rem;  margin: 0 !important; padding: .4rem .55rem; font-size: var(--rg-text-sm); white-space: nowrap; }
+details.spiega > summary { cursor: pointer; font-size: var(--rg-text-sm); font-weight: 600; color: var(--bs-secondary-color); }
+details.spiega[open] > summary { margin-bottom: .4rem; }
+/* Qualità: le fasce dei gruppi quiete (la prima, «Da vedere», è l'unica con colore) e le righe che si cliccano. */
+#tab_qualita table.dataTable tr.dtrg-group td { background: transparent !important; border-bottom: 1px solid var(--rg-bordo);
+  padding: 1rem .5rem .35rem; font-size: var(--rg-text-xs); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--bs-secondary-color) !important; }
+#tab_qualita table.dataTable tbody tr.dtrg-group:first-child td { color: var(--bs-primary) !important; padding-top: .4rem; }
+#tab_qualita table.dataTable tbody tr:not(.dtrg-group) { cursor: pointer; }
+#tab_qualita table.dataTable tbody tr:not(.dtrg-group):hover td { background: color-mix(in srgb, var(--bs-primary) 7%, var(--bs-body-bg)) !important; }
+#tab_qualita table.dataTable tbody tr:not(.dtrg-group) td:nth-child(2) { text-align: right; padding-right: 1.6rem; font-variant-numeric: tabular-nums; width: 5rem; }
+#tab_qualita table.dataTable tbody tr:not(.dtrg-group) td:last-child { position: relative; padding-right: 2rem; }
+#tab_qualita table.dataTable tbody tr:not(.dtrg-group) td:last-child::after { content: '\203A'; position: absolute; right: .8rem; top: 50%; transform: translateY(-50%); color: var(--bs-secondary-color); font-size: var(--rg-text-lg); }
+.btn, .selectize-input, .form-control, .form-select, .btn-pillola, .pillola { border-radius: var(--rg-radius-md); }
+.btn-primary { background-color: var(--bs-primary); border-color: var(--bs-primary); }
+/* link: sottolineati (senza colore non si distinguerebbero) */
+.tab-pane a:not(.nav-link):not(.btn):not(.page-link):not(.navbar-brand), .modal a:not(.btn), .card-footer a, .card-body a:not(.btn) { text-decoration: underline; text-underline-offset: 2px; }
+.marchio-trama svg { display: none; }
+.nav-underline .nav-link, .nav-tabs .nav-link { border-radius: 0 !important; border: 0 !important; border-bottom: 2px solid transparent !important; padding: .3rem .6rem; }
+.nav-underline .nav-link.active, .nav-tabs .nav-link.active { background: transparent !important; color: var(--bs-body-color) !important; border-bottom-color: var(--bs-primary) !important; font-weight: 600; }
+/* una superficie sola: i riquadri di riepilogo non hanno un riempimento proprio */
+.home-uno { background: transparent !important; }
+.riquadro-estremi { background: transparent !important; }
+/* scala dei caratteri: titolo di pagina 24, titolo di blocco 18, testo 15-16, servizio mai sotto 14 px (0,875 rem) */
+.home .home-h, .home .home-titolo .home-h { font-size: var(--rg-text-lg) !important; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--bs-body-color); margin-top: 1.5rem; }
+.card-header { font-size: var(--rg-text-md); }
+.passo-titolo { font-size: var(--rg-text-lg); font-weight: 600; }
+.control-label, .form-label, .etichetta-sezione, .sottotitolo-colonna, .etichetta-imputati, .riquadro-titolo, .nota-campo, .home-spiega,
+.dataTables_info, .griglia-kpi .value-box-title, .home-fondo.capo, .home-prossimo .etichetta-passo, .home-porta .qui, .home-fase .qui, .home-fase .n,
+table.tabella-fascicoli thead th, .home-fondo .quanto, .quanto { font-size: var(--rg-text-sm) !important; text-transform: none !important; letter-spacing: 0 !important; }
+.control-label, .form-label, .sottotitolo-colonna, .etichetta-imputati, .riquadro-titolo { font-weight: 600 !important; color: var(--bs-secondary-color); }
+.home-fasi-box > summary, .scheda-tre-colonne .control-label, .home-fase .n { text-transform: none !important; letter-spacing: 0 !important; }
+.btn-pillola, .pillola, .chip-campo { font-size: var(--rg-text-sm); }
+.campo-composto.e-composto input, .campo-composto.e-composto textarea, .vista-en { background: color-mix(in srgb, var(--bs-body-color) 5%, var(--bs-body-bg)) !important; border-color: var(--rg-bordo) !important; }
+.campo-composto.e-composto .control-label::after { border-color: var(--rg-bordo) !important;  border-radius: var(--rg-radius-md) !important; font-size: var(--rg-text-sm); letter-spacing: 0; }
+
+/* Le tabelle dentro i riquadri non escono mai dal riquadro: se sono più larghe scorrono in orizzontale (omonimie di Qualità, 16/10). */
+.card-body .dataTables_wrapper { overflow-x: auto; max-width: 100%; }
+/* Fascicoli non è in un riquadro: con i dati veri, a 1280 px la tabella (1394 px) allargava l'intera pagina. Scorre la tabella, non la pagina. */
+.pagina-fascicoli .dataTables_wrapper { overflow-x: auto; max-width: 100%; }
+
+/* Profondità (16/10): i riquadri sono bianchi su una pagina grigio caldo, con un'ombra lieve e un filetto; il titolo del riquadro ha un velo di petrolio;
+   i numeri dei riquadri di riepilogo sono nell'accento. */
+.card, .carta-scheda, .colonna-principale, .scheda-voce, .riquadro-doppioni, .tessera-busta { box-shadow: 0 1px 2px var(--rg-ombra), 0 1px 1px var(--rg-ombra); }
+.card-header { background: color-mix(in srgb, var(--bs-primary) 5%, var(--bs-body-bg)) !important; border-bottom: 1px solid var(--rg-bordo); font-weight: 600; }
+.griglia-kpi .bslib-value-box { background: var(--rg-fascia) !important; border: 1px solid color-mix(in srgb, var(--bs-primary) 18%, transparent) !important; box-shadow: none; }
+.griglia-kpi .value-box-value { color: var(--bs-primary) !important; }
+.btn-primary { box-shadow: 0 1px 2px var(--rg-ombra); }
+.btn-primary:hover { background-color: color-mix(in srgb, var(--bs-primary) 88%, black); border-color: color-mix(in srgb, var(--bs-primary) 88%, black); }
+
+/* Sotto-schede (Qualità; Gestione): al centro, ciascuna in una pillola (Stefano, 16/10: «annegano
+   nella pagina»). La voce attiva è piena, nell'accento; le altre sono bianche con filetto e ombra lieve. */
+.nav-pills {  flex-wrap: wrap;  margin: .2rem 0 1rem; }
+.nav-pills .nav-link {
+  color: var(--bs-body-color) !important;   box-shadow: 0 1px 2px var(--rg-ombra); }
+.nav-pills .nav-link:hover { border-color: var(--bs-primary) !important; color: var(--bs-primary) !important; }
+.nav-pills .nav-link.active {  border-color: var(--bs-primary) !important; }
+
+/* Home (16/10, variante A del mockup): la fascia «Da guardare» è sottile e i tre box sono la struttura della pagina. */
+.home-guarda { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .9rem; margin: .5rem 0 1.1rem; padding: .5rem .9rem; border-radius: var(--rg-radius-md); font-size: var(--rg-text-base);
+  background: color-mix(in srgb, var(--rg-segnale) 16%, var(--bs-body-bg)); border: 1px solid color-mix(in srgb, var(--rg-segnale) 45%, var(--rg-bordo)); }
+.home-guarda.neutra { background: var(--bs-body-bg); border-color: var(--rg-bordo); color: var(--bs-secondary-color); }
+.home-guarda .testo { font-weight: 500; }
+.home-guarda .azioni-guarda { display: flex; flex-wrap: wrap; gap: .2rem .8rem; align-items: center; }
+.home-guarda .azioni-guarda .btn:not(.btn-primary) { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; min-height: 2.75rem !important; display: inline-flex; align-items: center;
+  color: var(--bs-primary) !important; font-weight: 600; text-decoration: underline; transform: none !important; }
+.home-guarda .azioni-guarda .btn-primary { padding: .25rem .75rem; font-size: var(--rg-text-sm); }
+/* Banner degli errori in Fascicoli (19/10): stessi colori della fascia della Home, in chiaro e in scuro (alert-warning di Bootstrap restava crema). */
+.alert.banner-anomalie { background: color-mix(in srgb, var(--rg-segnale) 16%, var(--bs-body-bg)); border-color: color-mix(in srgb, var(--rg-segnale) 45%, var(--rg-bordo)); color: var(--bs-body-color); }
+/* Caselle di spunta della tabella (19/10): vuote non sono un riquadro bianco pieno in scuro; piene nell'accento con la spunta. */
+.spunta-riga { -webkit-appearance: none; appearance: none;   margin: 0; border: 1.5px solid var(--bs-secondary-color); border-radius: 4px;
+  background: transparent; display: inline-grid; place-content: center; vertical-align: middle; }
+.spunta-riga:hover { border-color: var(--bs-primary); }
+.spunta-riga:checked { background: var(--bs-primary); border-color: var(--bs-primary); }
+.spunta-riga:checked::after { content: ''; width: .3rem; height: .6rem; border: solid var(--rg-su-primario); border-width: 0 2px 2px 0; transform: translateY(-1px) rotate(45deg); }
+.spunta-riga:focus-visible { outline: 3px solid var(--bs-primary); outline-offset: 2px; }
+/* «Imputati - ruolo da verificare» (19/10, rilievo 2): nessuna dichiarazione, quindi nessuna persona è imputata; l'etichetta si nota senza urlare. */
+.etichetta-imputati.da-verificare { color: var(--bs-body-color) !important; text-transform: none; letter-spacing: 0; font-size: var(--rg-text-sm); }
+.etichetta-imputati.da-verificare::before { content: '\26A0\FE0E '; color: var(--rg-segnale); }
+.home-guarda .sotto { color: var(--bs-secondary-color); }
+.home-porte { gap: 0; border-top: 1px solid var(--bs-body-color); }
+.home-porte .home-porta, .home-porte .home-porta.attuale { border: 0; border-left: 1px solid var(--rg-bordo); border-radius: 0; padding: 0 1.25rem; box-shadow: none; background: transparent; gap: 0; }
+.home-porte .home-porta:first-child { border-left: 0; padding-left: 0; }
+.home-porte .home-porta .testa { display: flex; justify-content: flex-start; align-items: baseline; gap: .6rem; padding: .9rem 0 .35rem; }
+.home-porte .home-porta .ico { display: none; }
+.home-porte .home-porta h3 { font-size: var(--rg-text-lg); font-weight: 700; letter-spacing: 0; margin: 0; }
+.home-porte .home-porta p { padding: 0; margin: 0; color: var(--bs-secondary-color); }
+.home-porte .home-porta .stato { margin: .7rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: .45rem .6rem; font-weight: 400; }
+.home-porte .home-porta .stato a { font-weight: 600; }
+.home-porte .home-porta .pulsanti { margin: 0; padding: .8rem 0 1rem; gap: .5rem; }
+@media (max-width: 900px) { .home-porte .home-porta { border-left: 0; border-top: 1px solid var(--rg-bordo); padding: 0; } .home-porte .home-porta:first-child { border-top: 0; } }
+.home-tag { display: inline-flex; align-items: center; gap: .35rem; border-radius: var(--rg-raggio); padding: .08rem .65rem; font-weight: 600; font-size: var(--rg-text-sm); border: 1px solid var(--rg-bordo);
+  background: color-mix(in srgb, var(--rg-bordo) 35%, var(--bs-body-bg)); }
+.home-tag.ok { color: var(--rg-verde); border-color: color-mix(in srgb, var(--rg-verde) 35%, var(--rg-bordo)); background: color-mix(in srgb, var(--rg-verde) 9%, var(--bs-body-bg)); }
+.home-tag.att { color: var(--bs-body-color); border-color: color-mix(in srgb, var(--rg-segnale) 55%, var(--rg-bordo)); background: color-mix(in srgb, var(--rg-segnale) 18%, var(--bs-body-bg)); }
+
+/* Ritocchi del 16/10 (principi di apple-design): 1) gerarchia dei bordi, 7) risposta alla pressione, 6) tracking dei titoli.
+   Stanno in fondo perché vincono sulle regole di prima. */
+/* 1. Il nero spesso resta ai pulsanti primari: il riquadro «da compilare» e la pillola attiva sono un filetto con un segno a sinistra. */
+.riquadro-estremi.da-compilare { border: 1px solid var(--bs-primary) !important; box-shadow: none !important; background: transparent !important; }
+.btn-pillola.attiva, .pillola.scelta { border-color: color-mix(in srgb, var(--bs-primary) 35%, var(--rg-bordo)); background: color-mix(in srgb, var(--bs-primary) 9%, var(--bs-body-bg)); color: var(--bs-body-color); font-weight: 700; }

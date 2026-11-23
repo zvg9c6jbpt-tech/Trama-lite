@@ -1,0 +1,28 @@
+Trama Lite per Windows
+======================
+
+Serve R gia' installato (versione 4.6). Se non ce l'hai: https://cran.r-project.org
+(Download R for Windows, poi "base"). Non servono altri programmi e, dopo, nemmeno internet.
+
+Come si usa
+-----------
+1. Scompatta tutto lo zip in una cartella tua (per esempio Documenti). Non aprire
+   i file dentro lo zip: va scompattato.
+2. Doppio clic su avvia.bat. Si apre una finestra nera (lasciala aperta) e, dopo
+   qualche secondo, il browser con Trama Lite.
+3. Per chiudere: chiudi la finestra nera.
+
+Se Windows avverte che il file non e' riconosciuto: "Ulteriori informazioni",
+poi "Esegui comunque".
+
+I tuoi dati (il database, le copie di sicurezza, la lista dei luoghi) stanno in
+Documenti\Trama Lite, non in questa cartella: puoi sostituire il programma con una
+versione nuova senza perdere niente.
+
+Se qualcosa non parte
+---------------------
+- "R non trovato": installa R (vedi sopra) e riprova.
+- "La cartella libreria e' per un'altra versione di R": hai una versione di R
+  diversa dalla 4.6. Installa la 4.6, oppure apri R e incolla la riga che Trama Lite
+  mostra (serve internet, una volta sola).
+- Altro: manda a Stefano il contenuto della cartella log in Documenti\Trama Lite.

@@ -1,0 +1,145 @@
+/* Titolo e regesto: lo stato del testo. Automatico = contorno e icona; scritto a mano = pieno chiaro con la spunta e il lucchetto. */
+.pillola-modo .modo-auto, .pillola-modo .modo-manuale { display: inline-flex; align-items: center; gap: .35rem; }
+.pillola-modo .modo-manuale { display: none; }
+.pillola-modo.scelta .modo-auto { display: none; }
+.pillola-modo.scelta .modo-manuale { display: inline-flex; }
+.etichetta-sezione {  font-weight: 700;
+  border: 1px solid var(--rg-bordo); border-radius: var(--rg-raggio); padding: .08rem .5rem; color: var(--bs-secondary-color);
+  background: var(--rg-pagina); }
+.sottotitolo-colonna {
+   margin: .6rem 0 .35rem; }
+/* Una spiegazione lunga non sta sempre sotto il campo: un «?» che la mostra al passaggio o col fuoco (2/10). */
+.nota-aiuto { display: inline-flex; align-items: center; justify-content: center; width: 1.25rem; height: 1.25rem; flex: 0 0 auto;
+  border: 1px solid var(--rg-bordo); border-radius: 50%; font-size: var(--rg-text-sm); font-weight: 700; color: var(--bs-secondary-color);
+  cursor: help; margin-left: .35rem; background: var(--bs-body-bg); }
+.nota-aiuto:hover, .nota-aiuto:focus { border-color: var(--bs-primary); color: var(--bs-primary); outline: none; }
+.riga-imputati { display: flex; align-items: flex-start; }
+.riga-imputati .riga-imputati-voci { flex: 1 1 auto; }
+.nota-campo {  color: var(--bs-secondary-color); margin: -.6rem 0 .8rem; line-height: 1.4; }
+.riquadro-estremi {
+   border-radius: var(--rg-radius-md); padding: .3rem .75rem 0; margin-bottom: 1rem; }
+.riquadro-estremi .sottotitolo-colonna { margin-top: .3rem; }
+.riquadro-estremi.da-compilare { border-color: var(--bs-primary); border-width: 2px;
+
+   }
+.riquadro-estremi.da-compilare .sottotitolo-colonna::after { content: ' \2014  da compilare'; font-weight: 600; }
+.riga-imputati-voci { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin: -.4rem 0 .4rem; }
+.etichetta-imputati {      margin-right: .15rem; }
+/* Passaggio D (28/09): numeri delle colonne, riepilogo, composti, nascosti */
+.campo-nascosto { display: none; }
+/* Scheda più essenziale (15/10): la colonna 2 è quella di lavoro, le altre due più quiete; righe chiuse per ciò che serve di rado */
+.colonna-scheda:not(.colonna-principale) .colonna-principale { background: var(--bs-body-bg); border: 1px solid var(--rg-bordo); border-radius: var(--rg-radius-md); padding: 1rem 1.1rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+/* righe di pulsanti che NON sono una fermata sola di tastiera (le cifre 1-9 scelgono le pillole delle altre righe) */
+.riga-flag .pillola .fa-lock { margin-right: .3rem; }
+.riga-flag { display: flex; flex-wrap: wrap; gap: .35rem; margin: .1rem 0 .5rem; }
+details.segnalazioni, details.tortura-sentenza-sezione { margin: .5rem 0 .9rem; }
+/* Import / Export essenziale (14/10): le tre carte in vista, il resto in una sezione chiusa */
+.avviso-filtri { background: color-mix(in srgb, var(--rg-segnale) 14%, var(--bs-body-bg)); border: 1px solid var(--rg-bordo); border-radius: var(--rg-raggio); padding: .2rem .8rem; }
+.avviso-filtri a { margin-left: .3rem; }
+.altro-export { margin-top: 1.25rem; }
+/* passi guidati di Importa ed Esporta (15/10) */
+/* Zona di trascinamento dell'import (30/10/2026): il foglio si trascina qui, o si clicca in un punto qualsiasi della zona. */
+.zona-trascina { border: 2px dashed var(--rg-bordo); border-radius: .6rem; padding: 1rem 1rem .4rem; text-align: center; cursor: pointer; transition: background .15s, border-color .15s; }
+.zona-trascina:hover, .zona-trascina.attiva { border-color: var(--bs-primary); background: color-mix(in srgb, var(--bs-primary) 7%, var(--bs-body-bg)); }
+.zona-trascina .zona-testo { font-weight: 600; margin-bottom: .5rem; }
+.zona-trascina .shiny-input-container { margin-bottom: .4rem; width: 100% !important; }
+.passo-guidato { display: grid; grid-template-columns: 1.7rem minmax(0, 1fr); gap: .75rem; padding: .9rem 0; border-top: 1px solid var(--rg-bordo); }
+.passo-guidato:first-child { border-top: 0; padding-top: .2rem; }
+.passo-guidato .numero-passo { display: inline-flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  background: var(--bs-primary); color: var(--rg-su-primario); font-size: var(--rg-text-sm); font-weight: 700; margin-top: .1rem; }
+.passo-titolo { font-family: var(--rg-titoli);   margin-bottom: .45rem; }
+.passo-attesa {  padding: .5rem 0; }
+.passo-attesa .passo-titolo { margin-bottom: 0; font-weight: 600; }
+.passo-corpo .shiny-input-container { width: 100%; }
+.altro-export > summary { cursor: pointer; font-weight: 600; color: var(--bs-secondary-color); padding: .4rem 0; }
+.altro-export[open] > summary { margin-bottom: .75rem; }
+/* Omonimi alla fonte (14/10): avviso sotto i luoghi, con le pillole delle province */
+details.collocazione { margin-bottom: 1rem; }
+details.collocazione > summary { list-style: none; cursor: pointer; }
+details.collocazione > summary::-webkit-details-marker { display: none; }
+.riepilogo-collocazione { border: 1.5px solid var(--rg-bordo); border-radius: var(--rg-radius-md); padding: .6rem .8rem;
+   }
+.riepilogo-testa { display: flex; justify-content: space-between; font-weight: 700; font-size: var(--rg-text-sm); margin-bottom: .35rem; }
+.riepilogo-modifica { color: var(--bs-primary); font-weight: 600; font-size: var(--rg-text-sm); }
+details.collocazione[open] .riepilogo-modifica::after { content: ' \2014  chiudi'; }
+.riepilogo-collocazione dl {  grid-template-columns: 1fr; }   /* 15/10: colonna stretta, etichetta sopra il valore */
+.riepilogo-collocazione dd { margin-bottom: .35rem !important; }
+.riepilogo-collocazione dt { color: var(--bs-secondary-color); font-weight: 400; }
+.riepilogo-collocazione dd {  font-weight: 500; }
+.riepilogo-collocazione dd.diverso { background: color-mix(in srgb, var(--rg-segnale) 25%, transparent); border-radius: 4px; padding: 0 .3rem; }
+.collocazione-campi { padding: .7rem .1rem 0; }
+details.data-topica > summary { list-style: none; cursor: pointer; margin: -.3rem 0 .8rem; }
+details.data-topica > summary::-webkit-details-marker { display: none; }
+.link-cambia { color: var(--bs-primary); font-weight: 600; }
+.campo-composto.e-composto .control-label::after { content: 'composto'; margin-left: .4rem;
+     padding: .02rem .4rem; }
+.stato-esame-box { margin: -.5rem 0 .9rem; min-height: 1.4rem; }
+.stato-esame { display: inline-flex; align-items: center; gap: .4rem; font-size: var(--rg-text-sm); padding: .1rem .55rem;
+               border: 1px solid var(--bs-border-color); border-radius: 1rem; }
+.stato-esame .simbolo { font-size: var(--rg-text-sm); }
+.stato-esame.da_esaminare { border-color: var(--rg-controllo); color: var(--bs-body-color); }
+.stato-esame .nota { color: var(--bs-secondary-color); font-size: var(--rg-text-xs); }
+.tortura-sentenza { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+.pillola:focus-visible { outline: 2px solid var(--bs-primary); outline-offset: 2px; }
+.stato-salvataggio { font-size: var(--rg-text-sm); font-weight: 600; color: var(--bs-secondary-color); white-space: nowrap; }
+.stato-salvataggio.da-salvare { color: var(--bs-primary); }
+.stato-salvataggio.da-salvare::before { content: '\25CF  '; color: var(--rg-segnale); }
+.stato-salvataggio.salvato { color: var(--rg-verde); }
+.stato-salvataggio.salvato::before { content: '\2713  '; }
+.altri-compilati { font-size: var(--rg-text-xs); font-weight: 600; color: var(--bs-primary); margin-left: .4rem;
+  border: 1px solid var(--bs-primary); border-radius: var(--rg-raggio); padding: .05rem .5rem; }
+.altri-vuoti { font-size: var(--rg-text-xs); font-weight: 400; margin-left: .4rem; }
+.voce-elenco[data-sep]::after { content: attr(data-sep); }
+.pronto-esito { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .6rem; margin-bottom: .5rem; }
+.pronto-esito .pronto-titolo { font-weight: 700; font-size: var(--rg-text-md); }
+.pronto-esito.pronto { color: var(--rg-verde); }
+.pronto-esito .pronto-conto { font-size: var(--rg-text-sm); color: var(--bs-secondary-color); }
+.colonne-tabella { margin-top: 1rem; }
+.colonne-tabella th { vertical-align: middle; padding-top: .5rem; border-bottom: 1px solid var(--rg-bordo, currentColor); }
+.colonne-tabella td { vertical-align: middle; }
+.colonne-tabella tr.colonna-incompleta td:first-child { font-weight: 600; }
+.colonna-barra { display: inline-block; width: 5.5rem; height: .5rem; border-radius: 999px; margin-right: .5rem;
+  background: var(--bs-border-color); vertical-align: middle; overflow: hidden; }
+.colonna-barra span { display: block; height: 100%; background: var(--rg-verde); }
+.spunta-nd { margin-top: -.4rem; }
+.spunta-nd .checkbox { margin: 0 0 .3rem; }
+/* «Usa 1544» (24/10): una riga sua sotto i campi, staccata da «Aggiungi mese e giorno»; niente margini negativi (si sovrapponeva). */
+.proposta-anno { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin: .9rem 0 .15rem; padding-top: .7rem; border-top: 1px dashed var(--rg-bordo); }
+.proposta-anno a.pillola { text-decoration: none; font-weight: 600; white-space: nowrap; padding: .25rem .8rem; border: 1px solid var(--bs-primary); border-radius: var(--rg-raggio); color: var(--bs-primary); background: transparent; }
+.proposta-anno a.pillola:hover { background: var(--bs-primary); color: var(--rg-su-primario); }
+.scheda-tre-colonne .shiny-input-container:not(.shiny-input-container-inline) { width: 100% !important; }
+.scheda-tre-colonne .control-label {   font-size: var(--rg-text-sm); }
+.riga-pillole { display: flex; flex-wrap: wrap; gap: .35rem; margin: .1rem 0 .5rem; }
+.pillola { border: 1px solid var(--rg-bordo);  background: var(--rg-pagina);
+  color: var(--bs-body-color);  font-weight: 500; padding: .2rem .7rem; line-height: 1.35; }
+.pillola.altro { border-color: var(--rg-controllo); color: var(--bs-body-color); }
+.campo-pillole.solo-pillole .selectize-control { display: none; }
+.campo-termini { margin: -.25rem 0 .75rem; }
+.campo-termini .shiny-options-group { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
+.campo-termini .checkbox, .campo-termini .form-check { margin: 0; }
+.campo-termini .control-label { font-size: var(--rg-text-sm, .875rem); margin-bottom: .1rem; }
+.campo-termini .checkbox, .campo-termini .form-check { padding-left: 0; }
+.campo-termini .checkbox label, .campo-termini .form-check label { display: inline-flex; align-items: center; gap: .4rem; }
+.ripiegabile { border-top: 1px solid var(--rg-bordo); padding-top: .6rem; margin: .6rem 0 .4rem; }
+.ripiegabile > summary { font-family: var(--rg-titoli);  font-size: var(--rg-text-md); cursor: pointer;
+  margin-bottom: .6rem; display: flex; align-items: center; gap: .5rem; list-style: none; }
+.ripiegabile > summary::before { content: '\25B8'; font-size: var(--rg-text-xs); color: var(--bs-secondary-color); transition: transform .15s; }
+.ripiegabile[open] > summary::before { transform: rotate(90deg); }
+.ripiegabile > summary::-webkit-details-marker { display: none; }
+.ripiegabile.in-risalto { border: 1.5px solid var(--rg-bordo); border-radius: var(--rg-radius-md); padding: .6rem .8rem .1rem;
+  background: color-mix(in srgb, var(--rg-pagina) 70%, var(--bs-body-bg)); margin: 0 0 1rem; }
+.ripiegabile.in-risalto > summary { color: var(--bs-body-color); margin-bottom: .5rem; }
+/* Testa della Scheda: una riga (2/10). */
+.testa-scheda { display: flex; flex-wrap: wrap; align-items: center; }
+.testa-scheda .testa-titolo { flex: 1 1 14rem; min-width: 8rem; overflow: hidden; }
+.testa-posizione {    font-variant-numeric: tabular-nums; }
+.testa-crea { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+.completezza-barra { display: inline-block; width: 3.2rem; height: .4rem; border-radius: 999px; background: var(--rg-bordo); overflow: hidden; }
+.completezza-manca { color: var(--bs-secondary-color); white-space: nowrap; }
+.completezza-manca .manca-campo { color: var(--bs-body-color); text-decoration: underline dotted; }
+.completezza-testo { font-size: var(--rg-text-sm); }
+.completezza-barra > span { display: block; height: 100%; background: var(--rg-segnale); transition: width .2s; }
+.completezza-barra > span.piena { background: var(--rg-verde); }
+.barra-fondo-scheda .btn { padding-top: .4rem; padding-bottom: .4rem; }
+.barra-fondo-scheda .btn-salva { min-width: 7rem; }
+.barra-fondo-scheda .barra-spazio { flex: 1 1 1rem; }

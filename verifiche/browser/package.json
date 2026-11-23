@@ -1,0 +1,15 @@
+{
+  "name": "trama-lite-prove-browser",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Prove nel browser di Trama Lite (Playwright). Database di esempio temporaneo: non toccano i dati veri.",
+  "scripts": {
+    "installa-browser": "playwright install chromium",
+    "prove": "playwright test -c playwright.config.js",
+    "prova-importa": "playwright test -c playwright.importa.config.js",
+    "tutto": "node tutto.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}

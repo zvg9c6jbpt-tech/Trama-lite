@@ -1,0 +1,151 @@
+/* 7. Il pulsante risponde alla pressione (non al rilascio): una lieve riduzione, 100 ms. Mai sui pulsanti spenti. */
+.btn { transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, transform .12s ease-out; }
+.btn-pillola, .pillola, .chip-campo { transition: border-color .15s, background-color .15s, color .15s, transform .12s ease-out; }
+.btn:active, .btn-pillola:active, .pillola:active, .chip-campo:active { transform: scale(.97); transition-duration: .1s; }
+.btn:disabled:active, .btn.disabled:active, .btn[disabled]:active { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .btn, .btn-pillola, .pillola, .chip-campo { transition: none; }
+  .btn:active, .btn-pillola:active, .pillola:active, .chip-campo:active { transform: none; }
+}
+/* 6. Il tracking dipende dalla grandezza: i caratteri grandi si stringono, il corpo resta a 0. */
+h1, h2, .home h2 { letter-spacing: -.02em; line-height: 1.1; }
+h3, .modal-title { letter-spacing: -.012em; line-height: 1.2; }
+.home .home-h, .colonna-titolo, .passo-titolo, .card-header { letter-spacing: -.008em; }
+.griglia-kpi .value-box-value { letter-spacing: -.02em; line-height: 1.15; font-variant-numeric: tabular-nums; }
+/* ── La Scheda, rifatta (26/10/2026) ─────────────────────────────────────────────────────────────────────────────────────────
+   Riquadri tutti uguali (contesto, contenuto, testi, altri campi) sulla pagina, senza la cornice grande attorno; testata a gruppi; barra di
+   salvataggio come una pedana staccata; «Altri campi» a tutta larghezza; niente che esca dallo schermo, a nessuna larghezza. */
+/* Un campo portato in vista (Tab) non finisce sotto la testata né sotto la barra: vale solo mentre è aperta la Scheda, non nelle altre pagine. */
+html:has(.tab-pane.active[data-value='Scheda']) { scroll-padding-top: 4.75rem; scroll-padding-bottom: 6.5rem; }
+.carta-scheda { background: transparent; border: 0; border-radius: 0; box-shadow: none; padding: 0; }
+.colonna-scheda { min-width: 0; }
+.colonna-titolo { font-family: var(--rg-titoli);   color: var(--bs-body-color);
+  border-bottom: 1px solid var(--rg-bordo); display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .6rem; }
+
+/* Contesto: una riga di coppie «etichetta valore» che va a capo da sola, poi busta, fascicolo e tipologia nel foglio. */
+.colonna-contesto { display: grid; grid-template-columns: minmax(0, 1fr);  align-items: end; }
+@media (min-width: 900px) {
+  .colonna-contesto { grid-template-columns: minmax(14rem, 19rem) minmax(16rem, 24rem) minmax(0, 1fr); }
+  .colonna-contesto > details.collocazione { grid-column: 1 / -1; }
+}
+.colonna-contesto details.collocazione { margin: 0; }
+.colonna-contesto .riepilogo-collocazione { border: 0; padding: 0; background: transparent; }
+.riepilogo-collocazione dl { display: flex; flex-wrap: wrap; gap: .2rem 1.6rem; margin: 0 0 .2rem; }
+.riepilogo-collocazione .coppia { display: flex; align-items: baseline; gap: .4rem; min-width: 0; }
+.riepilogo-collocazione dt { white-space: nowrap; flex: none; }
+.riepilogo-collocazione dd { margin: 0 !important; min-width: 0; overflow-wrap: anywhere; }
+.riepilogo-collocazione .nota-campo { margin: .1rem 0 0; }
+/* La collocazione aperta («Modifica»): i campi in una griglia che si adatta, non uno sotto l'altro a tutta larghezza. */
+@media (min-width: 640px) {
+  .colonna-contesto .collocazione-campi { display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: .5rem 1.25rem; align-items: start; }
+  .colonna-contesto .collocazione-campi > .bslib-grid { grid-column: 1 / -1; }
+}
+.colonna-contesto .shiny-input-container { margin-bottom: 0; width: 100% !important; max-width: none; }
+.colonna-contesto .control-label { white-space: normal; }
+.scheda-tre-colonne > .bslib-grid-item > .colonna-principale { flex: 1 1 auto; }   /* i due riquadri affiancati hanno la stessa altezza */
+.colonna-contesto .tip-foglio .bslib-grid, .colonna-contesto .tip-foglio .grid { grid-template-columns: minmax(0, 1fr) !important; }
+
+/* Testata: «Elenco», dove sei, a che punto sei, «Nuova scheda». Due gruppi a pastiglia, riconoscibili senza leggere. */
+.testa-scheda { gap: .45rem .6rem; }
+.testa-posizione, .completezza-scheda { display: inline-flex; align-items: center; gap: .4rem; padding: .18rem .6rem; border: 1px solid var(--rg-bordo);
+  border-radius: var(--rg-raggio);  font-size: var(--rg-text-sm); color: var(--bs-secondary-color); white-space: nowrap; }
+.testa-posizione .shiny-text-output { color: var(--bs-body-color); font-weight: 600; }
+.completezza-testo { color: var(--bs-body-color); font-weight: 600; }
+.completezza-manca { font-size: var(--rg-text-sm); }
+.testa-crea { margin-left: auto; }
+.testa-crea .dropdown-toggle::after { display: none; }
+.testa-crea .btn .fa-plus { margin-right: .35rem; }
+@media (max-width: 900px) {
+  .testa-scheda #torna_elenco { order: 0; }
+  .testa-scheda .testa-crea { order: 1; }
+  .testa-scheda .testa-titolo { order: 2; flex: 1 1 100%; }
+  .testa-scheda .testa-posizione, .testa-scheda .completezza-scheda, .testa-scheda .completezza-manca { order: 3; }
+}
+
+/* «Altri campi» a tutta larghezza: i campi vanno in una griglia che si adatta, non in una colonna stretta. */
+.colonna-altri .ripiegabile { border-top: 0; margin: 0; padding-top: 0; }
+.colonna-altri .ripiegabile > summary { margin-bottom: 0; }
+.colonna-altri .altri-griglia { display: grid; grid-template-columns: minmax(0, 1fr); }
+.colonna-altri .bslib-grid:not(.grid-lungo), .colonna-altri .grid:not(.grid-lungo) { grid-template-columns: minmax(0, 1fr); }
+.colonna-altri .grid-lungo { grid-template-columns: minmax(0, 1fr) !important; }
+@media (min-width: 640px) {
+}
+.colonna-altri .altri-griglia > .span-tutto, .colonna-altri .altri-griglia > .sottotitolo-colonna { grid-column: 1 / -1; }
+.colonna-altri .nota-campo { margin: -.5rem 0 .6rem; }
+.colonna-altri .sottotitolo-colonna {   border-top: 1px dashed var(--rg-bordo); }
+
+/* Barra di salvataggio: una pedana staccata dal contenuto, sempre in vista, che non copre nulla (vedi scroll-padding sopra). */
+.barra-fondo-scheda { margin: 1rem 0 .5rem;   border: 1px solid var(--rg-bordo);
+   }
+@media (max-width: 900px) { html:has(.tab-pane.active[data-value='Scheda']) { scroll-padding-top: 9rem; } }
+@media (max-width: 760px) { html:has(.tab-pane.active[data-value='Scheda']) { scroll-padding-bottom: 9rem; } .barra-fondo-scheda .barra-spazio { display: none; }
+  .barra-fondo-scheda #salva_prec, .barra-fondo-scheda #salva_succ { flex: 1 1 auto; } }
+
+/* Un segnaposto lungo in un campo stretto finisce con i puntini, non tagliato a metà. */
+.carta-scheda .selectize-input > input { text-overflow: ellipsis; }
+.carta-scheda .selectize-input > input::placeholder { font-size: var(--rg-text-sm); text-overflow: ellipsis; }
+
+/* Le caselle a spunta e le etichette lunghe vanno a capo invece di uscire dalla colonna. */
+.carta-scheda .checkbox label, .carta-scheda .form-check-label { white-space: normal; }
+
+/* Barra del contesto su finestra stretta: il fondo e la striscia del backup vanno a capo e non escono dallo schermo (valeva per ogni pagina). */
+@media (max-width: 700px) {
+  .barra-contesto { gap: .4rem; }
+  .contesto-fondo { width: 100%; }
+  .contesto-fondo .fondo-apri { max-width: 100%; min-width: 0; flex: 1 1 auto; }
+  .contesto-backup { margin-left: 0; white-space: normal; flex-wrap: wrap; width: 100%; }
+  .backup-stato { white-space: normal; flex-wrap: wrap; }
+  .contesto-interruttori { flex-wrap: wrap; }
+}
+
+/* La barra del contesto sta su una riga sola finché c'è posto: il nome del fondo cede (puntini) invece di mandare «Preferenze» a capo. */
+@media (min-width: 701px) {
+  .barra-contesto { flex-wrap: nowrap; }
+  .barra-contesto > * { flex: none; }
+  .barra-contesto > .contesto-fondo { flex: 0 1 auto; min-width: 0; }
+  .barra-contesto > .contesto-backup { flex: none; margin-left: auto; white-space: nowrap; flex-wrap: nowrap; }
+  .contesto-fondo .fondo-apri { min-width: 0; }
+}
+/* Sul telefono: Indietro e Preferenze sulla stessa riga, poi il fondo, poi la copia. */
+@media (max-width: 700px) {
+  .barra-contesto { padding: .6rem 0 .4rem; }
+  .barra-contesto > .contesto-interruttori { order: 2; margin-left: auto; }
+  .barra-contesto > .contesto-fondo { order: 3; }
+  .barra-contesto > .contesto-backup { order: 4; }
+  .contesto-backup .btn { padding-top: .15rem; padding-bottom: .15rem; }
+}
+
+/* Gli estremi hanno la stessa taglia degli altri campi (26/10/2026): l'anno in corpo 1,35 rem e alto 3 rem stonava con titolo, persone e regesto. */
+.riquadro-estremi input[type=number] { font-size: var(--rg-text-base) !important; font-weight: 600 !important; min-height: 0 !important; letter-spacing: 0; }
+.riquadro-estremi .form-check-label, .riquadro-estremi details > summary { font-size: var(--rg-text-sm); }
+.riquadro-estremi .form-check-input { width: 1.5rem; height: 1.5rem; }
+/* Rifinitura grafica (26/10/2026). Nella Scheda «Elenco» è già il ritorno alla lista: «Indietro» (cronologia) le starebbe accanto come un secondo ritorno. */
+html:has(.tab-pane.active[data-value='Scheda']) .btn-indietro { display: none; }
+/* Testi di servizio: non sotto i 12-13 px e con un grigio che regge il contrasto. */
+.chip-dettagli > summary, details.impostazioni-scheda > summary { font-size: var(--rg-text-sm); }
+.riepilogo-collocazione dt, .riepilogo-collocazione dl { font-size: var(--rg-text-sm); }
+.cerca-fascicoli input::placeholder { color: var(--bs-secondary-color); opacity: .9; }
+/* Le caselle di spunta restano piccole a vedersi ma l'area da toccare è di 40 px circa. */
+.spunta-riga { position: relative; }
+.spunta-riga::before { content: ''; position: absolute; inset: -.7rem; }
+td.col-spunta, th.col-spunta { width: 2.6rem; }
+/* Le tre caselle (testa, busta, riga) stanno sulla stessa verticale. */
+table.dataTable thead th.col-spunta, table.dataTable tbody td.col-spunta { padding-left: 0; padding-right: 0; text-align: center; min-width: 2.6rem; }
+/* Tabelle di una sola riga di esito («nessuna divergenza»): niente intestazione vuota con le frecce di ordinamento. */
+table.senza-testa thead { display: none; }
+/* Vista e righe sono due scelte a segmenti (una sola attiva per gruppo). */
+.pagina-fascicoli .gruppo-pillole { gap: 0; }
+.pagina-fascicoli .gruppo-pillole > .btn-pillola { border-radius: 0; margin-left: -1px; }
+.pagina-fascicoli .gruppo-pillole > .btn-pillola:first-child { border-radius: var(--rg-raggio) 0 0 var(--rg-raggio); margin-left: 0; padding-left: .9rem; }
+.pagina-fascicoli .gruppo-pillole > .btn-pillola:last-child { border-radius: 0 var(--rg-raggio) var(--rg-raggio) 0; padding-right: .9rem; }
+.pagina-fascicoli .gruppo-pillole > .btn-pillola.attiva { position: relative; z-index: 1; }
+
+
+/* Telefono: con la copia a posto (solo scudo e «Copia ora») la striscia sta sulla riga di Indietro e Preferenze, e risparmia una riga
+   sulla prima schermata. Con un avviso o un errore resta sulla sua riga, scritta per intero. */
+@media (max-width: 700px) {
+  .barra-contesto > .contesto-backup:not(:has(.backup-vecchio)) { order: 1; width: auto; flex: 0 1 auto; margin-left: 0; }
+  :root .barra-contesto { column-gap: .25rem; }   /* più specifico del gap di tema/07, che viene dopo */
+  .barra-contesto > .contesto-backup:not(:has(.backup-vecchio)) { gap: .25rem; }
+  .barra-contesto > .contesto-archivio:empty { display: none; }   /* vuoto, ma il suo spazio fra gli elementi manda Preferenze a capo */
+}

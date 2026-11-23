@@ -1,0 +1,22 @@
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+prova.csv
+prova-export.xlsx
+backup/
+build/
+*.lock/
+
+# File di prova e uscite di lavoro
+verifiche/esiti/
+
+renv/library/
+renv/staging/
+renv/sandbox/
+verifiche/nonesiste.sqlite
+
+verifiche/browser/node_modules/
+verifiche/browser/test-results/
+verifiche/browser/schermate/
+

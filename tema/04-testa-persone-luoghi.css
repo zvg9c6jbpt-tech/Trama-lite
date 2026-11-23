@@ -1,0 +1,130 @@
+/* Finestra molto stretta: lo stato del salvataggio va su una riga sua, sotto. Dal 19/10 la barra ha pochi comandi e sta su una riga fino a 760 px. */
+@media (max-width: 760px) { .barra-fondo-scheda .stato-salvataggio { order: 10; flex-basis: 100%; } }
+.btn-compatto { padding-top: .5rem; padding-bottom: .5rem; }
+.btn-quieto { color: var(--bs-secondary-color); text-decoration: none; font-weight: 500; }
+.btn-quieto:hover { color: var(--bs-primary); text-decoration: underline; }
+.barra-fondo-scheda { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;  margin-top: .5rem;
+  border-top: 1px solid var(--rg-bordo); position: sticky;  background: var(--bs-body-bg); z-index: 5; }
+/* Persone e luoghi: elenco e scheda (28/09) */
+.colonna-lista { max-height: 72vh; overflow-y: auto; padding-right: .25rem; }
+.lista-voci { display: flex; flex-direction: column; gap: .3rem; }
+.voce-lista { display: flex; justify-content: space-between; align-items: center; gap: .5rem; text-align: left;
+  border: 1px solid transparent;  background: color-mix(in srgb, var(--rg-bordo) 55%, var(--bs-body-bg));
+  padding: .45rem .7rem; font-weight: 600; font-size: var(--rg-text-sm); color: var(--bs-body-color); }
+.voce-lista:hover { border-color: var(--rg-bordo); }
+.voce-lista.attiva { border-color: var(--bs-primary); background: color-mix(in srgb, var(--bs-primary) 10%, var(--bs-body-bg)); }
+.voce-lista .cella-riga { max-width: none; flex: 1 1 auto; min-width: 0; }
+.voce-n { font-size: var(--rg-text-xs); font-weight: 600; color: var(--bs-secondary-color); }
+.scheda-voce, .riquadro-doppioni { background: var(--bs-body-bg); border: 1px solid var(--rg-bordo);
+  padding: 1rem 1.1rem; }
+.riquadro-doppioni { margin-bottom: 1rem; }
+.gruppo-doppioni .shiny-input-container { margin-bottom: .2rem; }
+.gruppo-doppioni .radio-inline { border: 1px solid var(--rg-bordo); border-radius: var(--rg-raggio); padding: .15rem .7rem .15rem 1.6rem;
+  background: var(--rg-pagina); font-size: var(--rg-text-sm); margin-right: .3rem; }
+.scheda-voce-titolo { font-family: var(--rg-titoli);  font-size: var(--rg-text-lg); display: flex; gap: .5rem;
+  align-items: center; padding-bottom: .5rem; margin-bottom: .5rem; border-bottom: 1px solid var(--rg-bordo); }
+.riquadro-scheda { border: 1px solid var(--rg-bordo); border-radius: var(--rg-radius-md); padding: .7rem .8rem;
+  background: color-mix(in srgb, var(--rg-pagina) 60%, var(--bs-body-bg)); height: 100%; }
+.riquadro-titolo {
+   margin-bottom: .5rem; }
+.barra-riga { display: grid; grid-template-columns: 5.5rem 1fr auto; align-items: center; gap: .5rem; font-size: var(--rg-text-sm); margin-bottom: .25rem; }
+.barra-etichetta { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.barra-traccia { height: .55rem; border-radius: 999px; background: var(--rg-bordo); overflow: hidden; display: flex; }
+.barra-traccia > span { display: block; height: 100%; background: var(--bs-primary); }
+.barra-esito > span.si { background: var(--bs-primary); }
+.barra-esito > span.no { background: var(--rg-verde); }
+.barra-numero { font-size: var(--rg-text-xs); color: var(--bs-secondary-color); }
+.chip-conto { border: 1px solid var(--rg-bordo); border-radius: var(--rg-raggio); padding: .1rem .55rem; font-size: var(--rg-text-sm);
+  background: var(--bs-body-bg); display: inline-flex; gap: .35rem; }
+.chip-conto.incerto { border-style: dashed; }
+.elenco-insieme { max-height: 22rem; overflow-y: auto; display: flex; flex-direction: column; gap: .35rem; }
+.voce-insieme { background: color-mix(in srgb, var(--rg-bordo) 45%, var(--bs-body-bg)); border-radius: var(--rg-radius-md);
+  padding: .45rem .7rem; font-size: var(--rg-text-sm); }
+.voce-insieme a.fw-bold { color: var(--bs-body-color); text-decoration: none; }
+.riga-link { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .15rem; }
+.link-segnatura { color: var(--bs-primary); font-weight: 600; font-size: var(--rg-text-sm); }
+.elenco-fascicoli-voce { display: flex; flex-direction: column; gap: .15rem; max-height: 20rem; overflow-y: auto; }
+.fascicolo-voce { display: grid; grid-template-columns: 7rem 3.5rem minmax(0, 1fr); gap: .5rem; font-size: var(--rg-text-sm); align-items: center; }
+.fascicolo-voce .cella-riga { max-width: 100%; }
+#salva_basso.da-salvare { position: relative; }
+#salva_basso.da-salvare::after { content: ''; position: absolute; top: -4px; right: -4px; width: 11px; height: 11px;
+  border-radius: 50%; background: var(--rg-segnale); box-shadow: 0 0 0 2px var(--bs-body-bg); }
+.bslib-page-navbar > .navbar { border-bottom-color: transparent; }
+.conta-nav, .pillola-esito { background: transparent; }
+@media (min-width: 992px) { .bslib-page-navbar > .navbar .navbar-nav { background: transparent; border-color: transparent; } }
+.btn-outline-secondary { --bs-btn-border-color: var(--rg-bordo); --bs-btn-color: var(--bs-body-color); }
+.btn-outline-primary { --bs-btn-border-color: var(--rg-bordo); }
+.riepilogo-collocazione { border-width: 1px; background: transparent; }
+.chip-campo, .contesto-interruttori .form-check-label, .btn-pillola, .contesto-fondo { border-color: var(--rg-bordo); }
+.colonna-titolo { border-bottom-color: transparent; }
+.home .home-numero, .home .home-fase, .home .home-coda { border-color: transparent; background: var(--bs-body-bg); }
+table.tabella-fascicoli thead th { border-bottom-color: var(--rg-bordo); }
+.form-control, .form-select, .selectize-input { color: var(--bs-body-color); }
+.card-header {   color: var(--bs-body-color); padding-top: .7rem; padding-bottom: .6rem; }
+.card-body > p.text-muted.small:first-child { margin-bottom: .8rem; }
+.riepilogo-collocazione dd { color: var(--bs-body-color); }
+.pillola.scelta::before { content: '\2713'; margin-right: .3rem; font-size: .8em; opacity: .75; }
+.pillola:hover, .btn-pillola:hover { border-color: var(--bs-body-color); color: var(--bs-body-color); }
+
+.griglia-kpi { gap: .6rem !important; margin-bottom: .2rem; }
+/* Riga dell'ambito (19/10): chip dei numeri + filtri attivi + «Filtri», su una linea. */
+/* Avvisi secondari (es. «Ordine dei dati da annotare»): nello scuro erano un riquadro grigio chiaro con testo scuro; ora seguono il tema. */
+.alert-secondary, .alert-info { --bs-alert-bg: var(--rg-rialzo); --bs-alert-color: var(--bs-body-color); --bs-alert-border-color: var(--rg-bordo); background-color: var(--rg-rialzo); color: var(--bs-body-color); border-color: var(--rg-bordo); }
+.riga-ambito { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; margin-bottom: .6rem; }
+.riga-ambito .griglia-kpi { display: flex !important; flex-wrap: wrap; gap: .5rem !important; margin: 0; flex: 0 1 auto; }
+/* il value box ha container-type: inline-size, quindi senza una larghezza esplicita si riduce a una linea */
+.riga-ambito .griglia-kpi > * { flex: 0 0 11.5rem; width: 11.5rem; min-width: 0; }
+.riga-ambito .griglia-kpi .bslib-value-box { min-height: 0 !important; height: 2.5rem !important; max-height: 2.5rem !important; border-radius: var(--rg-radius-md) !important;
+  background: var(--rg-rialzo) !important; border: 1px solid var(--rg-bordo) !important; }
+.riga-ambito .griglia-kpi .bslib-value-box > .card-body, .riga-ambito .griglia-kpi .value-box-area { padding-top: 0 !important; padding-bottom: 0 !important; justify-content: center; }
+.riga-ambito .griglia-kpi .bslib-value-box .value-box-area { flex-direction: row !important; align-items: baseline; gap: .45rem; padding: .3rem .9rem !important; }
+.riga-ambito .griglia-kpi .value-box-title { font-size: var(--rg-text-sm) !important; text-transform: none !important; letter-spacing: 0 !important; }
+.riga-ambito .griglia-kpi .value-box-value { font-size: var(--rg-text-lg) !important; color: var(--bs-body-color) !important; font-weight: 700; }   /* numeri in grafite, non nell'accento: non sono cliccabili */
+/* Il terzo livello di superficie: i controlli (pillole, gruppi di pulsanti) staccano dal riquadro che li contiene. Lo stato scelto resta nell'accento. */
+.pillola:not(.scelta):not(.altro):not(.attiva), .btn-pillola:not(.attiva), .gruppo-pillole .btn:not(.attiva) { background-color: var(--rg-rialzo); }
+.griglia-kpi .bslib-value-box {  color: var(--bs-body-color) !important; border-color: transparent !important; }
+.griglia-kpi .bslib-value-box { min-height: 0 !important; }
+.griglia-kpi .bslib-value-box .value-box-area { padding: .55rem .9rem !important; }
+.griglia-kpi .value-box-title {    color: var(--bs-secondary-color); margin: 0 !important; }
+.griglia-kpi .value-box-value { font-size: var(--rg-text-display) !important; font-weight: 600;  margin: 0 !important; }
+
+.barra-fondo-scheda .btn-outline-secondary { --bs-btn-border-color: transparent; --bs-btn-bg: transparent; font-weight: 500; }
+.barra-fondo-scheda .btn-outline-secondary:hover { --bs-btn-hover-bg: color-mix(in srgb, var(--bs-body-color) 8%, transparent);
+  --bs-btn-hover-color: var(--bs-body-color); --bs-btn-hover-border-color: transparent; }
+.barra-fondo-scheda #salva_succ { --bs-btn-border-color: var(--bs-primary); --bs-btn-color: var(--bs-primary); --bs-btn-hover-bg: var(--bs-primary);
+  --bs-btn-hover-color: var(--rg-su-primario); font-weight: 600; }
+/* Il menu «Altro» (19/10): le destinazioni meno frequenti; le voci sono pulsanti di Shiny a tutta larghezza. */
+.barra-altro .dropdown-menu { min-width: 16rem; padding: .35rem; border-color: var(--rg-bordo); box-shadow: 0 6px 18px var(--rg-ombra); }
+.barra-altro .dropdown-item.btn { display: block; width: 100%; text-align: left; border: 0; border-radius: var(--rg-radius-md); padding: .5rem .75rem; font-weight: 500;
+  white-space: normal; color: var(--bs-body-color); background: transparent; }
+.barra-altro .dropdown-item.btn:hover, .barra-altro .dropdown-item.btn:focus-visible {
+  background: color-mix(in srgb, var(--bs-primary) 10%, var(--bs-body-bg)); color: var(--bs-body-color); }
+.barra-altro .dropdown-toggle::after { display: none; }
+
+/* La barra in fondo alla Scheda su finestra stretta (5/10): a 768 px andava su due righe
+   e «Annulla» cadeva sotto. Bottoni più stretti, niente a capo nelle etichette, e sotto
+   820 px «Prossimo incompleto» esce (resta «Prossimo ›», e la coda è in Home e Qualità). */
+@media (max-width: 1000px) {
+  .barra-fondo-scheda { gap: .3rem; }
+  .barra-fondo-scheda .btn { padding-left: .55rem; padding-right: .55rem; font-size: var(--rg-text-sm); white-space: nowrap; }
+  .barra-fondo-scheda .btn-salva { min-width: 5.2rem; }
+}
+
+/* Qualità: un'intestazione per gruppo (DT RowGroup), non una riga di dati. */
+table.dataTable tr.dtrg-group th, table.dataTable tr.dtrg-group td { background: transparent !important; border: 0;
+  border-top: 1px solid var(--rg-bordo); padding-top: 1rem; padding-bottom: .3rem; font-size: var(--rg-text-xs); font-weight: 700;
+  text-transform: uppercase; letter-spacing: .07em; color: var(--bs-secondary-color); }
+table.dataTable tbody tr.dtrg-group:first-child th, table.dataTable tbody tr.dtrg-group:first-child td { border-top: 0; padding-top: .3rem; }
+
+/* Tortura e sentenza in fondo alla vista Avanzamento, chiuse. */
+details.esiti-chiusi { margin-top: 1rem; border: 1px solid var(--rg-bordo); border-radius: var(--rg-radius-md); background: var(--bs-body-bg); padding: .55rem .9rem; }
+details.esiti-chiusi > summary { cursor: pointer; font-size: var(--rg-text-sm); font-weight: 600; color: var(--bs-secondary-color); }
+details.esiti-chiusi[open] > summary { color: var(--bs-body-color); margin-bottom: .6rem; }
+
+/* Home è ora visibile nella navigazione Studio; anche il marchio continua ad aprirla. */
+.navbar .nav-item:has(> .nav-link[data-value="Scheda"]) { display: none; }
+/* «Scheda» non è un posto dove si va ma una cosa che si apre (Stefano, 5/10: «togliamo scheda
+   dalla barra»): da Fascicoli (clic su una riga, «Nuovo fascicolo»), dalla Home («Riapri»,
+   «Nuova scheda») e da Indietro. Il pannello resta nella pagina: nav_select e la cronologia lo usano. */
+/* La ricerca dei luoghi cerca un nome breve: non serve larga quanto la pagina. */
+.shiny-input-container:has(> #luoghi_cerca) { max-width: 28rem; }

@@ -1,0 +1,110 @@
+/* Import / Export: con la navigazione a sinistra due colonne da ~500 px stringono la tabella dei motivi (segnature su cinque righe): sotto i 1600 px Importa ed Esporta si dispongono una sotto l'altra. */
+@media (max-width: 1599.98px) { .griglia-import { grid-template-columns: minmax(0, 1fr) !important; } }
+/* Gli avvisi in basso a destra non escono dallo schermo: i percorsi lunghi vanno a capo. */
+.shiny-notification { max-width: 26rem; overflow-wrap: anywhere; }
+@media (max-width: 440px) { .shiny-notification { max-width: calc(100vw - 2rem); } }
+/* Il percorso della cartella dati, in fondo alla Home, è lungo e senza spazi: va a capo invece di allargare la pagina. */
+.home-piede, .home-piede span { overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .colonna-principale { padding: 1rem; }
+  .testa-scheda .testa-titolo h5 { font-size: var(--rg-text-lg); }
+}
+
+/* Revisione grafica (29/10/2026, critica di design): una scala, un modo per ogni azione, un titolo per pagina.
+   Testo corrente 14 px ovunque; 13 solo per le micro-etichette; titoli di riquadro 16, di blocco 18, di pagina e numeri 24.
+   Questo blocco sta in fondo di proposito: gli strati precedenti (15/10, 26/10) si sovrapponevano e i valori fuori scala
+   (12,25 / 14,4 / 16,8 px...) venivano dal 14 % di Bootstrap su un corpo di 16 px. */
+body { font-size: var(--rg-text-base); }
+.small, small { font-size: var(--rg-text-sm); }
+h1, .h1, h2, .h2, h3, .h3 { font-size: var(--rg-text-xl); }
+h4, .h4 { font-size: var(--rg-text-lg); }
+h5, .h5 { font-size: var(--rg-text-md); }
+h6, .h6 { font-size: var(--rg-text-base); }
+.card > .card-header { font-size: var(--rg-text-md); }
+.card > .card-header { font-weight: 600; }
+.voce-lista { border-radius: var(--rg-radius-sm); }
+/* Ciò che Bootstrap e Shiny scalano da soli (selectize, paginazione, avvisi, codice) torna sulla scala. */
+.selectize-input, .selectize-input input, .selectize-input > .item, .selectize-dropdown, .selectize-dropdown .option { font-size: var(--rg-text-base); }
+.pagination, .dataTables_wrapper .pagination .page-link { --bs-pagination-font-size: var(--rg-text-base); font-size: var(--rg-text-base); }
+.shiny-notification, .shiny-notification .progress-text, .shiny-notification .progress-message, .shiny-notification .progress-detail { font-size: var(--rg-text-base); }
+.shiny-notification .shiny-notification-close { font-size: var(--rg-text-lg); }
+code, kbd, samp, pre { font-size: var(--rg-text-xs); }
+
+/* Titolo di pagina: lo stesso di Fascicoli in tutte le pagine. */
+.titolo-pagina { margin-top: .25rem; }
+.navbar-nav.nav-underline .nav-link.active,
+body:has(.tab-pane.active[data-value='Scheda']) .navbar-nav.nav-underline .nav-link[data-value='Fascicoli'] {
+     border-color: transparent !important; }
+@media (max-width: 1149.98px) { .navbar-nav.nav-underline .nav-link { padding: .6rem .75rem; } }
+
+/* Due misure di pulsante: normale (circa 39 px) e piccolo (circa 31 px). «Grande» non c'è più: il primario si distingue dal colore. */
+.btn, .btn-lg { --bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1rem; --bs-btn-font-size: var(--rg-text-base); }
+.btn-sm, .btn-group-sm > .btn { --bs-btn-padding-y: .25rem; --bs-btn-padding-x: .75rem; --bs-btn-font-size: var(--rg-text-base); }
+.btn-pillola { font-size: var(--rg-text-base); padding-top: .25rem; padding-bottom: .25rem; }
+/* Il primario spento resta leggibile: grigio su rialzo, non un petrolio sbiadito. */
+.btn-primary:disabled, .btn-primary.disabled { opacity: 1; background: var(--rg-rialzo); border-color: var(--rg-bordo); color: var(--bs-secondary-color); }
+/* I passi non ancora raggiungibili: colore secondario (contrasto pieno), non un'opacità del 55 %. */
+.passo-attesa { opacity: 1; }
+.passo-attesa .passo-titolo { color: var(--bs-secondary-color); }
+/* Le azioni delle tre porte della Home: una colonna, tutte della stessa larghezza. */
+.home-porte .home-porta .pulsanti { flex-direction: column; align-items: stretch; }
+/* Gestione: i riquadri dentro la scheda a pillole non hanno un secondo contorno. */
+.card:has(> .card-header > .nav-pills) { --bs-card-bg: transparent; --bs-card-cap-bg: transparent; border: 0; background: transparent; }
+.card:has(> .card-header > .nav-pills) > .card-header { background: transparent; border-bottom: 0; padding-left: 0; padding-right: 0; }
+.card:has(> .card-header > .nav-pills) > .card-body { padding-left: 0 !important; padding-right: 0 !important; }
+.card > .card-header .nav-pills .nav-link { font-size: var(--rg-text-base); }
+/* ── Seconda revisione (29/10/2026): menu laterale, contrasti, caratteri, sottonavigazione, Luoghi, Scheda ── */
+
+/* Pericolo: il colore della palette in entrambi i modi (prima #C10000 anche nello scuro: 2,7:1 sul fondo scuro). */
+.btn-outline-danger { --bs-btn-color: var(--rg-pericolo); --bs-btn-border-color: var(--rg-pericolo); --bs-btn-hover-color: var(--bs-body-bg);
+  --bs-btn-hover-bg: var(--rg-pericolo); --bs-btn-hover-border-color: var(--rg-pericolo); --bs-btn-active-color: var(--bs-body-bg);
+  --bs-btn-active-bg: var(--rg-pericolo); --bs-btn-active-border-color: var(--rg-pericolo); --bs-btn-disabled-color: var(--rg-pericolo);
+  --bs-btn-disabled-border-color: var(--rg-pericolo); }
+
+/* Pesi: 400, 500, 600, 700. `b` e `strong` dentro un 600 diventavano 900 (bolder). */
+b, strong { font-weight: 700; }
+
+.navbar-nav.nav-underline { flex-wrap: nowrap; }
+.navbar-nav .nav-item:has(> .nav-sep) { list-style: none; }
+.nav-badge { display: inline-block; min-width: 1.4rem; padding: .05rem .4rem;  text-align: center; line-height: 1.35;
+  font-size: var(--rg-text-xs); font-weight: 600; font-variant-numeric: tabular-nums;
+    }
+/* «Indietro» spento non si mostra: era un pulsante morto in Home e nella prima scheda. */
+.btn-indietro:disabled { display: none; }
+.barra-contesto > .contesto-interruttori { margin-left: auto; }
+.preferenze-voci .voce-guida { text-decoration: none; color: var(--bs-body-color); display: inline-flex; align-items: center; gap: .4rem; }
+
+/* Sotto-schede (Qualità, Gestione): a sinistra sotto il titolo, nello stesso stile; Gestione non ha più la fascia a pillole attorno ai riquadri. */
+.nav-pills { justify-content: flex-start; }
+
+/* Titoli di riquadro tutti a 16 px (i riquadri della Scheda erano a 18). */
+.colonna-titolo { font-size: var(--rg-text-md); }
+
+/* Testo corrente: righe non più lunghe di circa 80 caratteri (in Gestione e Import correvano a tutta larghezza, oltre 130). */
+.tab-pane .card-body > p, .tab-pane .card-body > .small, .tab-pane .passo-corpo > p, .tab-pane .passo-corpo > .small, .tab-pane .passo-corpo > div > .small { max-width: 80ch; }
+
+/* Qualità: le fasce dei gruppi senza riempimento (la seconda era più scura della prima: un'ombra interna della zebratura) e la seconda più quieta. */
+#tab_qualita table.dataTable tbody tr.dtrg-group th, #tab_qualita table.dataTable tbody tr.dtrg-group td { box-shadow: none !important; background: transparent !important; }
+
+/* Luoghi: l'elenco è anche la classifica, con la barra in proporzione alle citazioni (--p). */
+.lista-voci .voce-lista { --p: 0%; background: linear-gradient(90deg, color-mix(in srgb, var(--bs-primary) 18%, var(--bs-body-bg)) var(--p), var(--rg-rialzo) var(--p)); border-color: var(--rg-bordo); }
+.lista-voci .voce-lista:hover { border-color: var(--bs-primary); }
+.lista-voci .voce-lista.attiva { border-color: var(--bs-primary); background: color-mix(in srgb, var(--bs-primary) 8%, var(--bs-body-bg)); font-weight: 600; }
+
+/* Finestra «Controlla prima di importare»: sta nello schermo, il piede con i pulsanti non esce mai dalla vista; scorre solo il corpo */
+.modal-dialog.modal-xl:has(.rev-app) { height: calc(100dvh - 1.5rem); margin-block: .75rem; }
+.modal-dialog.modal-xl:has(.rev-app) .modal-content { height: 100%; }
+.modal-dialog.modal-xl:has(.rev-app) .modal-body { display: flex; flex-direction: column; min-height: 0; overflow-y: auto; }
+.modal-dialog.modal-xl:has(.rev-app) .modal-body .rev-app { flex: 1 1 24rem; height: auto; min-height: 16rem; }
+.modal-dialog.modal-xl:has(.rev-app) .modal-footer { flex-wrap: wrap; }
+@media (max-width: 600px) {
+  .modal-dialog.modal-xl:has(.rev-app) .modal-body .rev-app { min-height: 30rem; }
+  .rev-app .rev-lin { flex-wrap: wrap; gap: .1rem .6rem; }
+  .rev-app .rev-seg, .rev-app .rev-col { width: auto; }
+  .rev-app .rev-val { flex: 1 1 100%; }
+}
+.modal-dialog.modal-xl:has(.rev-app) .modal-header { padding-block: .85rem; }
+.modal-dialog.modal-xl:has(.rev-app) .modal-body { padding-block: .85rem; }
+.modal-dialog.modal-xl:has(.rev-app) .modal-footer { padding-block: .75rem; }
+/* Le notifiche di servizio nei colori del tema (prima il celeste di Bootstrap, estraneo alla palette) */
+.shiny-notification-message { background: var(--rg-rialzo); color: var(--bs-body-color); border: 1px solid var(--rg-bordo); }

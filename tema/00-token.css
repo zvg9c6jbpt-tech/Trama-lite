@@ -1,0 +1,12 @@
+/* Token statici del tema (19/11/2026): scala dei testi, raggi, barra, movimento.
+   I colori che cambiano con il tema chiaro/scuro (--rg-pagina, --rg-bordo, --rg-pericolo…) li genera R/tema.R da PALETTE_TEMA,
+   perché devono seguire il modo; qui sta tutto il resto. Un valore nuovo si aggiunge qui, non sparso nei file successivi. */
+:root {
+  --rg-text-xs: .8125rem; --rg-text-sm: .875rem; --rg-text-base: .875rem; --rg-text-md: 1rem;
+  --rg-text-lg: 1.125rem; --rg-text-xl: 1.5rem; --rg-text-display: 2rem;
+  --rg-raggio: 3px; --rg-radius-sm: 3px; --rg-radius-md: 4px; --rg-radius-pill: 999px;
+  --rg-barra: #211d1c; --rg-barra-testo: #d8d0cb; --rg-barra-h: 46px;
+  /* Movimento: uscita rapida (ease-out forte), durate brevi; nessuna animazione sulle azioni da tastiera. */
+  --rg-ease-out: cubic-bezier(.23, 1, .32, 1);
+  --rg-durata-breve: 120ms; --rg-durata: 180ms;
+}

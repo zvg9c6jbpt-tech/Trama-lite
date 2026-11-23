@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trama Lite: come si usa</title>
+<style>
+:root { --fondo:#faf8f4; --testo:#23201c; --tenue:#6b645a; --bordo:#d9d2c5; --accento:#7a3b1e; --riquadro:#f1ede4; --avviso:#fff3d6; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --fondo:#1b1916; --testo:#ece7de; --tenue:#a59d90; --bordo:#3a352e; --accento:#e0a37a; --riquadro:#26231f; --avviso:#3a3017; } }
+:root[data-theme="dark"] { --fondo:#1b1916; --testo:#ece7de; --tenue:#a59d90; --bordo:#3a352e; --accento:#e0a37a; --riquadro:#26231f; --avviso:#3a3017; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--fondo); color:var(--testo); font:16px/1.6 Charter, Georgia, serif; }
+.pagina { display:grid; grid-template-columns: 15rem minmax(0,1fr); gap:2rem; max-width:70rem; margin:0 auto; padding:1.5rem 1rem 4rem; }
+nav { position:sticky; top:1rem; align-self:start; font:14px/1.5 system-ui, sans-serif; }
+nav a { display:block; padding:.2rem 0; color:var(--tenue); text-decoration:none; }
+nav a:hover { color:var(--accento); }
+nav .titolo { font-weight:700; color:var(--testo); margin-bottom:.4rem; }
+main { min-width:0; max-width:46rem; }
+h1 { font-size:2rem; margin:.2rem 0 .3rem; }
+h2 { font-size:1.4rem; margin:2.6rem 0 .6rem; padding-top:.6rem; border-top:1px solid var(--bordo); }
+h3 { font-size:1.1rem; margin:1.6rem 0 .3rem; }
+.sotto { color:var(--tenue); font:14px system-ui, sans-serif; }
+a { color:var(--accento); }
+code, kbd { font:.88em ui-monospace, Menlo, Consolas, monospace; background:var(--riquadro); border:1px solid var(--bordo); border-radius:4px; padding:0 .3em; }
+.nota { background:var(--riquadro); border:1px solid var(--bordo); padding:.6rem .9rem; margin:1rem 0; border-radius:6px; }
+.attenzione { background:var(--avviso); border:1px solid #c28a00; padding:.6rem .9rem; margin:1rem 0; border-radius:6px; }
+table { width:100%; border-collapse:collapse; margin:1rem 0; font:14px/1.45 system-ui, sans-serif; }
+th, td { text-align:left; vertical-align:top; padding:.4rem .6rem; border-bottom:1px solid var(--bordo); }
+th { background:var(--riquadro); }
+ol li, ul li { margin:.25rem 0; }
+footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--bordo); color:var(--tenue); font:13px system-ui, sans-serif; }
+@media (max-width: 760px) { .pagina { grid-template-columns: 1fr; } nav { position:static; } }
+</style>
+</head>
+<body>
+<div class="pagina">
+<nav aria-label="Indice">
+<div class="titolo">Trama Lite</div>
+<a href="#che-cosa">Che cos'è</a>
+<a href="#primi-passi">Primi passi</a>
+<a href="#home">La Home</a>
+<a href="#import">Importare e normalizzare</a>
+<a href="#revisione">Controlla prima di importare</a>
+<a href="#luoghi-ignoti">Luoghi non in lista</a>
+<a href="#lista-luoghi">La lista dei luoghi</a>
+<a href="#fascicoli">Fascicoli e scheda</a>
+<a href="#luoghi-citati">Luoghi citati</a>
+<a href="#qualita">Qualità</a>
+<a href="#export">Esportare</a>
+<a href="#copie">Copie e ripristino</a>
+<a href="#gestione">Gestione</a>
+<a href="#colonne">Le 28 colonne</a>
+<a href="#dati">Dove stanno i dati</a>
+<a href="#licenza">Licenza</a>
+</nav>
+<main>
+<h1>Trama Lite</h1>
+<p class="sotto">guida del 23 novembre 2026 · un file solo, senza rete</p>
+
+<h2 id="che-cosa">Che cos'è</h2>
+<p>Trama Lite serve a tre cose: <b>normalizzare</b> i fogli Excel di inventario nel modello a 28 colonne, <b>schedare</b> un fascicolo alla volta e <b>controllare la qualità</b> dei dati. Niente mappe, niente statistiche, niente schede delle persone, niente RDF: è un programma a sé, con il suo database e i suoi dati.</p>
+<p>Il programma <b>non scrive mai niente senza che tu lo veda</b>. Ogni correzione ha una cella, un valore prima, un valore dopo e una regola; quelle certe sono già spuntate e puoi toglierle, quelle dubbie sono proposte che decidi tu. «Lascia com'è» è sempre possibile.</p>
+
+<h2 id="primi-passi">Primi passi</h2>
+<ol>
+<li>Apri Trama Lite. Si apre una pagina nel browser: è il programma, non è in internet.</li>
+<li>In <b>Import / Export</b> trascina il file Excel (<code>.xlsx</code>) o CSV nella zona tratteggiata, oppure clicca in un punto qualsiasi della zona per sceglierlo.</li>
+<li>Appena il foglio è scelto, sotto compare «Controlla che cosa cambia»: il formato riconosciuto, il fondo di destinazione (nuovo o già presente; se il foglio ne contiene più di uno, quali vengono creati) e le segnature che non entrano. Poi «Importa» apre la finestra «Controlla prima di importare»: guarda che cosa cambierebbe e conferma, oppure «Annulla» e non si scrive niente. Per un'altra modalità, «cambia» nella finestra. Archivio, fondo e serie si chiedono solo se le segnature del foglio non li dicono.</li>
+<li>Controlla i fascicoli in <b>Fascicoli</b> e i controlli in <b>Qualità</b>.</li>
+<li>Quando sei contento, <b>Esporta</b> il foglio Excel normalizzato.</li>
+</ol>
+<p>Se vuoi solo ripulire un foglio senza metterlo nel programma, usa <b>Scarica pulito, senza importare</b>: è un pulsante accanto a «Importa» (c'è anche nella finestra di controllo), e <i>non scrive nel database</i>.</p>
+
+<h2 id="home">La Home</h2>
+<p><b>Colori e caratteri (18 novembre 2026).</b> L'aspetto è quello di una carta d'archivio: pagina color avorio, riquadri chiari, testo antracite e un solo accento, il cremisi, per pulsanti pieni, voce attiva e selezioni. Il tema scuro ha le stesse tinte, con il cremisi schiarito. Il carattere è Titillium Web, incluso nel programma, quindi uguale su ogni computer e senza bisogno di rete. I colori dei reati non cambiano.</p>
+<p><b>Aspetto Studio contemporaneo (26 ottobre 2026).</b> Sugli schermi larghi la navigazione è nella colonna a sinistra; sulle finestre più strette è in alto e scorre orizzontalmente. Home è raggiungibile anche dal marchio Trama Lite. Le voci sono in due gruppi: di uso quotidiano (Home, Fascicoli, Luoghi) e di servizio (Import / Export, Qualità, Gestione). Accanto a <b>Fascicoli</b> c&#x27;è il numero delle schede ancora da completare, accanto a <b>Qualità</b> quello dei controlli con casi da vedere; spariscono quando sono zero. In fondo al menu stanno il <b>fondo attivo</b> (un clic apre l&#x27;elenco dei fondi), lo stato della copia di sicurezza con <b>Copia ora</b> e <b>Come si usa</b>, la guida, raggiungibile da ogni pagina. Sulle finestre strette, dove il menu va in alto, fondo e copia di sicurezza stanno nella striscia sotto di lui, con <b>Indietro</b> e <b>Preferenze</b>; <b>Indietro</b> compare solo quando c&#x27;è un posto dove tornare. La Scheda mantiene tutti i campi e i comandi, compresi Collocazione e soggetti, Altri campi, piano di busta e storia: i riquadri si aprono come prima. Il tema chiaro usa superfici grigio chiaro e accenti petrolio; Scuro ed English restano in Preferenze.</p>
+<p>La Home dice dove sei (il <b>fondo attivo</b>, cioè il fondo su cui lavori) e che cosa resta da fare. Il fondo attivo sta sempre in fondo al menu a sinistra (<b>Fondo</b>; sulle finestre strette, nella striscia sotto il menu): un clic apre una finestra al centro con l'elenco dei fondi, con archivio e numero di schede (e una casella di ricerca quando sono molti); scegline uno, oppure «(tutti i fondi)». Ha tre blocchi sotto <b>Operazioni</b>: <b>Importa e normalizza</b>, <b>Esporta</b> e <b>Schedatura</b>. Una fascia <b>Da guardare</b> ti porta al prossimo lavoro in sospeso, con l&#x27;unico pulsante pieno della pagina (i tre blocchi hanno pulsanti a contorno): valori da decidere, errori nelle schede già salvate, schede incomplete, controlli di Qualità con casi segnalati. In fondo, <b>Altre funzioni</b> e il piede con l'ultima copia di sicurezza e la cartella dei dati.</p>
+<p>Una scheda è <b>incompleta</b> se ha meno di 4 dei campi fondamentali: persone o titolo, anno, luogo, reato.</p>
+<p>Se il fondo ha un piano di busta, sotto la fascia c'è <b>A che punto sono le buste</b>: per ogni busta ancora aperta (con fascicoli attesi e non schedati, o con schede incomplete) dice quanti fascicoli sono schedati su quelli attesi, quali numeri mancano e quante schede restano da completare; <b>Apri la prima da completare</b> riapre la scheda. Se il fondo non ha un piano di busta, la barra mostra le schede complete su quelle schedate. Se le buste aperte sono più di otto, le altre si vedono in Fascicoli.</p>
+<p>Nel blocco <b>Schedatura</b> il pulsante <b>Continua</b> (per esempio «Continua: b. 12, fasc. 19») apre una scheda nuova con il numero che viene dopo l&#x27;ultima che hai toccato: nella stessa busta il primo numero mancante del piano (senza piano, l&#x27;ultimo più uno); se la busta è finita, la prima busta aperta che segue. Quando tutto il piano è schedato il pulsante lascia il posto a <b>Piano completato</b> e, a parte, a <b>Aggiungi fuori piano</b>: il numero oltre il piano lo scegli tu, il programma non lo propone da solo. Una scheda datata solo per secolo («sec. XV») non risulta incompleta per l&#x27;anno: l&#x27;anno non si inventa,.</p>
+<p>In alto c'è la scelta della lingua (<b>English</b>) e del tema scuro.</p>
+
+<h2 id="import">Importare e normalizzare</h2>
+<p>Nella pagina <b>Import / Export</b>, in tre passi: scegli il foglio, scegli la modalità, importa.</p>
+<table>
+<tr><th>Modalità</th><th>Che cosa fa</th></tr>
+<tr><td><b>Accoda ai fascicoli esistenti</b></td><td>Aggiunge i fascicoli del foglio. Quelli già presenti (stesso identificativo o stessa segnatura) restano come sono.</td></tr>
+<tr><td><b>Importa nuovo fondo</b></td><td>Crea un fondo nuovo, separato dagli altri. Indichi archivio e fondo, che valgono per tutte le righe, e se vuoi <b>da dove vengono i dati</b> (una riga facoltativa).</td></tr>
+<tr><td><b>Sostituisci questo fondo</b></td><td>Cancella le schede del fondo scelto in alto e le rimpiazza con quelle del foglio, che devono essere di quel fondo. Gli altri fondi non si toccano. Prima fa una copia di sicurezza e chiede conferma. Se il foglio non ha nessuna riga valida, <b>non cancella niente</b>. Tortura, sentenza, attribuzione, imputati e le spunte «esaminata» non stanno nel foglio: per le righe con la stessa segnatura di una scheda di prima si tengono, a meno che il foglio non dica altro. Se una scheda di prima ha di questi dati e nel foglio non c'è più una riga con la sua segnatura (l'hai corretta?), la finestra di conferma te lo dice, con il numero di schede che si perdono e l'elenco, e chiede di spuntare «Ho capito» prima di sostituire.</td></tr>
+<tr><td><b>Scarica pulito, senza importare</b></td><td>Produce un foglio pulito. Non scrive nel database.</td></tr>
+</table>
+<p>L'anteprima dice se il foglio è già nel modello o in un vecchio formato (che viene convertito). Le righe che non possono entrare (per esempio senza fondo nella segnatura) sono <b>respinte</b>: il pulsante <b>Errori e discordanze</b> le elenca con il motivo, insieme alle discordanze fra Titolo, Regesto e Persone, e si scarica in Excel.</p>
+
+<h2 id="revisione">Controlla prima di importare</h2>
+<p>Prima di scrivere, il programma esamina il foglio e apre una finestra in tre riquadri (19 novembre 2026). A sinistra i filtri: <b>Tutte</b>, <b>Sicure</b> (le correzioni senza dubbi, già spuntate), <b>Da controllare</b> (quelle da decidere), l'elenco dei campi («Per campo») e quello dei tipi di problema («senza cognome certo», «nella lingua del paese»…), ciascuno col numero; un clic sul motivo o sulla colonna mostra solo quelle voci, un secondo clic le rimostra tutte. Al centro l'elenco, con una casella «Cerca…»; ogni voce dice la colonna, il motivo e se è sicura o da controllare. A destra la scheda scelta, con il prima in rosso e il dopo in verde e, sotto, che cosa propone Trama Lite e perché; il pulsante «Includi» (o «Inclusa», per toglierla) decide la correzione, e per i casi da decidere «Applica la proposta» sceglie l'opzione consigliata (puoi sempre scegliere un'altra o «Lascia com'è»). Si può lavorare dalla tastiera: «/» porta alla ricerca, le frecce (o j e k) scorrono l'elenco, «a» seleziona o toglie la correzione scelta.</p>
+<h3>Correzioni</h3>
+<p>Cambiamenti sicuri e senza ambiguità: maiuscole (anche la lettera dopo l'apostrofo: «De'cefali» diventa «De'Cefali»; si può rifiutare), spazi doppi, <code>;</code> o <code>:</code> al posto di <code>|</code>, apostrofo dritto (<code>'</code>), il suffisso della segnatura (<code>7 bis</code>, <code>7ter</code>, <code>4-ter.</code> e <code>20-Bis</code> diventano <code>-bis</code> e <code>-ter</code>), caratteri invisibili, la forma locale dei luoghi stranieri («Avignon» diventa «Avignon (Avignone)»). Sono <b>incluse</b> di partenza; clicca «Inclusa» per toglierle. Un refuso in un vocabolario chiuso («Maggia» per «Magia», dal 23 novembre 2026) è invece una lettura, non una regola: sta in <b>Da controllare</b> e parte non incluso, lo decidi tu.</p>
+<p><b>Scegliere per gruppi.</b> Il filtro a sinistra e la casella «Cerca…» restringono l'elenco: per esempio solo «Luoghi citati», o solo le voci che contengono «Tunisi». «Seleziona le mostrate» e «Deseleziona le mostrate», sotto i riquadri, agiscono solo su quelle che vedi: le altre restano come le avevi lasciate, e togliendo il filtro le ritrovi tutte.</p>
+<p><b>Spuntare a una a una, o a gruppi.</b> Ogni correzione ha la sua casella nell'elenco: spunta per applicarla, togli per lasciarla com'è. La casella «Seleziona tutte le mostrate», sopra l'elenco, spunta o toglie in un colpo tutte quelle che vedi (con un filtro attivo, solo quelle del filtro) e dice quante sono spuntate. Per un gruppo di voci vicine: spunta la prima, poi tieni premuto <b>Maiusc</b> e spunta l'ultima.</p>
+<h3>Da decidere</h3>
+<p>Ciò che il programma non può scegliere per te: un luogo che non è nella lista, un luogo con lo stesso nome di più comuni o frazioni («Castro»: Bergamo o Lecce; la cella non cambia: nella finestra scegli fra le possibilità, la prima è quella più vicina agli altri luoghi della riga, nessuna è preselezionata; la scelta resta nel foglio «Luoghi scelti» del file pulito, con identificativo Wikidata e coordinate, e il caso non resta anche fra i dubbi; in Fascicoli un omonimo non è contato fra gli errori), un luogo scritto in maiuscolo o senza accenti che corrisponde a più nomi diversi («PATERNÒ»: «Paterno» o «Paternò»; non si riscrive da solo), due grafie diverse dello stesso nome nel Titolo, nel Regesto e nelle Persone (un refuso come «Tomaso» contro «Tommaso»), un anno fuori intervallo (1200–1899), un segnaposto («?», «s.d.») un duplicato esatto in un elenco di persone, luoghi, soggetti, lingue o produttori (nelle persone potrebbero essere due omonimi; in ogni caso il database tiene una voce una volta per scheda), un valore nuovo in un vocabolario chiuso, un luogo di conservazione che somiglia a un altro molto più usato («Benvento» contro «Benevento»), due varianti della stessa persona nella stessa cella. Nessuna scelta è preselezionata. Se non scegli, <b>«Lascia com'è»</b>.</p>
+<h3>Il foglio pulito racconta tutto ciò che è cambiato</h3>
+<p>Accanto al modello il file pulito ha quattro fogli: <b>Correzioni</b> (le regole, con quante celle), <b>Registro modifiche</b>, <b>Da decidere</b> e <b>Respinte</b>. Il <b>Registro modifiche</b> confronta il foglio com&#x27;era con quello pulito, cella per cella: riga, segnatura, colonna, prima, dopo e regola. Nell&#x27;ultima colonna, <i>Dichiarata</i>, ogni modifica è <b>sì</b> (una correzione che hai accettato nella finestra) o <b>convenzione</b> (una regola fissa dell&#x27;uscita, che la finestra ti ha contato: il punto finale di regesto e note, la città dell&#x27;archivio che diventa l&#x27;ente, la particella dopo il nome, un duplicato esatto tolto). Se una correzione la rifiuti, nel file pulito non compare. Un nome senza virgola («Mario Rossi») diventa «Rossi, Mario» solo come correzione visibile e rifiutabile (se la rifiuti, il nome resta com&#x27;è scritto anche dopo il salvataggio e nel file esportato dal database); con una qualifica o un «di/da» in mezzo («Anna di Mosca») il cognome non si indovina e il nome resta com&#x27;è.</p>
+<div class="nota">Il programma <b>non riordina mai</b> gli elementi di un elenco (l'ordine ha un significato) e non cambia mai ciò che è già giusto: un foglio già pulito attraversa la normalizzazione con zero celle cambiate.</div>
+
+<h2 id="luoghi-ignoti">Luoghi che non sono nella lista</h2>
+<p>Per ogni luogo che non è nella lista dei luoghi la finestra offre due spunte che si escludono a vicenda:</p>
+<ul>
+<li><b>Aggiungi alla lista</b>: il luogo resta nella scheda ed entra nella lista dei luoghi (solo il nome, senza identificativo né coordinate). Se è una regione che la lista conosce (per esempio Sassonia, Galizia, Hampshire, Burgundia, Lotaringia, Montefeltro) la finestra lo dice, e se la spunti entra con paese, identificativo e coordinate del suo capoluogo (Dresda, Santiago di Compostela, Winchester, Digione, Nancy, Urbino).</li>
+<li><b>Elimina</b>: il luogo viene tolto dalla scheda. È una scelta esplicita e resta tracciata: l'elenco dei luoghi tolti (riga, colonna, prima, dopo) è in «Errori e discordanze».</li>
+</ul>
+<p>Senza spunte il luogo resta com'è e l'import non si blocca. <b>Togli tutte</b> svuota le spunte. Le scelte si eseguono solo a import riuscito: una sostituzione annullata non tocca né la lista né il registro.</p>
+
+<h2 id="lista-luoghi">La lista dei luoghi</h2>
+<p>È l'elenco dei nomi di luogo ammessi: oltre 11.500 voci, cioè tutti i comuni italiani (7.894), gli Stati, le frazioni delle zone su cui si è lavorato finora (Campania, Molise, Puglia, Basilicata, Calabria, Lazio) e alcuni luoghi stranieri con le loro forme locali («London (Londra)»). Quando si conoscono, accanto al nome ci sono l'identificativo Wikidata (per esempio Q220 per Roma) e le coordinate nel formato di Google («41.893056, 12.482778»). Sono dati di consultazione: non c'è una mappa. Restano vuoti dove il nome è ambiguo, come per gli omonimi («Castro», «Livo»).</p>
+<p>Fonti: elenco dei comuni dell'ISTAT (licenza CC BY 4.0), Wikidata (CC0) e GeoNames (CC BY 4.0, geonames.org).</p>
+<ul>
+<li>È <b>una sola per tutta la tua copia</b> di Trama Lite, non una per fondo.</li>
+<li>Cresce soltanto con «Aggiungi alla lista» dall'import. Prima di ogni aggiunta il programma fa una copia in <code>backup-luoghi</code>.</li>
+<li>Se una versione nuova di Trama Lite porta voci nuove, entrano da sole e le tue non si toccano.</li>
+<li>Un luogo scritto in modo molto simile a uno della lista, ma non uguale, è un possibile refuso: è una proposta, mai una correzione automatica.</li>
+</ul>
+
+<h2 id="fascicoli">Fascicoli e scheda</h2>
+<p>Le pagine stanno nella barra scura in alto (19 novembre 2026); il fondo attivo (nome grande, in un riquadro: un clic apre la scelta degli altri) e la copia di sicurezza sono nella striscia sotto. Su uno schermo largo (1280 punti o più), aperta una scheda l'elenco resta a sinistra: si passa da un fascicolo all'altro senza tornare indietro. Dall'elenco: <b>/</b> cerca, <b>j</b> o la freccia in giù apre il fascicolo dopo, <b>k</b> o la freccia in su quello prima, <b>?</b> mostra i tasti. Le righe sono compatte (una per fascicolo); «Comode» le allarga e mostra le persone sotto il titolo.</p>
+<p><b>Fascicoli</b> mostra i fascicoli del fondo attivo come tabella o come scaffale (una tessera per busta). In alto stanno il titolo e <b>Nuovo fascicolo</b>; sotto, una barra sola con la ricerca, la scelta <b>Tabella / Scaffale</b> e la scelta <b>Righe</b> (<b>Comode</b>: titoli e liste fino a due righe, con le persone sotto il titolo; <b>Compatte</b>: una riga per fascicolo).</p>
+<p>La tabella è divisa <b>per busta</b>: ogni busta ha una riga di testa con il numero dei fascicoli e a che punto è la schedatura (una barra con la percentuale; una busta a posto non aggiunge niente). Dentro la busta la segnatura è abbreviata («fasc. 7»), e le schede con meno di 4 campi fondamentali portano accanto alla segnatura una piccola barra («3/4»); non c&#x27;è più una colonna Stato. Con le righe <b>Compatte</b> di un fascicolo con più reati si vede il primo e «+1». Se ordini per un&#x27;altra colonna (anno, reato, luoghi) le buste si sciolgono e l&#x27;elenco è piatto; ordinando di nuovo per segnatura tornano. Nella colonna <b>Reato</b> ogni reato è una pillola nel suo colore, lo stesso della scheda e dei grafici. Un clic su una riga apre la scheda; la casella a sinistra spunta soltanto. La casella nella riga di una busta spunta tutta la busta, quella in testa alla colonna spunta tutte le righe trovate dalla ricerca. Con almeno una riga spuntata compare in basso la barra delle azioni (<b>Imposta un campo…</b>, <b>Ricomponi titolo e regesto…</b>, <b>Elimina…</b>, <b>Deseleziona</b>). I comandi stanno su due righe: sopra titolo, ricerca e <b>Nuovo fascicolo</b>; sotto i filtri, il conto, la vista (Tabella o Scaffale) e la densità delle righe. L'intestazione della tabella resta in vista mentre scorri, e il titolo prende tutta la larghezza che avanza. Su un telefono (sotto i 600 px) le colonne Anno, Reato e Luoghi non ci stanno: i loro valori compaiono in una riga sotto il titolo, dopo i nomi delle persone.</p>
+<p>Sotto la barra stanno i filtri: <b>Tutti</b>, <b>Da completare</b> (meno di 4 campi fondamentali) e <b>Con errori</b>, ciascuno con il numero delle schede; se ne vale uno alla volta: sceglierne uno spegne l&#x27;altro. <b>Con errori</b> mostra le schede in cui il controllo ha trovato correzioni possibili o cose da decidere, e solo allora compare la fascia con <b>Controlla e correggi…</b>. <b>Campi di ricerca</b> apre l&#x27;elenco dei campi: un clic li aggiunge alla ricerca. La ricerca accetta parole libere e filtri <code>campo:valore</code> (<code>reato:eresia anno:1560-1565</code>; i valori con spazi fra virgolette). <code>reato:</code> trova sia la classe sia un termine sotto di lei: <code>reato:bigamia</code> trova le schede che hanno quel termine. Una ricerca si può salvare come <b>coorte</b>.</p>
+<p>La <b>Scheda</b> è la maschera di un fascicolo. Titolo e regesto si compongono dai campi (tipologia, persone, luoghi, reato) e si possono scrivere a mano: allora non si toccano più. I campi a etichette (persone, luoghi) si riempiono con <kbd>Invio</kbd>; <kbd>;</kbd> separa più voci; un doppio clic su un'etichetta la rimette nella casella; la × la toglie. Un nome scritto senza virgola («paolo gargiulo») diventa «Gargiulo, Paolo». Anche i nomi che il campo suggerisce, presi dalle altre schede del fondo, sono già in quella forma, e due grafie dello stesso nome sono una voce sola. Nell'<b>Estremo remoto</b>, in una riga sotto i campi, il pulsante «Usa <i>anno</i>» propone l'anno della scheda precedente; entrando nel campo vuoto l'anno si scrive anche da solo, già selezionato: scrivi per cambiarlo.</p>
+<p>Come è disposta la Scheda: in alto la testata su due righe: sopra <b>Elenco</b>, la segnatura e il menu <b>Nuova scheda</b> (Scheda vuota, Fascicolo seguente, Nuova busta); sotto la posizione nell&#x27;elenco, quanti dei 4 campi fondamentali sono compilati e quali mancano. Titolo e regesto composti dal programma hanno una tinta e un bordo tratteggiato; sotto, la collocazione, che ripete quella del fascicolo precedente e evidenzia i valori diversi, con busta, fascicolo e tipologia nel foglio; poi due riquadri affiancati, <b>Contenuto e indicizzazione</b> e <b>Titolo, regesto e note</b>; in fondo <b>Altri campi</b>, a tutta larghezza. La barra con <b>Salva</b>, <b>Precedente</b>, <b>Prossimo</b> e <b>Altro</b> resta sempre in vista e non copre il campo che stai usando. Su uno schermo stretto i riquadri si dispongono uno sotto l&#x27;altro. I riquadri hanno un fondo appena tinto e i campi sono bianchi con il bordo pieno, così si distinguono; gli anni degli estremi sono stretti e la spunta «n.d.» sta accanto; <b>Altri campi</b>, una volta aperto, mette i campi in colonne da circa dodici caratteri di larghezza, quattro per riga su un portatile.</p>
+<p><b>Termini sotto la classe (18 novembre 2026).</b> Sotto il <b>Soggettario</b> compaiono, con una casella ciascuno, i termini più specifici delle classi che hai scelto (per «Crimini sessuali», «Bigamia»; per «Magia», «Astrologia»). Sono facoltativi: il foglio esportato riceve sempre e solo la classe, il database conserva anche il termine, e un termine di una classe tolta dal Soggettario non resta. La scheda mostra i termini spuntati anche nella ricerca (<code>reato:bigamia</code>).</p>
+<p>Scorciatoie: <kbd>Ctrl</kbd> o <kbd>Cmd</kbd> + <kbd>Invio</kbd> salva e passa al fascicolo successivo. Nella Scheda il pulsante <b>Indietro</b> della barra in alto non c&#x27;è: per uscire si usa <b>Indietro ai Fascicoli</b> nella testata. La segnatura (busta e fascicolo) è scritta in un cartellino a carattere fisso, come l'etichetta di una busta. Il tasto Indietro del browser torna al posto di prima (la scheda, l'elenco con i suoi filtri). Se ci sono modifiche non salvate il programma lo dice prima di lasciare la scheda.</p>
+
+<h2 id="luoghi-citati">Luoghi citati</h2>
+<p>Ogni pagina ha in alto il suo titolo, e la voce della pagina in cui sei è evidenziata nel menu a sinistra. La pagina <b>Luoghi citati</b> elenca i luoghi del fondo con quante volte sono citati, in quali fascicoli e in quali decenni; ogni riga dell&#x27;elenco ha una barra lunga in proporzione alle citazioni, e prima di sceglierne uno il pannello a destra riassume il fondo in tre numeri. Dice se un luogo è nella lista dei luoghi o no. Un luogo scritto in più grafie, o un omonimo, si segnala; le grafie divergenti si <b>fondono</b> (solo se non ci sono bozze aperte) con una copia di sicurezza prima.</p>
+
+<h2 id="qualita">Qualità</h2>
+<p>La pagina <b>Qualità</b> ha due parti: <b>Controlli</b> e <b>Per colonna</b>.</p>
+<ul>
+<li><b>Controlli</b>: due riquadri. <b>Anomalie: da vedere</b> (il numero accanto a «Qualità» nel menu conta solo queste) e, sotto, <b>Lavoro di fondo</b>: tortura e sentenza non esaminate e schede senza regesto strutturato, che non sono errori ma schedatura ancora da fare. Anomalie e casi dubbi, dal più numeroso. Ogni controllo apre le schede interessate. Fra questi: anni sospetti, schede senza anno, valori fuori vocabolario, <b>luoghi fuori vocabolario</b> (da aggiungere alla lista o da correggere), tortura e sentenza ancora da esaminare sulla fonte, grafie divergenti, <b>segnature doppie senza numero</b> (due schede con la stessa busta o lo stesso fascicolo e un numero vuoto: o sono la stessa scheda scritta due volte, o manca un numero), <b>termini senza la loro classe</b> (un termine del tesauro rimasto sotto una classe che la scheda non ha più: si toglie salvando la scheda).</li>
+<li><b>Per colonna</b>: per ognuna delle 28 colonne, quanto è riempita e quali valori sono ancora da decidere. Dice se il fondo è <b>pronto per l'export</b>: tutte le colonne standard del modello compilate.</li>
+</ul>
+<p>Nella Home la fascia <b>Da fare ora</b> dice l'unica cosa da decidere adesso; la riga <b>Poi</b> sotto raccoglie il resto. (Aggiornato il 18/11/2026.)</p>
+<p>Gli errori già presenti nelle schede salvate (refusi, discordanze) si correggono con la stessa finestra dell'import («Controlla e correggi…»), dopo una copia di sicurezza.</p>
+
+<h2 id="export">Esportare</h2>
+<p>In <b>Import / Export</b>, sotto <b>Esporta</b>, scegli il fondo e scarica il <b>Foglio .xlsx</b> (o <code>.csv</code>, con <code>;</code> e UTF-8) nel modello a 28 colonne. L'export è sempre di <b>un fondo solo</b>. Una copia del file resta nella cartella dei dati, in <code>export</code>. Nelle proprietà del file ci sono l'autore e il progetto che indichi in «Attribuzione e schede in JSON» e, se l'hai scritta, la <b>fonte dei dati</b> del fondo (vedi sotto). Le colonne si adattano al contenuto in larghezza e le righe in altezza (il testo lungo va a capo); una colonna rimasta tutta vuota si restringe al minimo.</p>
+<p>Nella sezione chiusa <b>Backup e ripristino</b> (in fondo a Import / Export) ci sono anche le schede in JSON, il backup JSON e il database in SQL o SQLite.</p>
+
+<h2 id="copie">Copie di sicurezza e ripristino</h2>
+<ul>
+<li><b>Avvisi senza percorsi (18 novembre 2026).</b> Quando il programma fa una copia di sicurezza (o una copia dell'export), l'avviso in basso dice solo che è fatta, senza nomi di file né percorsi; il link <b>Mostra nella cartella</b> apre la cartella giusta nel Finder o in Esplora file.</li>
+<li><b>Tastiera e lettura (18 novembre 2026).</b> Chi si sposta con Tab vede sempre un anello di fuoco di 3 punti; pulsanti, schede e voci del menu sono alti almeno 44 punti, caselle e link nelle tabelle almeno 24; il testo secondario e i numeri accanto al menu hanno un contrasto di almeno 4,5 su 1.</li>
+<li>Una <b>copia al giorno</b> è automatica; altre copie si fanno quando i dati cambiano. Il piede della Home dice quando è stata l'ultima.</li>
+<li>Prima di ogni azione che cambia molti dati (sostituire un fondo, correggere le schede, eliminare) il programma fa una copia «prima di…».</li>
+<li>Le copie «prima di…» non crescono senza fine: di quelle prima di sostituire, eliminare o svuotare si tengono sempre le ultime 10 per tipo, e si tolgono solo le più vecchie di 90 giorni.</li>
+<li>Tieni la cartella dei dati in un posto <b>locale</b>, non in una cartella sincronizzata con un servizio cloud (iCloud, OneDrive, Dropbox): il database potrebbe essere caricato a metà o duplicato. Il programma non lo controlla.</li>
+<li><b>Copia completa (.zip)</b>: il database, il backup JSON e la lista dei luoghi personale, con un LEGGIMI. Si ripristina dalla stessa pagina; il programma si chiude e si riapre sui dati ripristinati. I file di prima si salvano prima.</li>
+<li><b>Ripristino da JSON</b>: «Accoda» tiene i fascicoli già presenti; «Sostituisci» rimpiazza tutto, dopo una copia integrale e una conferma. Alla fine l'esito (letti, importati, già presenti) compare nel riquadro sotto il pulsante, che si porta in vista da solo.</li>
+</ul>
+<div class="attenzione"><b>Trama Lite e Trama non condividono il database.</b> Per passare dati dall'uno all'altro si usano i fogli Excel o i file JSON.</div>
+
+<h2 id="gestione">Gestione</h2>
+<p><b>Strumenti</b> (in cima, il percorso della cartella dei dati): generare fascicoli vuoti per una busta, note rapide da archivio, rimuovere i duplicati (il programma li mostra a gruppi: spunti quelli che sono davvero la stessa scheda e scegli quale resta; «Serie 1» e «Serie 2» non sono mai lo stesso fondo), e la «Zona delicata» (cancellare un fondo, svuotare tutto: chiedono conferma e fanno prima una copia). <b>Ordine e segnature</b>: l'ordine di consultazione delle buste e dei fascicoli e le sigle («b.», «aa.», «fasc.», «reg.»).</p>
+
+<h2 id="colonne">Le 28 colonne del modello</h2>
+<p>Trama Lite legge e scrive sempre queste colonne, con queste intestazioni. «Fedele» vuol dire che il valore non si cambia se non per le correzioni dei caratteri (spazi, forma Unicode).</p>
+<table>
+<tr><th>#</th><th>Intestazione</th><th>Regola</th></tr>
+<tr><td>1</td><td><b>Segnatura</b></td><td>Archivio, fondo, busta e fascicolo («Archivio, Fondo, b. 12, fasc. 3»). Un nome solo prima di «b.» non dice il fondo: la riga è respinta, a meno che il fondo non sia indicato in fase di import. Anche con una qualifica fra busta e fascicolo («m.1, inv., f.2» e «m.1, non inv., f.2» sono due serie diverse): resta nella segnatura e nel foglio. Gli spazi doppi o ai bordi sono una correzione proposta nella finestra «Controlla prima di importare» (prima e dopo, spuntata); se due righe diventerebbero la stessa segnatura la correzione non è spuntata e dice con quale riga collide: due schede non si fondono mai. Due segnature sono la stessa anche se scritte in modo diverso («f. 1» e «fasc. 1»), e la seconda non entra mai: in «Accoda» è respinta come «già occupata»; in «Importa nuovo» un doppione ferma tutto il fondo, con un messaggio chiaro, perché un fondo nuovo entra intero o per niente. Le altre forme sbagliate («;» al posto della virgola, virgola senza spazio) respingono la riga, e il motivo dice la forma giusta.</td></tr>
+<tr><td>2</td><td><b>Altra segnatura</b></td><td>Altre segnature note del fascicolo. Testo fedele.</td></tr>
+<tr><td>3</td><td><b>Titolo</b></td><td>Solo i nomi («Lucia Ferrante e Tommaso Bassi», al massimo due; dal terzo «Atti per diversi»). Il genere del documento (Processo, Denuncia, Atti, Informazioni…) si sceglie con la pillola della tipologia e finisce nel regesto («Processo per eresia contro Lucia Ferrante»). Senza nomi il titolo dice il genere («Informazioni», «Denunce per ignoti»). Scelta di Trama, diversa dall'esempio della guida al Tab («Processo contro XY»). Si può scrivere a mano (allora non si tocca). <b>Nell'importazione il Titolo è testo libero</b>: ogni costrutto dello schedatore va bene («Paolo Rossi», «Processo contro X», «Processo per eresia a X», un titolo in latino) e non c'è un vocabolario dei reati da rispettare. Si controllano solo spazi doppi, separatori, maiuscole dei nomi, apostrofo e i nomi discordi con le Persone (decidi tu). In più, nel Titolo e nel Regesto il programma propone (con la <b>spunta spenta</b>) la correzione di una parola scritta una sola volta che differisce di una lettera da una parola molto frequente nei tuoi stessi testi, per esempio «causaraum» → «causarum». Non tocca l'ultima lettera, perché le desinenze latine sono forme valide, e con pochi testi tace.</td></tr>
+<tr><td>4</td><td><b>Estremo remoto</b></td><td>L&#x27;anno più antico, fra 1200 e 1899, oppure «n.d.». Mese e giorno sono facoltativi, come nella Guida al Tab: «1644-03-29» o «marzo 1644» (l&#x27;anno resta nel campo numerico; in Scheda si aprono con «Aggiungi mese e giorno»). «1644-3-29» e «Marzo 1644» si riscrivono nella forma giusta; una data che non esiste (30 febbraio) si decide a mano. Se si conosce solo il secolo, la Guida al Tab ammette «sec. XV», «prima/seconda metà del sec. XV», «primo/secondo/terzo/ultimo quarto del sec. XV», «inizio sec. XVI», «fine sec. XV» (dal XIII al XIX): non sono un anno, quindi nel campo numerico non entrano, ma si conservano come scritti, escono nel foglio così e non chiedono di decidere (l&#x27;anteprima li conta).</td></tr>
+<tr><td>5</td><td><b>Estremo recente</b></td><td>L&#x27;anno più recente, con mese e giorno facoltativi come il remoto. Mai prima del remoto (si confrontano mese e giorno solo se li hanno entrambi). Se è <b>uguale al remoto</b> (la stessa data scritta due volte) si toglie da solo: la correzione si vede in anteprima e si può rifiutare. Nella <b>Scheda</b>, al salvataggio, il programma lo dice e chiede: «Sì, togli il recente» lo svuota (anche la data precisa) e salva; «No, tieni tutti e due» salva com&#x27;è e per quella scheda e quella data non lo richiede più. Vale anche per le datazioni per secolo, che non si confrontano.</td></tr>
+<tr><td>6</td><td><b>definizione.tipologia</b></td><td>Definizione dell&#x27;unità (per esempio «fascicolo»). Vocabolario per fondo.</td></tr>
+<tr><td>7</td><td><b>Supporto (materiale)</b></td><td>Cartaceo, papiraceo, pergamenaceo o membranaceo (i quattro della Guida alla compilazione del Modulo Tab). Un altro valore si decide nella finestra di controllo; vocabolario per fondo.</td></tr>
+<tr><td>8</td><td><b>dimensioni/altezza</b></td><td>Altezza in millimetri, come nella Guida alla compilazione del Modulo Tab: il solo numero, senza «mm». Fedele.</td></tr>
+<tr><td>9</td><td><b>dimensioni/larghezza</b></td><td>Larghezza in millimetri, come nella Guida alla compilazione del Modulo Tab: il solo numero, senza «mm». Fedele.</td></tr>
+<tr><td>10</td><td><b>tipo di numerazione</b></td><td>Fedele.</td></tr>
+<tr><td>11</td><td><b>Numerazione</b></td><td>Fedele.</td></tr>
+<tr><td>12</td><td><b>epoca numerazione</b></td><td>Fedele.</td></tr>
+<tr><td>13</td><td><b>consistenza.quantità</b></td><td>Fedele.</td></tr>
+<tr><td>14</td><td><b>consistenza.unitàMisura</b></td><td>Fedele.</td></tr>
+<tr><td>15</td><td><b>Tipologia documentaria</b></td><td>Atti, Lettere o Decreti (anche più d&#x27;una, separate da «; »): escono come nel foglio che arriva. Ogni altro valore («Processo», «Unità archivistiche») esce «Atti», e la finestra di controllo lo dice.</td></tr>
+<tr><td>16</td><td><b>Regesto o descrizione sintetica</b></td><td>Composto dai campi («Atti contro … per …») oppure scritto a mano. Il punto finale si aggiunge in uscita.</td></tr>
+<tr><td>17</td><td><b>Persone citate o indicizzate</b></td><td>Elenco separato da «|», nella forma «Cognome, Nome» (la particella dopo il nome nel foglio: «Santis, Antonio de»). Senza cognome non è una persona citata. Fanno eccezione, come nella Guida al Tab, papi, re, imperatori e le consorti di re e imperatori: la formula «Nome (forma italiana; titolo)», per esempio «Louis XIV (Luigi XIV; re di Francia)» o «Eleonora Gonzaga (imperatrice)», resta com&#x27;è e non si riscrive in «Cognome, Nome». Un titolo nobiliare tra parentesi dopo «Cognome, Nome» passa senza controlli.</td></tr>
+<tr><td>18</td><td><b>Luogo di conservazione</b></td><td>L&#x27;ente che conserva (mai una città). La Guida alla compilazione del Modulo Tab dice «la città»: per Lite vale la regola di Stefano del 12 ottobre, l&#x27;ente.</td></tr>
+<tr><td>19</td><td><b>Luogo di produzione (data topica)</b></td><td>Luoghi separati da «|», con le stesse regole dei luoghi citati.</td></tr>
+<tr><td>20</td><td><b>Luoghi citati o indicizzati</b></td><td>Luoghi separati da «|». Si confrontano con la lista dei luoghi. «S.» si scioglie sempre, in questa colonna come in persone, soggetti, titolo e regesto: «S. Severo» diventa «San Severo», «S. Maria» «Santa Maria», «S. Angelo» «Sant&#x27;Angelo», «S. Stefano» «Santo Stefano», «S. Uffizio» «Sant&#x27;Uffizio». Non si tocca dove «S.» vuol dire «Sacra» (S. Congregazione, S. Consulta), nelle sigle (S.M., S.A.R., S.U) e nelle formule «Sua» (S. Santità), né nelle note. Il genere viene dal <b>dizionario dei santi</b> (<code>dati/santi.csv</code>: «S. Scolastica» è «Santa Scolastica», «S. Agata» «Sant&#x27;Agata»). Nella colonna delle <b>persone</b> «S.» non si scioglie mai da solo («S. Giovanni», «Rossi, S. Giovanni»: iniziale o santo?): lo scioglimento si propone, non spuntato, e lo accetti tu. Nei soggetti un nome che il dizionario non conosce («S. Rossi») resta com&#x27;è e si propone. Se «S.» segue il nome di una persona («Carlo S. Rossi»: iniziale o santo?) la cella resta com&#x27;è e lo scioglimento compare nella finestra «Controlla prima di pulire» come proposta da spuntare tu.</td></tr>
+<tr><td>21</td><td><b>Soggetto produttore</b></td><td>Nella forma «Inquisizione di Città»; solo Roma è «Sant&#x27;Uffizio».</td></tr>
+<tr><td>22</td><td><b>Soggetti citati o indicizzati</b></td><td>Soggetti separati da «|». Un nome di persona qui è un errore proposto.</td></tr>
+<tr><td>23</td><td><b>Soggettario</b></td><td>Le classi di reato: vocabolario chiuso di 19 classi, quelle della Guida alla compilazione del Modulo Tab (Eresia, Magia, Giurisdizione, Liturgia, Scienze…); i termini più specifici (Bigamia, Astrologia, Amministrazione, Tribunali locali…) stanno sotto una classe: il foglio riceve la classe, il database conserva anche il termine. Il vocabolario dei reati vale per Soggettario e Regesto, non per il Titolo. Tre equivalenze valgono per ogni fondo e si vedono fra le correzioni: «Bigamia» entra in «Crimini sessuali», «Apostasia» in «Eresia», «Ebrei» in «Ebraismo» (una decisione registrata per il fondo prevale).</td></tr>
+<tr><td>24</td><td><b>Eventi</b></td><td>Fedele.</td></tr>
+<tr><td>25</td><td><b>Note libere</b></td><td>Testo libero: non si tocca.</td></tr>
+<tr><td>26</td><td><b>Lingua</b></td><td>Minuscole, separate da «; » (nel foglio); «Italiano» nel database. Nel vocabolario: italiano, latino, francese e slavo; ogni altra lingua («tedesco», «greco antico») si decide nella finestra di controllo.</td></tr>
+<tr><td>27</td><td><b>Manifest IIIF</b></td><td>Fedele.</td></tr>
+<tr><td>28</td><td><b>Identificativo immagine o cartella</b></td><td>Fedele.</td></tr>
+</table>
+
+<h2 id="dati">Dove stanno i dati</h2>
+<p>Il programma e i dati stanno separati. I dati sono nella cartella <b>Trama Lite</b> dentro Documenti:</p>
+<table>
+<tr><th>Che cosa</th><th>Dove</th></tr>
+<tr><td>Il database</td><td><code>trama.sqlite</code></td></tr>
+<tr><td>La lista dei luoghi personale</td><td><code>luoghi/luoghi.csv</code> (copie prima di ogni modifica in <code>luoghi/backup-luoghi</code>)</td></tr>
+<tr><td>Le copie di sicurezza</td><td><code>backup</code></td></tr>
+<tr><td>Gli export</td><td><code>export</code></td></tr>
+</table>
+<p>Il pulsante <b>Apri la cartella</b>, nella Home, la apre. Il programma può stare anche in una cartella di sola lettura. Funziona senza internet.</p>
+
+<h2 id="licenza">Licenza dei dati</h2>
+<p><b>Da dove vengono i dati.</b> Ogni fondo può dire la sua fonte in una riga di testo libero (al massimo 500 caratteri), per esempio «Inventario dell'Archivio X, trascritto dal gruppo di lavoro». La scrivi in <b>Nuovo fondo</b>, in <b>Importa nuovo fondo</b>, oppure per il fondo scelto in alto nella casella «Da dove vengono i dati del fondo scelto in alto», sotto <b>Altro</b> in Import / Export. È facoltativa. Non è una cella del modello: nessuna colonna cambia. Entra nelle proprietà del foglio Excel (Oggetto) e nel backup JSON, e un ripristino la rimette. La segnatura dice già archivio e fondo; la fonte dice in più da dove vengono i dati.</p>
+<p>I dati esportati portano la licenza <b>CC BY 4.0</b>. Chi ha schedato e il progetto di cui i dati fanno parte si scrivono in «Attribuzione e schede in JSON» e finiscono nelle proprietà dei file.</p>
+
+<footer>Trama Lite · guida del 23 novembre 2026 · autore delle decisioni di normalizzazione: Stefano Colavecchia · le regole complete sono in <code>NORMALIZZAZIONE_LITE.md</code>.</footer>
+</main>
+</div>
+</body>
+</html>

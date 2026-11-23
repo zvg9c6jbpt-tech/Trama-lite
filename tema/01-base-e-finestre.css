@@ -1,0 +1,139 @@
+body, .bslib-sidebar-layout > .main { background: var(--rg-pagina) !important; }
+.bslib-sidebar-layout > .sidebar { background: var(--bs-body-bg) !important; }
+.bslib-page-navbar > .navbar {  border-bottom: 1px solid var(--rg-bordo); }
+.navbar-brand, .card-header { font-family: var(--rg-titoli); }
+.card-header {    border-bottom-color: var(--rg-bordo); }
+.dataTables_filter label { width: 100%; display: flex; align-items: center; gap: .5rem; }
+.dataTables_filter input { flex: 1 1 auto; min-width: 0; width: auto !important; margin-left: 0 !important; }
+.dataTables_info {  color: var(--bs-secondary-color); }
+/* Le righe Bootstrap di DataTables hanno margini negativi: dentro una
+   card sporgevano di 12px e facevano comparire la barra orizzontale. */
+.dataTables_wrapper > .row { margin-left: 0; margin-right: 0; }
+.dataTables_wrapper > .row > [class*=col-] { padding-left: 0; padding-right: 0; }
+@media (min-width: 768px) { .dataTables_wrapper > .row > [class*=col-] + [class*=col-] { padding-left: 1rem; } }
+.control-label {    margin-bottom: .2rem; }
+.checkbox label, .checkbox label span { font-weight: 400 !important; }
+
+body { -webkit-font-smoothing: antialiased; }
+.selectize-control.multi .selectize-input > div,
+.coorte-chip {
+  border-radius: var(--rg-raggio) !important;
+  border: 1px solid var(--rg-bordo) !important;
+  background: var(--rg-pagina) !important;
+  color: var(--bs-body-color) !important;
+  font-size: var(--rg-text-sm); font-weight: 500;
+  padding: .25rem .65rem;
+}
+.selectize-control.multi .selectize-input > div.active,
+.selectize-control.multi .selectize-input > div:hover {
+  background: color-mix(in srgb, var(--bs-primary) 12%, var(--bs-body-bg)) !important;
+  border-color: var(--bs-primary) !important; color: var(--bs-primary) !important;
+}
+.nav-underline { gap: .4rem; padding: .35rem 0 .7rem; }
+.nav-underline .nav-link, .nav-tabs .nav-link {
+
+   font-size: var(--rg-text-sm);
+}
+.nav-underline .nav-link.active, .nav-tabs .nav-link.active {
+  border-color: var(--bs-primary) !important;
+
+}
+#ord_elenco tr[data-id] { cursor: grab; }
+#ord_elenco tr[data-id]:active { cursor: grabbing; }
+#ord_elenco th { position: sticky; top: 0; background: var(--bs-body-bg); z-index: 1; }
+@media (max-width: 960px) { .gestione-colonne { grid-template-columns: minmax(0,1fr) !important; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* Marchio nella barra */
+.marchio-trama { display: flex; align-items: center; gap: .5rem; }
+.marchio-trama svg { flex: 0 0 auto; }
+.marchio-trama span {
+  font-family: var(--rg-titoli);
+}
+
+/* Bottoni: un po' di respiro nelle lettere, meno stondati del
+   default Bootstrap, più «sigillo», meno «app generica». */
+.btn { font-weight: 600; }
+
+/* Modifiche non salvate: un pallino sul pulsante Salva, con un anello
+   del colore della barra perché si stacchi dal bordo del pulsante. */
+#salva.da-salvare { position: relative; }
+#salva.da-salvare::after {
+  content: ''; position: absolute; top: -4px; right: -4px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--rg-segnale); box-shadow: 0 0 0 2px var(--bs-body-bg);
+}
+
+/* Coorti: ricerche salvate, a pillola (TODO "Coorte") */
+.coorte-chip {
+  display: inline-flex; align-items: stretch; overflow: hidden; border-radius: var(--rg-raggio);
+  border: 1px solid var(--rg-bordo); font-size: var(--rg-text-sm);
+}
+.coorte-chip a { text-decoration: none; padding: .2rem .6rem; color: var(--bs-body-color); }
+.coorte-chip a:first-child:hover { background: color-mix(in srgb, var(--bs-primary) 12%, transparent); }
+.coorte-chip-x { color: var(--bs-secondary-color); padding-left: .3rem !important; padding-right: .5rem !important; }
+.coorte-chip-x:hover { background: color-mix(in srgb, var(--rg-pericolo) 15%, transparent); color: var(--rg-pericolo); }
+
+/* Scheda di schedatura a tab (TODO 1) */
+.nav-underline .nav-link { font-family: var(--bs-body-font-family); font-weight: 600; }
+.nav-underline .nav-link.active {  border-bottom-width: 2px; }
+
+/* Finestra stretta: l'app in mezzo schermo, accanto alla fonte che si
+   sta schedando (21/09). A 760 px «Salva» usciva dallo schermo, i
+   i riquadri dei numeri si schiacciavano a una lettera per
+   riga («F a sc ic ol i») e le tabelle si tagliavano a destra. Sugli
+   schermi larghi non cambia niente: le soglie scattano solo quando
+   accanto alla barra laterale restano meno di ~620 px. */
+@media (max-width: 960px) {
+  .griglia-kpi     { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .griglia-grafici { grid-template-columns: minmax(0, 1fr) !important; }
+}
+@media (max-width: 760px) {
+  .griglia-pagina  { grid-template-columns: minmax(0, 1fr) !important; }
+}
+.campo-flag { display: flex; align-items: flex-end; gap: .6rem; margin-bottom: 1rem; }
+.campo-flag > .shiny-input-container { margin-bottom: 0; flex: 1 1 auto; width: auto; min-width: 0; }
+.campo-flag .flag-inline { flex: 0 0 auto; padding-bottom: .5rem; white-space: nowrap; }
+.campo-flag .flag-inline .shiny-input-container { width: auto; margin-bottom: 0; }
+.campo-flag .flag-inline .checkbox { margin: 0; }
+.griglia-contenitore { width: 100% !important; }
+.griglia-coppie { overflow-x: auto; }
+.griglia-avviso { color: var(--rg-segnale); margin-bottom: .25rem; }
+.griglia-tabella { width: auto; margin-bottom: .25rem; }
+.griglia-tabella th, .griglia-tabella td { padding: .3rem .6rem; vertical-align: middle; }
+.griglia-tabella thead th { font-weight: 600; font-size: var(--rg-text-sm); white-space: nowrap; }
+.griglia-tabella tbody th { font-weight: 500; white-space: nowrap; }
+.griglia-tabella td { text-align: center; }
+.griglia-tabella .form-check-input { margin: 0; float: none; }
+#tab_qualita tbody tr { cursor: pointer; }
+.filtro-schedatura { display: flex; justify-content: space-between; align-items: center;
+  font-size: var(--rg-text-sm); padding: .35rem .6rem; margin-bottom: .6rem; border-radius: .35rem;
+  border: 1px solid var(--rg-segnale); background: var(--bs-tertiary-bg); }
+.titolo-composto { background: color-mix(in srgb, var(--bs-primary) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bs-primary) 25%, transparent);
+  border-radius: .4rem; padding: .5rem .8rem; font-size: var(--rg-text-sm); margin-bottom: 1rem; }
+.titolo-composto strong { color: var(--bs-primary); }
+
+/* Autocorrezione: un lampo sul campo corretto (il testo di prima nel title). */
+.autocorretto { box-shadow: 0 0 0 3px color-mix(in srgb, var(--bs-success) 35%, transparent) !important; transition: box-shadow .3s; }
+
+/* Correzione selettiva (R/selezione.R). */
+.barra-selezione { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-bottom: .5rem; }
+td.col-spunta, th.col-spunta {  text-align: center; cursor: default; }
+.spunta-riga {   cursor: pointer; accent-color: var(--bs-primary); }
+.tabella-fascicoli tr.riga-spuntata td { background: color-mix(in srgb, var(--bs-primary) 8%, transparent) !important; }
+
+/* Testi doppi nel markup (le parole chiave della ricerca): se ne vede uno. */
+html[lang=en] .solo-it, html:not([lang=en]) .solo-en { display: none; }
+/* Titolo e regesto composti visti in inglese (www/traduci.js, visteComposte):
+   il campo italiano resta nella pagina, nascosto dietro la sua traduzione. */
+.campo-composto.ha-vista-en input[type=text], .campo-composto.ha-vista-en textarea { display: none; }
+.vista-en { cursor: text; white-space: pre-wrap; height: auto; }
+.campo-composto textarea + .vista-en { min-height: 7.5rem; }
+
+/* I tre testi scritti nel CSS (::after) in inglese: il traduttore del
+   browser non li vede, li sceglie la lingua della pagina (traduci.js). */
+html[lang=en] .riquadro-estremi.da-compilare .sottotitolo-colonna::after { content: ' \2014  to be filled in'; }
+html[lang=en] details.collocazione[open] .riepilogo-modifica::after { content: ' \2014  close'; }
+html[lang=en] .campo-composto.e-composto .control-label::after { content: 'generated'; }
+

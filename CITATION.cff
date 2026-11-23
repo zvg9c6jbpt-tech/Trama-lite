@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Se usi Trama Lite in una ricerca o in un lavoro d'archivio, citalo così."
+title: "Trama Lite: normalizzazione e controllo degli inventari d'archivio"
+type: software
+authors:
+  - family-names: Colavecchia
+    given-names: Stefano
+license: MIT
+repository-code: "https://github.com/bcste-si/trama-lite"
+date-released: "2026-11-18"
+abstract: "App Shiny (R) che pulisce e controlla gli inventari d'archivio prima che entrino in un sistema di descrizione, senza falsificarli: regole automatiche, proposte e dati intoccabili, con registro di ogni modifica."
+keywords:
+  - archivi
+  - normalizzazione
+  - inventari
+  - R Shiny

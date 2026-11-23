@@ -1,0 +1,451 @@
+{
+  "profilo": {
+    "nome": "inquisizione",
+    "titolo": "Inquisizione moderna italiana: inventari nel Tab a 28 colonne",
+    "versione": "1",
+    "fonte": "Guida al Tab"
+  },
+  "anni_ammessi": [
+    1200,
+    1899
+  ],
+  "produttore": {
+    "ente": "Inquisizione",
+    "preposizione": "di",
+    "preposizione_elisa": "d'",
+    "prefisso_lungo": "Tribunale dell'",
+    "sinonimi": [
+      "Sant'Uffizio",
+      "Santo Uffizio",
+      "Sant'Ufficio",
+      "Santo Ufficio"
+    ],
+    "eccezioni": {
+      "Roma": "Sant'Uffizio"
+    }
+  },
+  "vocabolari": {
+    "reato": [
+      "Eresia",
+      "Magia",
+      "Bestemmia e miscredenza",
+      "Sacramenti",
+      "Giurisdizione",
+      "Ebraismo",
+      "Censura",
+      "Crimini sessuali",
+      "Santità",
+      "Clero",
+      "Islam",
+      "Istruzioni della Congregazione",
+      "Cristiani e riti orientali",
+      "Protestanti",
+      "Dispute dottrinali",
+      "Liturgia",
+      "Miracoli",
+      "Scienze",
+      "Inosservanza religiosa"
+    ],
+    "supporto": [
+      "cartaceo",
+      "papiraceo",
+      "pergamenaceo",
+      "membranaceo"
+    ],
+    "tipologia_documentaria": [
+      "Atti",
+      "Processi",
+      "Atti per diversi",
+      "Informazioni",
+      "Denunce",
+      "Atti difensivi"
+    ],
+    "soggetto": [
+      "Inquisizione di Modena",
+      "Inquisizione di Reggio Emilia",
+      "Inquisizione di Bologna",
+      "Inquisizione di Napoli"
+    ],
+    "lingua": [
+      "Italiano",
+      "Latino",
+      "Francese",
+      "Slavo"
+    ],
+    "definizione": [
+      "fascicolo"
+    ],
+    "note": {
+      "reato": "Soggettario del fondo ASMo, in ordine di frequenza sui 5.230 fascicoli (Eresia 2207, Magia 1455, Bestemmia e miscredenza 376, Sacramenti 308, Giurisdizione 251, Ebraismo 238, Censura 194, Crimini sessuali 78, Santità 9, Clero 3, Islam 1); le altre classi sono del resto del soggettario della Guida al Tab e nessuna scheda di ASMo le usa ancora. I numeri sono documentazione, non codice.",
+      "supporto": "I quattro supporti della Guida al Tab; «cartaceo» è il primo, quindi il predefinito.",
+      "tipologia_documentaria": "In ordine di frequenza sui 367 fascicoli ASDNa (28/09): sono le pillole della Scheda e aprono titolo e regesto.",
+      "lingua": "Francese e Slavo sono ammessi (Torino e Bologna); altre lingue («tedesco», «greco antico») restano una decisione.",
+      "definizione": "Nei dati reali «definizione» ha un valore solo; resta una lista perché il modulo permetterà di aggiungerne, passando dalla validazione."
+    }
+  },
+  "equivalenze": {
+    "reato": {
+      "Bigamia": "Crimini sessuali",
+      "Apostasia": "Eresia",
+      "Ebrei": "Ebraismo"
+    }
+  },
+  "normalizzazioni": {
+    "Eresia*": "Eresia"
+  },
+  "titolo": {
+    "tipi_titolo": {
+      "Atti": "circa",
+      "Processo": "contro",
+      "Copia del processo": "contro",
+      "Informazioni": "circa",
+      "Atti difensivi": "circa",
+      "Denuncia": "contro",
+      "Atti del processo": "contro"
+    },
+    "connettore_fisso": {
+      "Atti": "circa",
+      "Denuncia": "contro",
+      "Denunce": "contro"
+    },
+    "plurale_tipo": {
+      "Denuncia": "Denunce"
+    },
+    "parola_tipologia": {
+      "Atti": "Atti",
+      "Informazioni": "Informazioni",
+      "Denunce": "Denuncia",
+      "Processi": "Processo",
+      "Processo": "Processo",
+      "Atti difensivi": "Atti difensivi"
+    },
+    "tipologia_per_diversi": "Atti per diversi"
+  },
+  "sovrani": {
+    "titoli": [
+      "papa",
+      "antipapa",
+      "re",
+      "regina",
+      "imperatore",
+      "imperatrice"
+    ]
+  },
+  "abbreviazione_santo": {
+    "non_santo": [
+      "congregazione",
+      "consulta",
+      "rota",
+      "inquisizione",
+      "penitenzieria",
+      "camera",
+      "santità",
+      "maestà",
+      "altezza",
+      "eccellenza",
+      "eminenza",
+      "signoria",
+      "beatitudine",
+      "reverenza",
+      "serenità",
+      "illustrissima",
+      "illustrissimo",
+      "pontefice"
+    ],
+    "sant_apostrofo": [
+      "uffizio",
+      "officio",
+      "ufficio"
+    ],
+    "santa": [
+      "sede"
+    ],
+    "santo": [
+      "padre"
+    ],
+    "s_t_prima_di": [
+      "Officio",
+      "Officij",
+      "Offizio",
+      "Ufficio",
+      "Ufficij",
+      "Uffizio"
+    ]
+  },
+  "correzioni_segnatura": [
+    {
+      "segnatura": "Archivio di Stato di Modena, Tribunale dell'Inquisizione di Modena, Processi, b. 213, fasc. 13",
+      "titolo": "Mahl, Jacob, di Copenhagen, soldato, luterano convertito",
+      "fascicolo": 11,
+      "motivo": "nel foglio b. 213 va 10, 13, 12, 13, 14 e il fascicolo 11 non esiste: il primo dei due 13 e' l'11 (21/09)"
+    },
+    {
+      "segnatura": "Archivio di Stato di Modena, Tribunale dell'Inquisizione di Modena, Processi, b. 214, fasc. 13",
+      "titolo": "Camuncoli, Odoardo (Gaspare), padre carmelitano",
+      "fascicolo": 11,
+      "motivo": "stessa cosa in b. 214: 10, 13, 12, 13, 14, e nessun fascicolo 11 (21/09)"
+    }
+  ],
+  "traduzioni_en": {
+    "vocabolari": {
+      "reato": {
+        "Eresia": "Heresy",
+        "Magia": "Magic",
+        "Bestemmia e miscredenza": "Blasphemy and unbelief",
+        "Sacramenti": "Sacraments",
+        "Giurisdizione": "Jurisdiction",
+        "Ebraismo": "Judaism",
+        "Censura": "Censorship",
+        "Crimini sessuali": "Sexual offences",
+        "Santità": "Sanctity",
+        "Clero": "Clergy",
+        "Islam": "Islam",
+        "Istruzioni della Congregazione": "Instructions of the Congregation",
+        "Cristiani e riti orientali": "Christians and Eastern rites",
+        "Protestanti": "Protestants",
+        "Dispute dottrinali": "Doctrinal disputes",
+        "Liturgia": "Liturgy",
+        "Miracoli": "Miracles",
+        "Scienze": "Sciences",
+        "Inosservanza religiosa": "Religious non-observance"
+      },
+      "definizione": {
+        "fascicolo": "case file"
+      },
+      "supporto": {
+        "cartaceo": "paper",
+        "papiraceo": "papyrus",
+        "pergamenaceo": "parchment",
+        "membranaceo": "membranous (vellum)"
+      },
+      "tipologia_documentaria": {
+        "Atti": "Proceedings",
+        "Processi": "Trials",
+        "Atti per diversi": "Proceedings against several persons",
+        "Informazioni": "Informations",
+        "Denunce": "Denunciations",
+        "Atti difensivi": "Defence papers"
+      },
+      "lingua": {
+        "Italiano": "Italian",
+        "Latino": "Latin",
+        "Francese": "French",
+        "Slavo": "Slavic"
+      },
+      "soggetto": {
+        "Inquisizione di Modena": "Inquisition of Modena",
+        "Inquisizione di Reggio Emilia": "Inquisition of Reggio Emilia",
+        "Inquisizione di Bologna": "Inquisition of Bologna",
+        "Inquisizione di Napoli": "Inquisition of Naples"
+      }
+    }
+  },
+  "prova": {
+    "archivio": "Archivio di Stato di Modena",
+    "fondo": "Tribunale dell'Inquisizione di Modena",
+    "serie": "Processi"
+  },
+  "anagrafiche": {
+    "_nota": "Identificativi verificati su Wikidata il 17/11/2026; ISIL solo dove Wikidata lo riporta. Mai inventarne: un archivio senza identificativo verificato resta senza.",
+    "archivi": [
+      {"nome": "Archivio di Stato di Modena", "varianti": ["Archivio Stato di Modena"], "luogo": "Modena", "wikidata": "Q3621657", "isil": "IT-MO0172"},
+      {"nome": "Archivio di Stato di Torino", "varianti": [], "luogo": "Torino", "wikidata": "Q45023400"},
+      {"nome": "Archivio generale arcivescovile di Bologna", "varianti": ["Archivio Arcivescovile di Bologna"], "luogo": "Bologna", "wikidata": "Q81167740"},
+      {"nome": "Biblioteca comunale dell'Archiginnasio", "varianti": ["Archiginnasio di Bologna", "Biblioteca dell'Archiginnasio"], "luogo": "Bologna", "wikidata": "Q3639645", "isil": "IT-BO0304"},
+      {"nome": "Archivio storico diocesano di Napoli", "varianti": [], "luogo": "Napoli", "wikidata": "Q81173886"},
+      {"nome": "Library of Trinity College Dublin", "varianti": ["Trinity College Dublin"], "luogo": "Dublino", "wikidata": "Q856559"}
+    ],
+    "luoghi_alias": [
+      {"scritto": "Casale", "luogo": "Casale Monferrato", "archivio": "Archivio di Stato di Torino", "perche": "nel tab di Torino «Casale» è Casale Monferrato (Stefano, 17/11/2026)"}
+    ],
+    "enti": [
+      {"nome": "Senato di Nizza", "varianti": [], "perche": "ente del ducato di Savoia, non inquisitoriale (Stefano, 17/11/2026)"},
+      {"nome": "Senato di Casale", "varianti": [], "perche": "ente del ducato di Savoia, non inquisitoriale (Stefano, 17/11/2026)"},
+      {"nome": "Parlamento di Torino", "varianti": [], "perche": "ente non inquisitoriale (Stefano, 17/11/2026)"},
+      {"nome": "Marchesato di Saluzzo", "varianti": [], "perche": "ente non inquisitoriale (Stefano, 17/11/2026)"},
+      {"nome": "Inquisizione della Lombardia", "varianti": [], "perche": "l'inquisitore di Lombardia, non un tribunale di città (Stefano, 17/11/2026)"},
+      {"nome": "Inquisizione della Lombardia superiore e Marchesato di Genova", "varianti": [], "perche": "l'inquisitore di Lombardia superiore e Marchesato di Genova (Stefano, 17/11/2026)"},
+      {"nome": "Conseil des Commis", "varianti": ["Conseil del Commis"], "perche": "refuso nel tab di Torino: il titolo della scheda dice «Conseil des Commis du Duché d'Aoste» (Stefano, 17/11/2026)"}
+    ]
+  },
+  "tesauro": {
+    "lingua": {
+      "fonte": "ISO 639-3 (lingue) e ISO 639-5 (gruppi di lingue); registro SIL International / Library of Congress",
+      "codici": {
+        "Italiano": {"codice": "ita", "norma": "ISO 639-3"},
+        "Latino": {"codice": "lat", "norma": "ISO 639-3"},
+        "Francese": {"codice": "fra", "norma": "ISO 639-3"},
+        "Slavo": {"codice": "sla", "norma": "ISO 639-5", "nota": "«sla» è il gruppo delle lingue slave, non una lingua: i fascicoli di Torino e Bologna non dicono quale (sloveno, croato, slavo ecclesiastico…); se un fondo lo dice, si aggiunge la lingua precisa al vocabolario"}
+      }
+    },
+    "reato": {
+      "livello_alto": "classe della Guida al Tab (vocabolari.reato); i termini stanno sotto la classe (decisione del 17/11/2026)",
+      "fonte": "Giuseppe Trenti, I processi del Tribunale dell'Inquisizione di Modena, «Casistica di perseguibilità» (20 sigle)",
+      "termini": [
+        {
+          "id": "apostasia",
+          "termine": "Apostasia",
+          "classe": "Eresia",
+          "sigla": "AP",
+          "origine": "Apostasia sotto Eresia (D20, confermata il 17/11/2026); Modena: la classe è presente in 34 di 35 schede con la sola sigla AP"
+        },
+        {
+          "id": "astrologia",
+          "termine": "Astrologia",
+          "classe": "Magia",
+          "sigla": "AS",
+          "origine": "Astrologia sta SEMPRE sotto Magia (decisione di Stefano del 17/11/2026, valida anche per il tab di Modena); nel tab di Modena la classe «Magia» è presente solo in 2 di 8 schede con la sola sigla AS (le altre 6 hanno solo «Bestemmia e miscredenza»)"
+        },
+        {
+          "id": "bestemmie-ereticali",
+          "termine": "Bestemmie ereticali",
+          "classe": "Bestemmia e miscredenza",
+          "sigla": "BE",
+          "origine": "Modena: la classe è presente in 876 di 887 schede con la sola sigla BE"
+        },
+        {
+          "id": "bigamia",
+          "termine": "Bigamia",
+          "classe": "Crimini sessuali",
+          "sigla": "BG",
+          "origine": "Modena: la classe è presente in 60 di 63 schede con la sola sigla BG"
+        },
+        {
+          "id": "sollecitazione-in-confessione",
+          "termine": "Sollecitazione in confessione",
+          "classe": "Sacramenti",
+          "sigla": "CF",
+          "varianti": [
+            "Violazione del segreto confessionale"
+          ],
+          "origine": "Modena: la classe è presente in 206 di 209 schede con la sola sigla CF"
+        },
+        {
+          "id": "comportamento-irreligioso",
+          "termine": "Comportamento gravemente irreligioso",
+          "classe": "Bestemmia e miscredenza",
+          "sigla": "CP",
+          "origine": "Modena: la classe è presente in 6 di 8 schede con la sola sigla CP"
+        },
+        {
+          "id": "illeciti-stato-ecclesiastico",
+          "termine": "Illeciti collegati allo stato ecclesiastico",
+          "classe": "Sacramenti",
+          "sigla": "EC",
+          "origine": "Modena: la classe è presente in 39 di 41 schede con la sola sigla EC"
+        },
+        {
+          "id": "eresia-manifesta",
+          "termine": "Eresia manifesta, convinta e pertinace",
+          "classe": "Eresia",
+          "sigla": "ER",
+          "varianti": [
+            "Eresia manifesta convinta e pertinace"
+          ],
+          "origine": "Modena: la classe è presente in 173 di 176 schede con la sola sigla ER"
+        },
+        {
+          "id": "offese-al-sant-uffizio",
+          "termine": "Offese e intralci al Sant'Uffizio",
+          "classe": "Giurisdizione",
+          "sigla": "GR",
+          "origine": "Modena: la classe è presente in 156 di 160 schede con la sola sigla GR"
+        },
+        {
+          "id": "reati-relativi-agli-ebrei",
+          "termine": "Reati relativi agli Ebrei",
+          "classe": "Ebraismo",
+          "sigla": "HB",
+          "origine": "Modena: la classe è presente in 165 di 169 schede con la sola sigla HB"
+        },
+        {
+          "id": "inosservanza-dei-precetti",
+          "termine": "Inosservanza dei precetti della Chiesa",
+          "classe": "Bestemmia e miscredenza",
+          "sigla": "IP",
+          "origine": "decisione del 17/11/2026; nessuna scheda di Modena con la sola sigla"
+        },
+        {
+          "id": "libri-proibiti",
+          "termine": "Lettura e possesso di libri proibiti",
+          "classe": "Censura",
+          "sigla": "LP",
+          "origine": "Modena: la classe è presente in 83 di 84 schede con la sola sigla LP"
+        },
+        {
+          "id": "magia-stregoneria",
+          "termine": "Magia, stregoneria e superstizione in genere",
+          "classe": "Magia",
+          "sigla": "MS",
+          "origine": "Modena: la classe è presente in 994 di 999 schede con la sola sigla MS"
+        },
+        {
+          "id": "ricerca-di-tesori",
+          "termine": "Superstizione qualificata per ricerca tesori",
+          "classe": "Magia",
+          "sigla": "MST",
+          "origine": "Modena: la classe è presente in 56 di 56 schede con la sola sigla MST"
+        },
+        {
+          "id": "ossessione-diabolica",
+          "termine": "Ossessione diabolica",
+          "classe": "Bestemmia e miscredenza",
+          "sigla": "OS",
+          "origine": "decisione del 17/11/2026; nessuna scheda di Modena con la sola sigla"
+        },
+        {
+          "id": "proposizioni-ereticali",
+          "termine": "Proposizioni ereticali",
+          "classe": "Eresia",
+          "sigla": "PE",
+          "origine": "Modena: la classe è presente in 545 di 561 schede con la sola sigla PE"
+        },
+        {
+          "id": "questua-illecita",
+          "termine": "Questua illecita",
+          "classe": "Giurisdizione",
+          "sigla": "QT",
+          "varianti": [
+            "Questua non autorizzata"
+          ],
+          "origine": "Modena: la classe è presente in 6 di 6 schede con la sola sigla QT"
+        },
+        {
+          "id": "atti-sacrileghi",
+          "termine": "Atti sacrileghi o gravemente irriverenti",
+          "classe": "Bestemmia e miscredenza",
+          "sigla": "SA",
+          "origine": "Modena: la classe è presente in 96 di 96 schede con la sola sigla SA"
+        },
+        {
+          "id": "santita-millantata",
+          "termine": "Santità millantata",
+          "classe": "Santità",
+          "sigla": "SM",
+          "origine": "Modena: la classe è presente in 5 di 5 schede con la sola sigla SM"
+        },
+        {
+          "id": "abiura-formalizzata",
+          "termine": "Abiura formalizzata",
+          "classe": "Eresia",
+          "sigla": "(AB)",
+          "origine": "Modena: la classe è presente in 144 di 146 schede con la sola sigla (AB)"
+        },
+        {
+          "id": "amministrazione",
+          "termine": "Amministrazione",
+          "classe": "Giurisdizione",
+          "sigla": null,
+          "origine": "Guida al Tab: classe fino al 17/11/2026, ora termine sotto Giurisdizione (decisione di Stefano); nel database 1 scheda"
+        },
+        {
+          "id": "tribunali-locali",
+          "termine": "Tribunali locali",
+          "classe": "Giurisdizione",
+          "sigla": null,
+          "origine": "Guida al Tab: classe fino al 17/11/2026, ora termine sotto Giurisdizione (decisione di Stefano)"
+        }
+      ]
+    }
+  }
+}

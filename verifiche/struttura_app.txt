@@ -1,0 +1,313 @@
+input$aiuto_tasti 1
+input$annulla_scheda 1
+input$annulla_ultima 1
+input$apri_anomalie 1
+input$apri_cartella_dati 1
+input$apri_errori_import 1
+input$apri_fascicolo 2
+input$arch_archivio 1
+input$arch_crea 1
+input$arch_fondo 1
+input$arch_fonte 1
+input$arch_serie 1
+input$archivio 3
+input$avvia_pulito 1
+input$azzera_filtri_elenco 1
+input$backup_ora 1
+input$busta 6
+input$busta_elenco_via 1
+input$busta_suffisso 7
+input$canc_applica 1
+input$canc_conferma 1
+input$canc_fondo_apri 1
+input$canc_scelta 1
+input$canc_tieni 1
+input$canc_tutto_apri 1
+input$caricato 4
+input$cerca_fascicoli 3
+input$col_campo 5
+input$colonna_accetta 2
+input$colonna_mancanti 3
+input$conferma_completo 1
+input$conferma_ripristino 1
+input$conferma_sostituzione 1
+input$connettore 2
+input$coorte_conferma 1
+input$coorte_elenco_clic 2
+input$coorte_elimina 2
+input$coorte_nome_nuovo 2
+input$corr_applica 1
+input$corr_busta 1
+input$corr_primo 2
+input$corr_suffisso 1
+input$d30_no 1
+input$d30_si 1
+input$data_nd 1
+input$db_solo_fondo 5
+input$definizione 1
+input$dup_analizza 1
+input$dup_rimuovi 1
+input$errori_per_colonna 1
+input$esegui_completo 1
+input$esegui_import 1
+input$esegui_ripristino 1
+input$estrai 1
+input$estremo_remoto 2
+input$fascicoli_spuntati 1
+input$fascicolo 5
+input$fascicolo_suffisso 2
+input$file_completo 1
+input$file_import 5
+input$file_ripristino 1
+input$filtri_tutti 1
+input$filtro_schedatura_via 1
+input$fondi_luoghi 1
+input$fondo 3
+input$fondo_apri 1
+input$fondo_attivo 2
+input$fondo_scelto 2
+input$fonte_fondo 3
+input$home_anomalie 1
+input$home_apri_anomalie 1
+input$home_apri_cartella 1
+input$home_apri_scheda 2
+input$home_attiva_fondo 2
+input$home_continua 1
+input$home_esame 1
+input$home_esempio 1
+input$home_fuori_piano 1
+input$home_incompleti 1
+input$home_nuova 1
+input$home_nuovo_archivio 1
+input$home_porta_colonna 1
+input$home_porta_colonna_vai 1
+input$home_porta_controlli 1
+input$home_porta_importa 1
+input$home_porta_incompleti 1
+input$home_porta_nuova 1
+input$home_porta_pronto 1
+input$home_porta_pulisci 1
+input$home_porta_qualita 1
+input$home_pp_colonne 1
+input$home_pp_importa 1
+input$home_pp_valori 1
+input$home_riprendi_ultima 1
+input$home_vai_export 1
+input$home_vai_fascicoli 1
+input$home_vai_gestione 1
+input$home_vai_import 1
+input$home_vai_luoghi 1
+input$home_vai_qualita 1
+input$identita_imputato_dubbia 2
+input$import_archivio 4
+input$import_fondo 4
+input$import_fonte 1
+input$import_serie 1
+input$import_vai_home 1
+input$imputati 8
+input$imputati_esaminati 5
+input$indietro 4
+input$inglese 3
+input$lingua 1
+input$luoghi_cerca 1
+input$luoghi_dop_applica 1
+input$luoghi_ordine 2
+input$luogo 6
+input$luogo_conservazione 1
+input$luogo_ignoto 2
+input$luogo_produzione 3
+input$modo_import 7
+input$modo_ripristino 1
+input$mostra_cartella 3
+input$nav 2
+input$naviga_resta 1
+input$naviga_scarta 1
+input$non_procedimento 2
+input$note_applica 1
+input$note_biografiche_bozze 1
+input$note_busta 3
+input$note_testo 3
+input$nuova_busta 1
+input$nuovo_da_elenco 1
+input$ord_annulla 1
+input$ord_annulla_correzione 1
+input$ord_azione 2
+input$ord_busta 4
+input$ord_numerico 1
+input$ord_rinumera 1
+input$ord_sposta 2
+input$persona 10
+input$piano 1
+input$piano_busta 2
+input$piano_primo 2
+input$piano_registra 1
+input$piano_suffisso 2
+input$piano_ultimo 2
+input$pronto_dettaglio 1
+input$pul_archivio 1
+input$pul_fondo 1
+input$pul_serie 1
+input$reato 5
+input$reato_ignoto 2
+input$regesto 2
+input$regesto_manuale 4
+input$rev_annulla 1
+input$rev_batch 2
+input$rev_cambia_modalita 1
+input$rev_come_sta 1
+input$rev_conferma 1
+input$rev_scarica_pulito 1
+input$rev_toggle 2
+input$ricomponi_regesto 1
+input$ricontrolla_anomalie 1
+input$salva 1
+input$salva_chiudi 1
+input$salva_coorte_elenco 1
+input$salva_incompleto 1
+input$salva_prec 1
+input$salva_succ 1
+input$scaffale_busta 2
+input$scuro 4
+input$sel_anche_regesti 2
+input$sel_anche_titoli 2
+input$sel_applica 1
+input$sel_campo 6
+input$sel_conferma_manuali 1
+input$sel_elimina 1
+input$sel_elimina_applica 1
+input$sel_elimina_conferma 1
+input$sel_imposta 1
+input$sel_modo 1
+input$sel_ricomponi 1
+input$sel_ricomponi_applica 1
+input$sel_spunte 2
+input$sel_valore 2
+input$sentenza 6
+input$sentenza_esaminata 2
+input$sigla_busta 2
+input$soggetto 5
+input$solo_errori 1
+input$solo_incompleti 1
+input$sost_accetta_perdite 1
+input$successivo 1
+input$supporto 1
+input$svuota 1
+input$tab_qualita_fondo_rows_selected 2
+input$tab_qualita_rows_selected 2
+input$tabella_rows_all 1
+input$tipo_titolo 4
+input$tipologia_documentaria 3
+input$titolo 4
+input$titolo_manuale 4
+input$torna_elenco 1
+input$tortura 6
+input$tortura_esaminata 2
+input$usa_anno_precedente 1
+input$val_applica 1
+input$val_azione 2
+input$val_forma 5
+input$val_ricorda 1
+input$vista_elenco 3
+input$vuoti_a 3
+input$vuoti_busta 2
+input$vuoti_da 2
+input$vuoti_genera 1
+observe( 12
+observeEvent( 145
+output$anteprima_completo <- 1
+output$anteprima_import <- 1
+output$archivio_attivo <- 1
+output$archivio_fondo_dal_foglio <- 1
+output$archivio_fondo_liberi <- 1
+output$archivio_fondo_noti <- 1
+output$attribuzione_riga <- 1
+output$banner_anomalie <- 1
+output$banner_backup <- 1
+output$barra_selezione <- 1
+output$canc_applica_ui <- 1
+output$chips_filtri <- 1
+output$col_pronto <- 1
+output$col_tabella <- 1
+output$col_valori <- 1
+output$completezza_scheda <- 1
+output$conta_elenco <- 1
+output$conta_fascicoli <- 1
+output$conta_qualita <- 1
+output$coorti_elenco <- 1
+output$copia_export <- 1
+output$corr_anteprima <- 1
+output$dati_posizione <- 1
+output$destinazione_import <- 1
+output$dup_esito <- 1
+output$errori_discordanze <- 1
+output$esito_estrazione <- 2
+output$esito_import <- 1
+output$esito_pulisci <- 1
+output$esito_ripristino <- 1
+output$file_import_presente <- 1
+output$filtri_attivi <- 1
+output$filtro_schedatura_info <- 1
+output$fondo_etichetta <- 1
+output$home_archivi <- 1
+output$home_buste <- 1
+output$home_fasi <- 1
+output$home_inizio <- 1
+output$home_porte <- 1
+output$home_prossimo <- 1
+output$info_export <- 1
+output$intestazione_scheda <- 1
+output$luoghi_conta <- 1
+output$luoghi_doppioni <- 1
+output$luoghi_lista <- 1
+output$luoghi_scheda <- 1
+output$modo_pulisci <- 1
+output$modulo <- 1
+output$note_anteprima <- 1
+output$note_applica_ui <- 1
+output$ord_elenco <- 1
+output$ord_esito <- 4
+output$ord_fondo <- 1
+output$perdita_sostituzione <- 1
+output$piano_anteprima <- 1
+output$posizione_scheda <- 1
+output$prima_json <- 1
+output$prima_sql <- 1
+output$prima_sqlite <- 1
+output$prima_xlsx <- 1
+output$prima_zip <- 1
+output$pronto_export <- 1
+output$proposta_anno <- 1
+output$qualita_a_posto <- 1
+output$qualita_ambito <- 1
+output$qualita_fondo_riquadro <- 1
+output$respinti <- 1
+output$respinti_pulisci <- 1
+output$riepilogo_altri <- 1
+output$riepilogo_collocazione <- 1
+output$riepilogo_data_topica <- 1
+output$riepilogo_segnalazioni <- 1
+output$riepilogo_tortura_sentenza <- 1
+output$scaffale <- 1
+output$scarica_backup <- 1
+output$scarica_backup_completo <- 1
+output$scarica_csv <- 1
+output$scarica_db_sql <- 1
+output$scarica_db_sqlite <- 1
+output$scarica_errori_import <- 1
+output$scarica_json_schede <- 1
+output$scarica_pulito <- 1
+output$scarica_xlsx <- 1
+output$sel_anteprima <- 1
+output$sel_modo_ui <- 1
+output$sel_ricomponi_anteprima <- 1
+output$sel_ricomponi_conferma <- 1
+output$stato_sentenza <- 1
+output$storia_scheda <- 1
+output$tab_grafie_l <- 1
+output$tab_grafie_p <- 1
+output$tab_qualita_fondo <- 1
+output$tabella <- 1
+output$ultimo_backup <- 1
+output$val_anteprima <- 1
+output$vuoti_anteprima <- 1
+output$vuoti_identita <- 1

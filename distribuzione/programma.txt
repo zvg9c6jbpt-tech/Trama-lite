@@ -1,0 +1,23 @@
+# Che cosa e' il PROGRAMMA di Trama Lite. Un percorso per riga, relativo alla cartella del
+# progetto; `/` finale = tutta la cartella; `*` = un gruppo di file.
+#
+# Solo cio' che l'app legge per funzionare. NON e' programma (e non entra nei pacchetti Mac e
+# Windows): i dati d'archivio (database, fogli Excel, export), i collaudi, la documentazione e le
+# bozze. In particolare dentro R/ entrano solo i file .R.
+#
+# I dati dell'utente (database, backup, lista dei luoghi personale) stanno altrove:
+# ~/Documents/Trama Lite (R/percorsi.R). Il programma deve poter stare in una cartella di SOLA
+# LETTURA: lo prova verifiche/programma_minimo.R, che costruisce una copia da questo elenco e ci
+# avvia l'app.
+app.R
+R/*.R
+www/
+tema/
+profili/
+dati/luoghi.csv
+dati/layout_export.json
+dati/luoghi_forma_locale.csv
+dati/luoghi_regioni.csv
+dati/santi.csv
+dati/esempio/esempio.xlsx
+pubblicazione/guida/guida-trama-lite.html

@@ -1,0 +1,46 @@
+/* Avvisi di fine operazione (22/11/2026): il movimento dice se un'operazione è riuscita o no, e niente altro.
+   - Ingresso: l'avviso sale di mezzo rem e si dissolve in 180 ms (uscita rapida, ease-out forte). L'uscita resta quella di Shiny.
+   - Riuscita: segno di spunta che si disegna da sinistra a destra, subito dopo l'ingresso. Compare solo dove R lo chiede
+     (classe `esito-ok`, da `esito_ok()` e da `notifica_con_cartella()`): un avviso neutro non deve sembrare un successo.
+   - Non riuscita (type «error»): croce che si disegna, e un solo urto laterale di 3 px. Gli avvisi d'errore restano finché non si chiudono.
+   - Attenzione (type «warning»): punto esclamativo, senza urto.
+   Con «riduci movimento» niente traslazioni né disegno: l'avviso si dissolve e il segno c'è già. Il significato non dipende dal movimento. */
+.shiny-notification {
+  animation: avviso-entra var(--rg-durata) var(--rg-ease-out) backwards;
+}
+@keyframes avviso-entra { from { opacity: 0; transform: translateY(.5rem); } }
+
+.shiny-notification-error { animation: avviso-entra var(--rg-durata) var(--rg-ease-out) backwards, avviso-urto 240ms var(--rg-ease-out) var(--rg-durata); }
+@keyframes avviso-urto { 25% { transform: translateX(-3px); } 60% { transform: translateX(2px); } }
+
+/* Il segno sta davanti al testo, nella colonna a sinistra; solo i tre casi sopra lo portano. */
+.shiny-notification-error .shiny-notification-content-text,
+.shiny-notification-warning .shiny-notification-content-text,
+.shiny-notification:has(.esito-ok) .shiny-notification-content-text { position: relative; padding-left: 1.65rem; }
+
+.shiny-notification-error .shiny-notification-content-text::before,
+.shiny-notification-warning .shiny-notification-content-text::before,
+.shiny-notification:has(.esito-ok) .shiny-notification-content-text::before {
+  content: ""; position: absolute; left: 0; top: .12em; width: 1.15rem; height: 1.15rem;
+  background-color: currentColor;
+  -webkit-mask: var(--segno) center / contain no-repeat; mask: var(--segno) center / contain no-repeat;
+  animation: avviso-segno 220ms var(--rg-ease-out) 90ms backwards;
+}
+@keyframes avviso-segno { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+
+.shiny-notification:has(.esito-ok) .shiny-notification-content-text::before {
+  --segno: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3.5 8.5 3 3 6-7'/%3E%3C/svg%3E");
+  background-color: var(--rg-verde);
+}
+.shiny-notification-error .shiny-notification-content-text::before {
+  --segno: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4l8 8M12 4l-8 8'/%3E%3C/svg%3E");
+}
+.shiny-notification-warning .shiny-notification-content-text::before {
+  --segno: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 3.5v5.5M8 12.2v.1'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shiny-notification, .shiny-notification-error { animation: avviso-dissolve 120ms linear backwards; }
+  .shiny-notification-content-text::before { animation: none !important; }
+}
+@keyframes avviso-dissolve { from { opacity: 0; } }

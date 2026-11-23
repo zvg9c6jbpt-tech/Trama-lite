@@ -1,0 +1,588 @@
+{
+  "nota": "Le macchine a stati che nell'app esistono solo come combinazioni di variabili reattive. Fonte unica: da qui si genera docs/STATI.md e verifiche/stati.R controlla che i nomi esistano ancora nel codice. Un stato qui descritto che nel codice non c'è più, o una variabile spostata, fa cadere il collaudo.",
+  "macchine": [
+    {
+      "id": "scheda_aperta",
+      "titolo": "La Scheda aperta: dal caricamento al Salva",
+      "variabili": [
+        {
+          "file": "R/modulo_server.R",
+          "nome": "caricato_per"
+        },
+        {
+          "file": "R/modulo_server.R",
+          "nome": "numero_caricamento"
+        },
+        {
+          "file": "R/modulo_server.R",
+          "nome": "caricati"
+        },
+        {
+          "file": "R/modulo_server.R",
+          "nome": "dopo_salva"
+        },
+        {
+          "file": "R/modulo_server.R",
+          "nome": "modulo_pronto"
+        }
+      ],
+      "iniziale": "nessuna",
+      "stati": {
+        "nessuna": {
+          "cosa": "Nessun fascicolo aperto nel modulo."
+        },
+        "in_caricamento": {
+          "cosa": "Il server ha i valori del fascicolo, il browser non ha ancora confermato di averli messi nei campi (`input$caricato` diverso da `numero_caricamento`)."
+        },
+        "pronta": {
+          "cosa": "Il browser ha confermato: i campi mostrano il fascicolo aperto e nessuno è cambiato."
+        },
+        "modificata": {
+          "cosa": "Almeno un campo è diverso dai valori caricati (`campi_modificati()` non vuoto): compare il pallino su Salva."
+        }
+      },
+      "transizioni": [
+        {
+          "da": "nessuna",
+          "a": "in_caricamento",
+          "quando": "si apre un fascicolo o una scheda nuova (cambia `aperto()` o `richiesta()`)",
+          "effetto": "i campi si riempiono; `caricato_per` e `numero_caricamento` avanzano"
+        },
+        {
+          "da": "in_caricamento",
+          "a": "pronta",
+          "quando": "il browser conferma il numero di caricamento",
+          "effetto": "`modulo_pronto()` diventa vero"
+        },
+        {
+          "da": "pronta",
+          "a": "modificata",
+          "quando": "l'utente cambia un campo",
+          "effetto": "pallino su Salva; la navigazione passa dalla guardia (macchina guardia_modifiche)"
+        },
+        {
+          "da": "modificata",
+          "a": "in_caricamento",
+          "quando": "«Annulla» (`annulla_scheda`), che passa dalla guardia",
+          "effetto": "`richiesta()` avanza: la scheda si ricarica dal database e le modifiche si perdono"
+        },
+        {
+          "da": "modificata",
+          "a": "pronta",
+          "quando": "l'utente riporta a mano i campi ai valori caricati",
+          "effetto": "il pallino sparisce"
+        },
+        {
+          "da": "modificata",
+          "a": "in_caricamento",
+          "quando": "Salva riuscito",
+          "effetto": "`dopo_salva` vero: la scheda si ricarica dal database e la conferma del browser rimette `pronta`"
+        },
+        {
+          "da": "modificata",
+          "a": "modificata",
+          "quando": "i dati cambiano altrove (`ricarica()`) mentre c'è una bozza",
+          "effetto": "la bozza resta e un avviso lo dice; Salva poi controlla che la scheda non sia cambiata nel frattempo"
+        },
+        {
+          "da": "pronta",
+          "a": "pronta",
+          "quando": "Salva senza modifiche",
+          "effetto": "nessuna scrittura, avviso «Nessuna modifica»"
+        },
+        {
+          "da": "in_caricamento",
+          "a": "in_caricamento",
+          "quando": "Salva prima della conferma del browser",
+          "effetto": "nessuna scrittura, avviso «si sta ancora caricando»"
+        }
+      ],
+      "invarianti": [
+        "Salva scrive solo se `modulo_pronto()` è vero: i campi a schermo sono quelli del fascicolo selezionato, mai di quello precedente.",
+        "Una bozza non viene mai sovrascritta da un ricaricamento che arriva da altrove.",
+        "Salva su una scheda cambiata nel frattempo viene respinto, non fonde in silenzio."
+      ],
+      "collaudi": [
+        "browser/verifica-clic-anticipato.spec.js",
+        "salvataggio_neutro.R",
+        "browser/verifica-stati-guardie.spec.js",
+        "browser/verifica-bozza-conservata.spec.js"
+      ],
+      "lacune": []
+    },
+    {
+      "id": "guardia_modifiche",
+      "titolo": "Modifiche non salvate: la guardia che precede ogni spostamento",
+      "variabili": [
+        {
+          "file": "R/modifiche_server.R",
+          "nome": "in_attesa"
+        },
+        {
+          "file": "R/modifiche_server.R",
+          "nome": "naviga"
+        }
+      ],
+      "iniziale": "libera",
+      "stati": {
+        "libera": {
+          "cosa": "Nessuna azione sospesa."
+        },
+        "in_attesa_di_scelta": {
+          "cosa": "Un'azione di spostamento (cambio scheda, cambio fondo, ripristino, Indietro…) è sospesa e una finestra chiede se scartare le modifiche."
+        }
+      },
+      "transizioni": [
+        {
+          "da": "libera",
+          "a": "libera",
+          "quando": "`naviga(azione)` senza campi modificati",
+          "effetto": "l'azione parte subito"
+        },
+        {
+          "da": "libera",
+          "a": "in_attesa_di_scelta",
+          "quando": "`naviga(azione)` con campi modificati",
+          "effetto": "l'azione è tenuta in `in_attesa`; finestra «Modifiche non salvate» con l'elenco dei campi"
+        },
+        {
+          "da": "in_attesa_di_scelta",
+          "a": "libera",
+          "quando": "«Scarta» (`naviga_scarta`)",
+          "effetto": "la finestra si chiude e l'azione sospesa parte"
+        },
+        {
+          "da": "in_attesa_di_scelta",
+          "a": "libera",
+          "quando": "«Resta» (`naviga_resta`)",
+          "effetto": "l'azione è abbandonata; il fondo mostrato nel menu torna quello in uso; la scheda resta com'è"
+        }
+      ],
+      "invarianti": [
+        "Nessuno spostamento perde modifiche senza passare di qui.",
+        "«Resta» non lascia mai il menu del fondo su un valore diverso dal fondo in uso."
+      ],
+      "collaudi": [
+        "browser/verifica-scheda-grafica.spec.js",
+        "browser/verifica-stati-guardie.spec.js"
+      ],
+      "lacune": []
+    },
+    {
+      "id": "cronologia",
+      "titolo": "Indietro e indirizzo: la cronologia del browser sulla Scheda",
+      "variabili": [
+        {
+          "file": "R/cronologia.R",
+          "nome": "da_indietro"
+        },
+        {
+          "file": "R/cronologia.R",
+          "nome": "atteso"
+        }
+      ],
+      "iniziale": "libera",
+      "stati": {
+        "libera": {
+          "cosa": "Nessun indirizzo in attesa e nessun «Indietro» sospeso. Tornare all'elenco dallo stesso fascicolo non passa dalla guardia e non perde la bozza: la scheda resta com'è e Avanti la ritrova."
+        },
+        "attesa_scheda": {
+          "cosa": "È arrivato un indirizzo mentre la Scheda non aveva ancora finito il primo disegno: `atteso` lo tiene."
+        },
+        "indietro_sospeso": {
+          "cosa": "Un «Indietro» che cambierebbe fascicolo passa dalla guardia e aspetta la scelta (`da_indietro` vero)."
+        }
+      },
+      "transizioni": [
+        {
+          "da": "libera",
+          "a": "attesa_scheda",
+          "quando": "arriva un indirizzo e `caricato()` è ancora nullo",
+          "effetto": "l'indirizzo è tenuto in `atteso`"
+        },
+        {
+          "da": "attesa_scheda",
+          "a": "libera",
+          "quando": "la Scheda finisce il primo disegno",
+          "effetto": "l'indirizzo atteso viene eseguito"
+        },
+        {
+          "da": "libera",
+          "a": "indietro_sospeso",
+          "quando": "l'indirizzo cambia fascicolo",
+          "effetto": "`da_indietro` vero e l'azione passa da `naviga`"
+        },
+        {
+          "da": "indietro_sospeso",
+          "a": "libera",
+          "quando": "«Scarta» o «Resta» nella guardia",
+          "effetto": "con «Resta» il browser rimette l'indirizzo com'era (`posto_ripristina`)"
+        }
+      ],
+      "invarianti": [
+        "L'indirizzo mostrato dal browser è sempre quello del fascicolo aperto, anche dopo un «Resta».",
+        "L'indirizzo d'avvio (`avvio`, `da`) non annulla mai un clic più recente: il client non lo manda se la barra è già stata toccata, il server lo scarta in `vai` se `input$nav` non è più la scheda che c'era all'invio."
+      ],
+      "collaudi": [
+        "browser/verifica-stati-guardie.spec.js"
+      ],
+      "lacune": [
+        "Provato: Indietro/Avanti verso l'elenco con una bozza. Non provato: Indietro che cambia fascicolo (serve una cronologia con due schede diverse: la cronologia sostituisce le voci fra schede, quindi dal solo elenco non si raggiunge) e l'indirizzo arrivato prima del primo disegno (`atteso`)."
+      ]
+    },
+    {
+      "id": "import",
+      "titolo": "Importa: dal foglio letto all'import scritto",
+      "variabili": [
+        {
+          "file": "R/import_server.R",
+          "nome": "revisione_import"
+        },
+        {
+          "file": "R/import_server.R",
+          "nome": "rev_selezione"
+        },
+        {
+          "file": "R/revisione_server.R",
+          "nome": "conferma_revisione"
+        },
+        {
+          "file": "R/import_server.R",
+          "nome": "import_sostituzione_in_attesa"
+        },
+        {
+          "file": "R/import_server.R",
+          "nome": "esegui_import_vero"
+        }
+      ],
+      "iniziale": "nessuna",
+      "stati": {
+        "nessuna": {
+          "cosa": "Nessun controllo in corso."
+        },
+        "controllo_fallito": {
+          "cosa": "Il controllo del foglio è andato in errore: `revisione_import` ha un risultato vuoto e la finestra dice «Il controllo non è riuscito»."
+        },
+        "revisione_aperta": {
+          "cosa": "Il controllo ha trovato qualcosa: finestra con le correzioni (`rev_selezione` = quelle spuntate) e le decisioni."
+        },
+        "sostituzione_in_attesa": {
+          "cosa": "Modo «Sostituisci questo fondo»: l'import è pronto ma aspetta la conferma, perché cancella le schede del fondo (`import_sostituzione_in_attesa`)."
+        },
+        "importato": {
+          "cosa": "Le righe sono scritte (o respinte, con l'elenco): fine.",
+          "finale": true
+        },
+        "annullato": {
+          "cosa": "Nulla è stato scritto.",
+          "finale": true
+        }
+      },
+      "transizioni": [
+        {
+          "da": "nessuna",
+          "a": "controllo_fallito",
+          "quando": "`proposte_import` solleva un errore",
+          "effetto": "l'errore è registrato; nessuna scrittura"
+        },
+        {
+          "da": "nessuna",
+          "a": "revisione_aperta",
+          "quando": "il controllo trova correzioni o decisioni (`pr$totale > 0`)",
+          "effetto": "le correzioni consigliate sono spuntate di partenza"
+        },
+        {
+          "da": "nessuna",
+          "a": "importato",
+          "quando": "il controllo non trova niente e il modo non è «Sostituisci»",
+          "effetto": "import diretto"
+        },
+        {
+          "da": "nessuna",
+          "a": "sostituzione_in_attesa",
+          "quando": "il controllo non trova niente e il modo è «Sostituisci»",
+          "effetto": "finestra «Sostituire tutte le schede?» con il numero di schede che spariscono"
+        },
+        {
+          "da": "controllo_fallito",
+          "a": "annullato",
+          "quando": "«Annulla» (`rev_annulla`)",
+          "effetto": "niente scritto"
+        },
+        {
+          "da": "controllo_fallito",
+          "a": "importato",
+          "quando": "«Importa com'è, senza controllo» (`rev_come_sta`)",
+          "effetto": "import senza correzioni"
+        },
+        {
+          "da": "revisione_aperta",
+          "a": "importato",
+          "quando": "«Importa con le correzioni…» (`rev_conferma`, R/revisione_server.R)",
+          "effetto": "import con le correzioni; modo «Sostituisci» passa prima dalla conferma"
+        },
+        {
+          "da": "revisione_aperta",
+          "a": "sostituzione_in_attesa",
+          "quando": "si applica in modo «Sostituisci»",
+          "effetto": "conferma prima di cancellare"
+        },
+        {
+          "da": "revisione_aperta",
+          "a": "annullato",
+          "quando": "«Annulla» (`rev_annulla`): `revisione_import` torna nullo",
+          "effetto": "niente scritto"
+        },
+        {
+          "da": "sostituzione_in_attesa",
+          "a": "importato",
+          "quando": "conferma",
+          "effetto": "copia di sicurezza, poi sostituzione"
+        },
+        {
+          "da": "sostituzione_in_attesa",
+          "a": "annullato",
+          "quando": "Annulla",
+          "effetto": "niente scritto"
+        }
+      ],
+      "invarianti": [
+        "Un controllo che fallisce non scrive mai nulla da solo.",
+        "«Sostituisci» non cancella senza una conferma esplicita e senza una copia di sicurezza prima.",
+        "Senza fondo scelto «Sostituisci» non parte."
+      ],
+      "collaudi": [
+        "interfaccia.R",
+        "sicurezza_json.R",
+        "browser/verifica-importa-esporta.spec.js",
+        "normalizzazione_prova.R"
+      ],
+      "lacune": []
+    },
+    {
+      "id": "ripristino",
+      "titolo": "Ripristino da una copia di sicurezza",
+      "variabili": [
+        {
+          "file": "R/ripristino_server.R",
+          "nome": "ripristino_in_attesa"
+        },
+        {
+          "file": "R/ripristino_server.R",
+          "nome": "risultato_ripristino"
+        }
+      ],
+      "iniziale": "nessuno",
+      "stati": {
+        "nessuno": {
+          "cosa": "Nessun ripristino in corso."
+        },
+        "in_attesa_di_conferma": {
+          "cosa": "Modo «Sostituisci»: file scelto, finestra «Sostituire i dati con il backup?» (`ripristino_in_attesa`)."
+        },
+        "eseguito": {
+          "cosa": "Il risultato è mostrato nella carta (`risultato_ripristino`).",
+          "finale": true
+        }
+      },
+      "transizioni": [
+        {
+          "da": "nessuno",
+          "a": "in_attesa_di_conferma",
+          "quando": "«Ripristina» in modo «Sostituisci», dopo la guardia delle modifiche non salvate",
+          "effetto": "finestra di conferma"
+        },
+        {
+          "da": "nessuno",
+          "a": "eseguito",
+          "quando": "«Ripristina» in modo che non sostituisce (accoda)",
+          "effetto": "ripristino diretto"
+        },
+        {
+          "da": "in_attesa_di_conferma",
+          "a": "eseguito",
+          "quando": "`conferma_ripristino`",
+          "effetto": "prima una copia integrale del database attuale, poi il ripristino"
+        },
+        {
+          "da": "in_attesa_di_conferma",
+          "a": "nessuno",
+          "quando": "Annulla",
+          "effetto": "niente scritto"
+        }
+      ],
+      "invarianti": [
+        "Il ripristino che sostituisce passa sempre da una conferma e da una copia del database attuale.",
+        "Il file ripristinato non si legge senza essere stato scelto."
+      ],
+      "collaudi": [
+        "ripristino_interfaccia.R",
+        "browser/verifica-ripristino.spec.js"
+      ],
+      "lacune": []
+    },
+    {
+      "id": "cancellazione",
+      "titolo": "Elimina un fondo / Svuota tutto",
+      "variabili": [
+        {
+          "file": "R/gestione.R",
+          "nome": "canc"
+        },
+        {
+          "file": "R/gestione.R",
+          "nome": "canc_pronto"
+        },
+        {
+          "file": "R/gestione.R",
+          "nome": "finestra_cancella"
+        }
+      ],
+      "iniziale": "nessuna",
+      "stati": {
+        "nessuna": {
+          "cosa": "Nessuna cancellazione aperta."
+        },
+        "finestra_aperta": {
+          "cosa": "La finestra mostra cosa sparirebbe (`canc` ha tipo, fondo, numero di schede); il pulsante è spento."
+        },
+        "pronta": {
+          "cosa": "`canc_pronto()`: l'utente ha scelto se ha esportato e ha scritto il numero esatto delle schede (o il fondo è vuoto)."
+        },
+        "eseguita": {
+          "cosa": "Copia di sicurezza fatta, dati cancellati, elenco ricaricato.",
+          "finale": true
+        }
+      },
+      "transizioni": [
+        {
+          "da": "nessuna",
+          "a": "finestra_aperta",
+          "quando": "«Elimina il fondo» (con un fondo scelto) o «Svuota tutto»",
+          "effetto": "senza fondo scelto: avviso e nessuna finestra"
+        },
+        {
+          "da": "finestra_aperta",
+          "a": "pronta",
+          "quando": "scelta sull'esportazione e numero scritto uguale al numero di schede",
+          "effetto": "il pulsante si accende"
+        },
+        {
+          "da": "pronta",
+          "a": "finestra_aperta",
+          "quando": "il numero scritto cambia e non è più giusto",
+          "effetto": "il pulsante si spegne"
+        },
+        {
+          "da": "pronta",
+          "a": "eseguita",
+          "quando": "«Elimina il fondo» / «Svuota tutto»",
+          "effetto": "`backup_prima_ripristino` PRIMA, poi `elimina_fondo` o `svuota_database`, riga nel registro, `canc(NULL)`"
+        },
+        {
+          "da": "finestra_aperta",
+          "a": "nessuna",
+          "quando": "la finestra si chiude",
+          "effetto": "niente scritto"
+        }
+      ],
+      "invarianti": [
+        "Si cancella solo da `pronta`; premere il pulsante in altro stato avvisa e non scrive.",
+        "La copia di sicurezza è fatta prima della cancellazione; se la copia fallisce, non si cancella."
+      ],
+      "collaudi": [
+        "database.R",
+        "browser/verifica-stati-guardie.spec.js",
+        "browser/verifica-cancellazione-completa.spec.js"
+      ],
+      "lacune": [
+        "«Svuota tutto» è provato solo con «Tieni le impostazioni» acceso; senza, `svuota_database` è provato solo sulla funzione (`database.R`)."
+      ]
+    },
+    {
+      "id": "copia_di_sicurezza",
+      "titolo": "La striscia delle copie di sicurezza",
+      "variabili": [
+        {
+          "file": "R/backup.R",
+          "nome": "stato_backup"
+        },
+        {
+          "file": "R/backup_server.R",
+          "nome": "backup_errore"
+        },
+        {
+          "file": "R/backup_server.R",
+          "nome": "backup_versione"
+        }
+      ],
+      "iniziale": "nessuna",
+      "stati": {
+        "errore": {
+          "cosa": "L'ultimo tentativo non è riuscito: la striscia lo dice in rosso finché una copia non va a buon fine."
+        },
+        "nessuna": {
+          "cosa": "Nessuna copia nella cartella dei backup."
+        },
+        "vecchia": {
+          "cosa": "L'ultima copia è più vecchia del limite di ore."
+        },
+        "ok": {
+          "cosa": "C'è una copia recente."
+        }
+      },
+      "transizioni": [
+        {
+          "da": "nessuna",
+          "a": "ok",
+          "quando": "una copia riesce",
+          "effetto": "la striscia mostra «Ultima copia … fa»"
+        },
+        {
+          "da": "ok",
+          "a": "vecchia",
+          "quando": "passano più ore del limite",
+          "effetto": "avviso «È passato troppo tempo»"
+        },
+        {
+          "da": "vecchia",
+          "a": "ok",
+          "quando": "una copia riesce",
+          "effetto": "avviso tolto"
+        },
+        {
+          "da": "ok",
+          "a": "errore",
+          "quando": "un tentativo fallisce",
+          "effetto": "il motivo compare in rosso"
+        },
+        {
+          "da": "vecchia",
+          "a": "errore",
+          "quando": "un tentativo fallisce",
+          "effetto": "il motivo compare in rosso"
+        },
+        {
+          "da": "nessuna",
+          "a": "errore",
+          "quando": "un tentativo fallisce",
+          "effetto": "il motivo compare in rosso"
+        },
+        {
+          "da": "errore",
+          "a": "ok",
+          "quando": "una copia riesce",
+          "effetto": "il rosso sparisce"
+        }
+      ],
+      "invarianti": [
+        "Precedenza fissa in `stato_backup`: errore, poi nessuna, poi vecchia, poi ok. Un errore non si nasconde dietro una copia vecchia.",
+        "È una funzione pura dello stato della cartella e dell'ultimo errore: lo stesso ingresso dà sempre lo stesso livello."
+      ],
+      "collaudi": [
+        "backup_completo.R"
+      ],
+      "lacune": []
+    }
+  ]
+}

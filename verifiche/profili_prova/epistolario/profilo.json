@@ -1,0 +1,89 @@
+{
+  "profilo": {
+    "nome": "epistolario",
+    "titolo": "Profilo di prova: un epistolario privato (non è un materiale vero)",
+    "versione": "0",
+    "fonte": "solo per verifiche/secondo_profilo.R"
+  },
+  "anni_ammessi": [
+    1500,
+    1800
+  ],
+  "produttore": {
+    "ente": "Famiglia",
+    "preposizione": "di",
+    "preposizione_elisa": "d'",
+    "prefisso_lungo": "Archivio della ",
+    "sinonimi": [],
+    "eccezioni": {}
+  },
+  "vocabolari": {
+    "reato": [
+      "Corrispondenza familiare",
+      "Corrispondenza d'affari"
+    ],
+    "supporto": [
+      "cartaceo"
+    ],
+    "tipologia_documentaria": [
+      "Lettere",
+      "Minute"
+    ],
+    "soggetto": [
+      "Famiglia di Prova"
+    ],
+    "lingua": [
+      "Italiano"
+    ],
+    "definizione": [
+      "lettera"
+    ]
+  },
+  "equivalenze": {
+    "reato": {}
+  },
+  "normalizzazioni": {},
+  "titolo": {
+    "tipi_titolo": {
+      "Lettera": "a"
+    },
+    "connettore_fisso": {},
+    "plurale_tipo": {},
+    "parola_tipologia": {
+      "Lettere": "Lettera"
+    },
+    "tipologia_per_diversi": "Lettere varie"
+  },
+  "sovrani": {
+    "titoli": [
+      "re"
+    ]
+  },
+  "abbreviazione_santo": {
+    "non_santo": [
+      "congregazione"
+    ],
+    "sant_apostrofo": [],
+    "santa": [],
+    "santo": [],
+    "s_t_prima_di": []
+  },
+  "traduzioni_en": {
+    "vocabolari": {}
+  },
+  "prova": {
+    "archivio": "Archivio di Prova",
+    "fondo": "Archivio della Famiglia di Prova",
+    "serie": "Lettere"
+  },
+  "anagrafiche": {
+    "archivi": [],
+    "luoghi_alias": [],
+    "enti": []
+  },
+  "tesauro": {
+    "reato": {
+      "termini": []
+    }
+  }
+}

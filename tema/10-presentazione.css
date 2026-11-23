@@ -1,0 +1,96 @@
+/* Marchio (18/11/2026), preso dalla landing: la tessera cremisi con la «T» e il nome accanto. */
+.marchio-trama .marchio-tessera { display: inline-grid; place-items: center; flex: none; width: 1.7rem; height: 1.7rem; border-radius: var(--rg-radius-md); background: var(--bs-primary);
+  color: var(--rg-su-primario); font-family: var(--rg-titoli); font-weight: 700; font-size: 1rem; line-height: 1; letter-spacing: 0; }
+
+/* Schermo stretto: la tabella dei fascicoli scorre dentro di sé e il menu non esce dalla pagina. */
+@media (max-width: 900px) {
+  table.tabella-fascicoli { display: block; max-width: 100%; overflow-x: auto; }
+  .navbar-nav { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; scrollbar-width: thin; }
+  .navbar-nav .nav-link { white-space: nowrap; }
+}
+
+/* ── Barra scura in alto («Banco di lavoro»): il marchio, le pagine in fila, la guida a destra. Il fondo attivo e il backup stanno nella striscia sotto. ── */
+.bslib-page-navbar > .navbar { position: sticky; top: 0; z-index: 1030; background: var(--rg-barra) !important; box-shadow: none; border: 0; padding: 0 1rem; min-height: var(--rg-barra-h); }
+.bslib-page-navbar > .navbar > .container-fluid { flex-wrap: nowrap; align-items: stretch; gap: 1.25rem; padding: 0; }
+.bslib-page-navbar > .navbar .navbar-brand { display: flex; align-items: center; margin: 0; padding: 0; }
+.navbar-brand .marchio-trama, .navbar-brand .marchio-trama span:not(.marchio-tessera) { color: #fff; }
+.marchio-trama span { font-size: var(--rg-text-md); letter-spacing: 0; font-weight: 700; }
+.bslib-page-navbar > .navbar .navbar-collapse { display: flex !important; flex: 1 1 auto; align-items: stretch; overflow-x: auto; scrollbar-width: none; padding: 0; }
+.bslib-page-navbar > .navbar .navbar-nav { flex-direction: row !important; flex-wrap: nowrap; flex: 1 1 auto; align-items: stretch; width: auto; gap: 0; }
+.bslib-page-navbar > .navbar .navbar-nav > .nav-item { width: auto; margin: 0 !important; align-self: stretch; }
+.bslib-page-navbar > .navbar .navbar-nav > .bslib-nav-spacer { flex: 1 1 auto; margin: 0 !important; }
+.navbar-nav .nav-link, .navbar-nav.nav-underline .nav-link { width: auto; height: 100%; padding: 0 .85rem !important; border: 0 !important; border-bottom: 2px solid transparent !important; border-radius: 0 !important; background: transparent !important;
+  color: var(--rg-barra-testo); font-weight: 500; font-size: var(--rg-text-sm); gap: .5rem; }
+.navbar-nav .nav-link:hover, .navbar-nav.nav-underline .nav-link:hover { background: rgba(255,255,255,.07) !important; color: #fff; }
+.navbar-nav .nav-link.active, .navbar-nav.nav-underline .nav-link.active,
+body:has(.tab-pane.active[data-value='Scheda']) .navbar-nav.nav-underline .nav-link[data-value='Fascicoli'] { color: #fff !important; border-bottom-color: #fff !important; font-weight: 600; background: transparent !important; }
+.navbar-nav .nav-link:focus-visible, .navbar-brand:focus-visible { outline: 2px solid #fff; outline-offset: -4px; border-radius: 0; }
+.navbar-nav .nav-link .shiny-html-output { margin-left: 0; }
+.nav-badge { background: rgba(255,255,255,.16); border: 0; color: #fff; border-radius: var(--rg-raggio); }
+.navbar-nav .nav-link:hover .nav-badge { background: rgba(255,255,255,.26); }
+.nav-sep { width: 1px; height: 1.3rem; margin: 0 .4rem; background: rgba(255,255,255,.22); }
+.navbar-nav .nav-item:has(> .nav-sep) { align-self: center; }
+.nav-contesto { display: flex; align-items: stretch; height: 100%; }
+.nav-aiuto { display: flex; align-items: center; gap: .5rem; padding: 0 .85rem; color: var(--rg-barra-testo); font-size: var(--rg-text-sm); text-decoration: none; }
+.nav-aiuto:hover { background: rgba(255,255,255,.07); color: #fff; }
+.bslib-page-navbar > .container-fluid { padding-left: 1.5rem; padding-right: 1.5rem; }
+@media (max-width: 900px) { .nav-aiuto { display: none; } }
+
+/* ── Elenco e scheda affiancati (da 1280 px): aperta una scheda, l'elenco resta a sinistra e si scorre con j e k. ── */
+@media (min-width: 1280px) {
+  body:has(.tab-pane.active[data-value='Scheda']) .tab-content { display: grid; grid-template-columns: minmax(340px, 30%) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+  body:has(.tab-pane.active[data-value='Scheda']) .tab-pane[data-value='Fascicoli'] { display: block !important; opacity: 1; grid-column: 1; grid-row: 1; position: sticky; top: calc(var(--rg-barra-h) + .5rem);
+    max-height: calc(100vh - var(--rg-barra-h) - 1rem); overflow-y: auto; border-right: 1px solid var(--rg-bordo); padding-right: 1rem; }
+  body:has(.tab-pane.active[data-value='Scheda']) .tab-pane.active[data-value='Scheda'] { grid-column: 2; grid-row: 1; }
+  body:has(.tab-pane.active[data-value='Scheda']) .tab-pane[data-value='Fascicoli'] :is(th, td).col-reato,
+  body:has(.tab-pane.active[data-value='Scheda']) .tab-pane[data-value='Fascicoli'] :is(th, td).col-luoghi,
+  body:has(.tab-pane.active[data-value='Scheda']) .tab-pane[data-value='Fascicoli'] :is(th, td).col-persone,
+  body:has(.tab-pane.active[data-value='Scheda']) .tab-pane[data-value='Fascicoli'] .fasc-filtri,
+  body:has(.tab-pane.active[data-value='Scheda']) .tab-pane[data-value='Fascicoli'] .fasc-righe { display: none; }
+}
+/* Aiuto dei tasti: «?» nell'elenco. */
+#aiuto-tasti { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 1080; background: var(--rg-barra); color: #fff; padding: .8rem 1rem; border-radius: var(--rg-radius-md); font-size: var(--rg-text-sm); min-width: 14rem; }
+#aiuto-tasti dl { display: grid; grid-template-columns: auto 1fr; gap: .25rem 1rem; margin: .5rem 0 0; }
+#aiuto-tasti dt { font-family: var(--bs-font-monospace); font-weight: 600; } #aiuto-tasti dd { margin: 0; color: var(--rg-barra-testo); }
+
+/* Righe compatte (vista di partenza): una riga per fascicolo, circa 34 px, per vedere più fascicoli per schermata. */
+.pagina-fascicoli:not(.leggibile) table.tabella-fascicoli tbody td { padding-top: .25rem; padding-bottom: .25rem; vertical-align: middle; }
+.pagina-fascicoli:not(.leggibile) table.tabella-fascicoli .cella-sub { display: none; }
+.pagina-fascicoli:not(.leggibile) table.tabella-fascicoli td.col-spunta, .pagina-fascicoli:not(.leggibile) table.tabella-fascicoli td:first-child { padding-top: .25rem; }
+.pagina-fascicoli:not(.leggibile) table.tabella-fascicoli .spunta-riga { width: 24px; height: 24px; }
+
+/* Pagine di servizio (Import / Export, Qualità, Gestione): niente riquadri uno dentro l'altro; ogni sezione è un titolo con un filetto sopra. */
+.tab-pane[data-value='Qualità'] .card:not(.bslib-value-box),
+.tab-pane[data-value='Gestione'] .card:not(.bslib-value-box),
+.tab-pane[data-value='Import / Export'] .card:not(.bslib-value-box) { border: 0 !important; border-top: 1px solid var(--bs-body-color) !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
+.tab-pane[data-value='Qualità'] .card:not(.bslib-value-box) > .card-header,
+.tab-pane[data-value='Gestione'] .card:not(.bslib-value-box) > .card-header,
+.tab-pane[data-value='Import / Export'] .card:not(.bslib-value-box) > .card-header { background: transparent !important; border: 0; padding: .7rem 0 .35rem; font-size: var(--rg-text-lg); font-weight: 700; }
+.tab-pane[data-value='Qualità'] .card:not(.bslib-value-box) > .card-body,
+.tab-pane[data-value='Gestione'] .card:not(.bslib-value-box) > .card-body,
+.tab-pane[data-value='Import / Export'] .card:not(.bslib-value-box) > .card-body { padding: .25rem 0 1.25rem; }
+
+/* Sotto-schede (Qualità, Gestione, Fascicoli): linguette sottolineate, non pulsanti pieni. */
+.nav-pills { gap: 1.25rem; border-bottom: 1px solid var(--rg-bordo); margin-bottom: 1rem; }
+.nav-pills .nav-link { background: transparent !important; border: 0 !important; border-bottom: 2px solid transparent !important; border-radius: 0 !important; padding: .5rem 0 !important; color: var(--bs-secondary-color); font-weight: 500; }
+.nav-pills .nav-link:hover { color: var(--bs-body-color); }
+.nav-pills .nav-link.active { color: var(--bs-body-color) !important; border-bottom-color: var(--bs-primary) !important; font-weight: 700; background: transparent !important; }
+
+/* La barra «N fascicoli spuntati» non copre i pulsanti della scheda affiancata. */
+@media (min-width: 1280px) { body:has(.tab-pane.active[data-value='Scheda']) .barra-selezione { display: none !important; } }
+
+/* Il fondo attivo è la cosa più importante della striscia (22/11/2026): nome grande e in grassetto in un riquadro rialzato, che si legge come un comando
+   (il clic apre la scelta del fondo); l'etichetta «Fondo» sparisce, perché il nome e la freccia bastano. */
+.contesto-fondo { background: var(--rg-rialzo); border: 1px solid var(--rg-bordo); border-radius: var(--rg-radius-md); padding: 0 .35rem 0 .85rem; }
+.contesto-fondo > label { color: var(--bs-primary); }
+.contesto-fondo .fondo-apri { font-size: var(--rg-text-md); font-weight: 700; line-height: 1.25; padding: .55rem .6rem; max-width: none; }
+.contesto-fondo:hover, .contesto-fondo:focus-within { border-color: var(--bs-primary); }
+
+/* Sul telefono la segnatura lunga va a capo invece di allargare la tabella oltre lo schermo (22/11/2026). */
+@media (max-width: 600px) {
+  .pagina-fascicoli table.tabella-fascicoli td.col-segn { white-space: normal; overflow-wrap: anywhere; }
+  /* L'indicatore «3/4» sotto la segnatura, non accanto: allargava la colonna oltre lo schermo. */
+  .pagina-fascicoli table.tabella-fascicoli td.col-segn .stato-core { display: flex; margin-top: .15rem; }
+  /* DataTables fissa le larghezze al momento del disegno: girando il telefono restavano quelle dello schermo largo. */
+  .pagina-fascicoli table.tabella-fascicoli th { width: auto !important; min-width: 0 !important; }
+}

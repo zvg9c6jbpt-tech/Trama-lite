@@ -1,0 +1,150 @@
+/* Scheda: testata su due righe (Elenco, titolo, Nuova scheda; sotto posizione, completezza e campi mancanti). */
+@media (min-width: 701px) {
+  .testa-scheda { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: 'elenco titolo crea' '. stato stato'; align-items: center; gap: .1rem .75rem; }
+  .testa-scheda #torna_elenco { grid-area: elenco; }
+  .testa-scheda .testa-titolo { grid-area: titolo; }
+  .testa-scheda .testa-crea { grid-area: crea; }
+  .testa-scheda .testa-stato { grid-area: stato; }
+}
+.testa-ritorni { display: flex; align-items: center; gap: .5rem; }
+@media (min-width: 701px) { .testa-scheda .testa-ritorni { grid-area: elenco; } }
+@media (max-width: 700px) { .testa-scheda .testa-ritorni { order: 0; } }
+.testa-scheda .testa-stato { display: flex; flex-wrap: wrap; align-items: center; gap: .15rem 1rem; font-size: var(--rg-text-sm); min-height: 1.5rem; }
+@media (max-width: 700px) { .testa-scheda .testa-stato { order: 3; flex: 1 1 100%; } }
+/* Titolo e regesto composti: tinta e tratteggio nell'accento (erano grigi e sembravano campi spenti). */
+.campo-composto.e-composto input, .campo-composto.e-composto textarea { background: var(--rg-fascia) !important;
+  border: 1px dashed color-mix(in srgb, var(--bs-primary) 55%, var(--rg-bordo)) !important; }
+.campo-composto.e-composto .control-label::after { border: 1px dashed color-mix(in srgb, var(--bs-primary) 55%, var(--rg-bordo)) !important; color: var(--bs-primary) !important; }
+/* «Precedente» e «Altro» hanno un contorno che si vede: erano testo senza segno di pulsante. */
+.barra-fondo-scheda .btn-outline-secondary { border-color: var(--rg-controllo); color: var(--bs-body-color); }
+.colonna-principale { padding: .9rem 1.1rem 1rem; }
+.colonna-contesto { padding: .6rem 1.1rem .7rem; gap: .35rem 1.25rem; }
+.colonna-principale > .colonna-titolo, .colonna-scheda > .colonna-titolo {
+  font-size: var(--rg-text-md); margin-bottom: .6rem; padding: 0 0 .1rem 0; border: 0; line-height: 1.3; }
+.carta-scheda .form-control, .carta-scheda .form-select, .carta-scheda .selectize-input {
+  background-color: var(--bs-body-bg); border-color: var(--rg-controllo); min-height: 2.25rem; padding-top: .25rem; padding-bottom: .25rem; }
+.carta-scheda .shiny-input-container { margin-bottom: .75rem; }
+.carta-scheda .control-label { margin-bottom: .2rem; }
+.carta-scheda textarea.form-control { min-height: 4.5rem; }
+.carta-scheda .striscia-tipologia { padding: .55rem 0 .1rem; margin-top: 1rem; }
+.carta-scheda .ripiegabile { margin-top: .4rem; padding-top: .4rem; }
+
+/* Estremi: due anni stretti e la spunta «n.d.» sulla stessa riga; «Aggiungi mese e giorno» e la proposta sotto, a tutta riga. */
+.carta-scheda .riquadro-estremi { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0 1rem; }
+.carta-scheda .riquadro-estremi > .sottotitolo-colonna { flex: 1 0 100%; margin: 0 0 .35rem; }
+.carta-scheda .riquadro-estremi > .bslib-grid, .carta-scheda .riquadro-estremi > .grid { display: contents; }
+.carta-scheda .riquadro-estremi .shiny-input-container { width: 8.5rem !important; flex: 0 0 auto; }
+.carta-scheda .riquadro-estremi > .spunta-nd { margin: 0 0 .75rem; flex: 1 1 auto; }
+.carta-scheda .riquadro-estremi > .spunta-nd .shiny-input-container { width: auto !important; margin: 0; }
+.carta-scheda .riquadro-estremi > .data-precisa, .carta-scheda .riquadro-estremi > .shiny-html-output { flex: 1 0 100%; }
+
+/* Altri campi: colonne da 12 rem (quattro su uno schermo da portatile), righe fitte. */
+@media (min-width: 640px) {
+  .colonna-altri .altri-griglia { grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); }
+  .colonna-altri .bslib-grid:not(.grid-lungo), .colonna-altri .grid:not(.grid-lungo) { grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)) !important; }
+}
+.colonna-altri .altri-griglia, .colonna-altri .bslib-grid:not(.grid-lungo), .colonna-altri .grid:not(.grid-lungo) { gap: .05rem 1rem !important; }
+.colonna-altri .sottotitolo-colonna { margin-top: .4rem; padding-top: .5rem; }
+.colonna-altri .ripiegabile[open] > summary { margin-bottom: .6rem; }
+.carta-scheda .colonna-contesto .shiny-input-container { margin-bottom: 0; }
+.colonna-altri .altri-griglia { align-items: end; }
+.colonna-altri.colonna-principale { padding-top: .55rem; }
+/* Sezioni della Scheda distinte per colore (31/10/2026, Stefano: «lo sfondo non ha separazioni, troppo uniforme»): ogni riquadro ha il suo
+   tono preso dalla palette (31/10, palette grafite: neutri, solo «titolo e testi» col bordo dell'accento): fondo `rialzo` per collocazione, contenuto e altri campi, carta per titolo e testi.
+   Fondo tinto, bordo e barra a sinistra dello stesso colore; il testo resta nel colore normale. Sta dopo il blocco compatto di proposito. */
+.colonna-contesto, .colonna-principale { --sez: var(--bs-primary);
+
+  border: 1px solid color-mix(in srgb, var(--sez) 32%, var(--rg-bordo));
+  border-left: 1px solid var(--rg-bordo); border-top: 2px solid var(--sez); }
+.link-apri { color: inherit; text-decoration: none; }
+.link-apri:focus-visible { outline: 2px solid var(--bs-primary); outline-offset: 2px; border-radius: 3px; }
+.colonna-contesto { --sez: var(--rg-controllo); }
+.colonna-contesto, .colonna-principale { background: var(--rg-rialzo); border-color: var(--rg-bordo); border-left-color: var(--sez); }
+.scheda-tre-colonne > .bslib-grid-item:nth-child(3) > .colonna-principale { --sez: var(--bs-primary); background: var(--bs-body-bg); }
+.colonna-altri.colonna-principale { --sez: var(--rg-controllo); }
+.colonna-principale > .colonna-titolo, .colonna-scheda > .colonna-titolo { border-left-color: var(--sez); }
+.colonna-principale .etichetta-sezione { background: color-mix(in srgb, var(--sez) 14%, var(--bs-body-bg)); border-color: color-mix(in srgb, var(--sez) 40%, var(--rg-bordo)); }
+/* Fascicoli, seconda ottimizzazione (29/10/2026): due righe di comandi invece di tre (titolo, ricerca e «Nuovo fascicolo» sopra; filtri, conto,
+   vista e densità sotto), tabella (il titolo prende lo spazio che resta),
+   intestazione che resta in vista scorrendo, righe più basse con un filetto, titoli a 500 per la nitidezza. */
+.fasc-testa { flex-wrap: nowrap; gap: .5rem 1rem; margin: .1rem 0 .7rem; }
+.fasc-testa .cerca-fascicoli { flex: 1 1 18rem; max-width: 46rem; margin-left: .75rem; }
+.fasc-testa .btn-compatto { margin-left: auto; white-space: nowrap; }
+@media (max-width: 760px) {
+  .fasc-testa { flex-wrap: wrap; }
+  .fasc-testa .cerca-fascicoli { flex: 1 0 100%; order: 3; margin-left: 0; max-width: none; }
+}
+.fasc-vista { display: inline-flex; align-items: center; flex-wrap: wrap; gap: .5rem .9rem; margin-left: auto; }
+.fasc-filtri .fasc-conto { margin-left: .35rem; }
+.fasc-filtri .btn-pillola, .fasc-filtri .chip-dettagli > summary, .fasc-vista .btn-pillola { min-height: 2.75rem; display: inline-flex; align-items: center; }
+.fasc-filtri .chip-dettagli { margin-bottom: 0; }
+@media (min-width: 601px) {
+  /* Il titolo prende tutto lo spazio che resta (colonna al 100 %): le altre restano larghe quanto il loro contenuto. */
+  .pagina-fascicoli table.tabella-fascicoli th.col-titolo { width: 100%; }
+  .pagina-fascicoli table.tabella-fascicoli th.col-segn, .pagina-fascicoli table.tabella-fascicoli th.col-anno { white-space: nowrap; }
+  .pagina-fascicoli table.tabella-fascicoli th.col-reato { width: 15rem; }
+  .pagina-fascicoli table.tabella-fascicoli th.col-luoghi { width: 13rem; }
+  .pagina-fascicoli table.tabella-fascicoli .cella-titolo, .pagina-fascicoli table.tabella-fascicoli .cella-sub { max-width: 100%; }
+  .pagina-fascicoli .dataTables_wrapper { overflow: visible; }
+  .pagina-fascicoli table.tabella-fascicoli thead th { position: sticky; top: 0; z-index: 4; box-shadow: 0 1px 0 var(--rg-controllo);
+    background: color-mix(in srgb, var(--bs-primary) 6%, var(--bs-body-bg)); }
+}
+.pagina-fascicoli table.tabella-fascicoli tbody tr:not(.gruppo-busta) > td { border-bottom: 1px solid var(--rg-bordo); }
+.pagina-fascicoli.leggibile table.tabella-fascicoli tbody td { padding-top: .4rem; padding-bottom: .4rem; vertical-align: middle; }
+.pagina-fascicoli table.tabella-fascicoli .cella-titolo { font-weight: 500; }
+/* Il numero di un passo in attesa (Import): grigio del testo secondario, non quello dei bordi dei controlli (3,2). */
+.passo-attesa .numero-passo { background: var(--bs-secondary-color); color: var(--bs-body-bg); }
+/* Aree toccabili: pulsanti, pillole e voci del menu da 44 px; caselle, link di tabella e azioni in riga da 24 px o più. */
+.btn, .btn-sm, .btn-pillola, .btn-group-sm > .btn, .navbar-nav .nav-link, .nav-aiuto, .nav-pills .nav-link, .nav-tabs .nav-link,
+.barra-fondo-scheda .btn, .azioni-scarico .btn, .home-porte .home-porta .pulsanti .btn { min-height: 2.75rem; }
+.btn-pillola, .btn-sm, .contesto-backup .btn { display: inline-flex; align-items: center; justify-content: center; }
+.chip-campo { min-height: 1.75rem; }
+summary { min-height: 2.75rem; display: flex; align-items: center; }
+.ripiegabile > summary, .altro-export > summary, details.data-topica > summary { min-height: 2.75rem; }
+.spunta-riga, .spunta-busta, #spunta_tutte, .form-check-input { width: 1.5rem; height: 1.5rem; flex: none; }
+.form-check-input { margin-top: 0; }
+a.link-apri { display: block; padding-block: .4rem; min-height: 2rem; }
+a.action-link, a.azione, .home-porta .stato a, .home-guarda .sotto a { display: inline-flex; align-items: center; min-height: 2rem; padding-block: .2rem; }
+.page-link { min-width: 2.75rem; min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; }
+.voce-lista { min-height: 2.75rem; }
+.checkbox label, .radio label { padding-left: 1.75rem; min-height: 1.5rem; }
+.checkbox input[type=checkbox], .radio input[type=radio] { width: 1.5rem; height: 1.5rem; margin-left: -1.75rem; margin-top: 0; }
+@media (max-width: 480px) { .tortura-sentenza { grid-template-columns: minmax(0, 1fr); } }
+.campo-flag .flag-inline .checkbox label { padding-left: 1.65rem; }
+.campo-flag .flag-inline .checkbox input[type=checkbox] { margin-left: -1.65rem; }
+/* La × che toglie un'etichetta (selectize): almeno 24 px di larghezza. */
+.selectize-control.multi .selectize-input > div.item > a.remove { min-width: 1.5rem; min-height: 1.5rem; display: inline-flex; align-items: center; justify-content: center; }
+.toast-azione { margin-top: .4rem; }
+.toast-mostra { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 600; text-decoration: underline; color: inherit; }
+/* Anello di fuoco uguale su tutto ciò che si tocca: 3 px, staccato di 2 px (i campi di testo tengono il loro bordo di fuoco, e questo in più). */
+:is(a, button, input, select, textarea, summary, [tabindex], .btn, .btn-pillola, .pillola, .chip-campo, .nav-link, .navbar-brand, .spunta-riga):focus-visible {
+  outline: 3px solid var(--bs-primary) !important; outline-offset: 2px;
+}
+/* Identità da archivio (18/11/2026): la segnatura (busta, fascicolo) è un cartellino in carattere a spaziatura fissa, come l'etichetta di una busta. Colori derivati dal tema: valgono in chiaro e in scuro. */
+.segnatura { display: inline-block; font-family: ui-monospace, Menlo, Consolas, monospace; font-weight: 600; font-size: var(--rg-text-sm); line-height: 1.35; padding: 0 .4rem;
+  border: 1px solid color-mix(in srgb, var(--rg-segnale) 40%, var(--bs-body-bg)); border-radius: 4px; background: color-mix(in srgb, var(--rg-segnale) 12%, var(--bs-body-bg));
+  color: var(--bs-body-color); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.testa-scheda .testa-titolo .segnatura { font-size: 1rem; }
+td.col-segn { font-family: ui-monospace, Menlo, Consolas, monospace; font-weight: 600; font-variant-numeric: tabular-nums; }
+/* Home: la fascia dice «Da fare ora», la riga neutra «Poi». */
+.etichetta-ora { display: block; font-size: var(--rg-text-xs); font-weight: 700; letter-spacing: .02em; color: var(--bs-primary); }
+.home-guarda.neutra .etichetta-ora { display: inline; margin-right: .5rem; color: var(--bs-secondary-color); }
+/* Qualità: il lavoro di fondo resta neutro, senza il colore delle anomalie. */
+.qualita-fondo .card-header { color: var(--bs-secondary-color); }
+
+/* Testata della scheda (18/11/2026): i pulsanti non toccano più i bordi della barra. */
+.testa-scheda { padding-inline: 1rem !important; }
+/* Una scheda nuova non ha posizione nell'elenco: il contatore vuoto non lascia né icona né spazio. */
+.testa-posizione:has(.shiny-text-output:empty) { display: none; }
+/* Qualità: «Controllo», «Casi» e «Nota» stanno nello stesso punto nelle due tabelle una sotto l'altra. */
+#tab_qualita table.dataTable, #tab_qualita_fondo table.dataTable { table-layout: fixed; width: 100% !important; }
+#tab_qualita table.dataTable th:nth-child(1), #tab_qualita_fondo table.dataTable th:nth-child(1) { width: 18rem; }
+#tab_qualita table.dataTable th:nth-child(2), #tab_qualita_fondo table.dataTable th:nth-child(2) { width: 5rem; }
+/* Telefono: «Precedente» è una freccia da 44 px (il testo resta nel pulsante per i lettori di schermo e per il titolo). Salva, freccia,
+   «Prossimo» (o «Salva e prossimo») e Altro stanno su una riga sola e la barra fissa prende meno schermo. */
+@media (max-width: 700px) {
+  .barra-fondo-scheda .btn { padding-left: .4rem; padding-right: .4rem; }
+  .barra-fondo-scheda .btn-salva { min-width: 4rem; }
+  .barra-fondo-scheda #salva_prec { flex: 0 0 auto; min-width: 2.75rem; font-size: 0; }
+  .barra-fondo-scheda #salva_prec::before { content: "\2039"; font-size: 1.6rem; line-height: 1; }
+}

@@ -1,0 +1,139 @@
+/* Barra del contesto, sotto la barra principale e uguale per tutte le
+   schede: il fondo a sinistra, English e Scuro a destra, a pillola. */
+.barra-contesto { display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; }
+.contesto-fondo { display: inline-flex; align-items: center; border: 1px solid var(--rg-bordo);
+    padding: .1rem .35rem .1rem .85rem; max-width: 100%; }
+.contesto-archivio { display: inline-block; max-width: 30ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: var(--rg-text-sm); color: var(--bs-secondary-color); vertical-align: middle; }
+.contesto-fondo > label { display: inline-flex; align-items: center; gap: .35rem; margin: 0 .25rem 0 0;
+  font-size: var(--rg-text-sm); font-weight: 600; color: var(--bs-secondary-color); white-space: nowrap; }
+.contesto-fondo .shiny-input-container { margin: 0; width: auto !important; min-width: 13rem; }
+/* Il fondo si sceglie in una finestra (24/10): il selettore c'è ancora, nascosto, perché lo legge il resto dell'app. */
+.contesto-fondo .fondo-nascosto { display: none; }
+.contesto-fondo .fondo-apri { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; font-size: var(--rg-text-sm); color: inherit; text-decoration: none;
+  padding: .3rem .5rem; max-width: 62ch; }
+.contesto-fondo .fondo-apri > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.elenco-fondi-finestra { max-height: 55vh; overflow-y: auto; }
+.contesto-fondo .selectize-input { border: 0 !important; box-shadow: none !important; background: transparent !important;
+  border-radius: var(--rg-raggio); font-weight: 600; font-size: var(--rg-text-sm); padding: .3rem 1.6rem .3rem .4rem; min-height: 0; }
+.contesto-backup { display: inline-flex; align-items: center; gap: .5rem; margin-left: auto; font-size: var(--rg-text-sm); min-width: 0; }
+/* Finestra media: se la copia va bene resta solo lo scudo (il dettaglio è nel suggerimento); un avviso o un errore restano scritti per intero. */
+@media (max-width: 1150px) { .backup-stato:not(.backup-vecchio) > span { display: none; } }
+.backup-stato { display: inline-flex; align-items: center; gap: .35rem; color: var(--bs-secondary-color); white-space: nowrap; }
+.backup-stato.backup-vecchio { color: var(--rg-pericolo); font-weight: 600; }
+.avviso-ricerca { color: var(--rg-pericolo); font-weight: 600; }
+.contesto-interruttori { display: flex; gap: .4rem; position: relative; }
+/* Il menu «Preferenze» sta SOPRA la barra fissa della scheda (z-index 1020): prima la barra lo copriva e di «Tasti» si vedeva solo il bordo (19/10). */
+.contesto-interruttori .dropdown-menu { z-index: 1100; }
+/* Anche l'elenco dei fondi (selectize) sta SOPRA la barra fissa della scheda: nella «Nuova scheda» la barra bianca ne copriva la metà (20/10). */
+.barra-contesto .selectize-dropdown { z-index: 1100; }
+.preferenze-voci { padding: .5rem; min-width: 11rem; }
+.preferenze-voci.show { display: flex; flex-direction: column; gap: .4rem; }
+.preferenze-voci .btn-pillola { justify-content: flex-start; }
+.contesto-interruttori .shiny-input-container { margin: 0; width: auto !important; }
+.contesto-interruttori .form-check { margin: 0; padding: 0; min-height: 0; }
+.contesto-interruttori .form-check-input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.contesto-interruttori .form-check-label { display: inline-flex; align-items: center; gap: .35rem; cursor: pointer;
+  border: 1px solid var(--rg-bordo); border-radius: var(--rg-raggio); background: var(--bs-body-bg);
+  padding: .3rem .85rem; font-size: var(--rg-text-sm); font-weight: 600; white-space: nowrap; }
+.contesto-interruttori .form-check-label:hover { border-color: var(--bs-primary); color: var(--bs-primary); }
+.contesto-interruttori .form-check:has(.form-check-input:checked) .form-check-label {
+  background: color-mix(in srgb, var(--bs-primary) 12%, var(--bs-body-bg)); border-color: var(--bs-primary); color: var(--bs-primary); }
+.contesto-interruttori .form-check:has(.form-check-input:focus-visible) .form-check-label {
+  outline: 2px solid var(--bs-primary); outline-offset: 2px; }
+
+/* Pillole: i pulsanti secondari delle barre (vista, filtri, coorti). */
+.btn-pillola { border: 1px solid var(--rg-bordo);  background: var(--bs-body-bg);
+  color: var(--bs-body-color); font-weight: 600;  padding: .3rem .8rem;
+    gap: .35rem; }
+.gruppo-pillole { display: inline-flex; gap: .25rem; }
+
+/* Scheda Fascicoli */
+.barra-fascicoli { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .25rem 0 .5rem; }
+.barra-fascicoli .cerca-fascicoli { order: 1; flex: 1 1 20rem; min-width: 0; }
+.barra-fascicoli > .ms-auto { order: 2; }
+.barra-fascicoli .controlli-vista { order: 3; flex: 1 0 100%; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.cerca-fascicoli { flex: 1 1 22rem; max-width: 34rem; }
+.cerca-fascicoli .shiny-input-container { margin-bottom: 0; }
+.cerca-fascicoli input { border-radius: var(--rg-raggio); padding-left: 1rem; }
+.chip-campi { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .5rem; }
+.chip-campo { font-family: ui-monospace, Menlo, Consolas, monospace;  font-weight: 600;
+  border: 1px solid var(--rg-bordo); border-radius: var(--rg-raggio); background: var(--bs-body-bg);
+  padding: .1rem .55rem; color: var(--bs-body-color); }
+.chip-campo:hover { border-color: var(--bs-primary); color: var(--bs-primary); }
+/* Finestre strette: la tabella dei fascicoli lascia le colonne meno urgenti invece di scorrere di lato (2/10). */
+@media (max-width: 1300px) { table.tabella-fascicoli .col-esito { display: none; } }
+/* Sotto i 600 px anno, reati e luoghi non stanno in colonna: passano in una riga sotto il titolo (30/10/2026). */
+.cella-meta { display: none; }
+@media (max-width: 600px) {
+  table.tabella-fascicoli .col-dati { display: none; }
+  table.tabella-fascicoli th.col-dati { display: none; }
+  .pagina-fascicoli .cella-meta { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--bs-secondary-color); font-size: .8125rem; }
+  .pagina-fascicoli table.tabella-fascicoli .cella-titolo, .pagina-fascicoli table.tabella-fascicoli .cella-sub, .pagina-fascicoli table.tabella-fascicoli .cella-meta { max-width: calc(100vw - 14rem); }
+}
+@media (max-width: 1150px) { table.tabella-fascicoli .col-persone { display: none; } }
+/* Un errore di R non resta nudo: si dice che cosa è successo, il dettaglio viene dopo. */
+.shiny-output-error:not(.shiny-output-error-validation) { color: var(--rg-pericolo); font-size: var(--rg-text-sm); }
+.shiny-output-error:not(.shiny-output-error-validation)::before { content: 'Qui qualcosa non ha funzionato. Dettaglio tecnico: '; font-weight: 600; }
+html[lang=en] .shiny-output-error:not(.shiny-output-error-validation)::before { content: 'Something went wrong here. Technical detail: '; }
+.chip-dettagli { margin-bottom: .4rem; }
+.chip-dettagli > summary { display: inline-block; cursor: pointer;  color: var(--bs-secondary-color); list-style: none; }
+.chip-dettagli > summary::-webkit-details-marker { display: none; }
+.chip-dettagli > summary::before { content: '\25B8  '; }
+.chip-dettagli[open] > summary::before { content: '\25BE  '; }
+.chip-dettagli > summary:hover { color: var(--bs-primary); }
+.chip-dettagli .chip-campi { margin-top: .35rem; }
+details.impostazioni-scheda { margin: 1rem 0 .4rem; padding-top: .6rem; border-top: 1px dashed var(--rg-bordo); }
+details.impostazioni-scheda > summary { display: inline-block; cursor: pointer;  color: var(--bs-secondary-color); list-style: none; }
+details.impostazioni-scheda > summary::-webkit-details-marker { display: none; }
+details.impostazioni-scheda > summary::before { content: '\25B8  '; }
+details.impostazioni-scheda[open] > summary::before { content: '\25BE  '; }
+details.impostazioni-scheda > summary:hover { color: var(--bs-primary); }
+.aiuto-tasti kbd { background: var(--rg-pagina); color: var(--bs-body-color); border: 1px solid var(--rg-bordo); border-radius: 5px; padding: .05rem .35rem; font-size: var(--rg-text-sm); }
+.aiuto-tasti dt { font-weight: 600; margin-top: .6rem; }
+.aiuto-tasti dd { margin: 0 0 0 0; color: var(--bs-secondary-color); }
+table.tabella-fascicoli { font-size: var(--rg-text-sm); }
+table.tabella-fascicoli thead th {    white-space: nowrap; }
+table.tabella-fascicoli tbody tr { cursor: pointer; }
+table.tabella-fascicoli tbody td { white-space: nowrap; vertical-align: middle; }
+table.tabella-fascicoli tbody tr.riga-aperta > td { box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--bs-primary) 12%, transparent) !important; }
+.cella-riga { display: inline-block; max-width: 17rem; overflow: hidden; text-overflow: ellipsis;
+  white-space: nowrap; vertical-align: middle; }
+.stato-core { display: inline-flex; align-items: center; gap: .4rem; font-size: var(--rg-text-sm); color: var(--bs-secondary-color); }
+.stato-barra { display: inline-block; width: 2.2rem; height: .3rem; border-radius: 999px; background: var(--rg-bordo); overflow: hidden; }
+.stato-barra > span { display: block; height: 100%; background: var(--rg-verde); }
+.pillola-esito { font-size: var(--rg-text-xs); border-radius: var(--rg-raggio); padding: .05rem .5rem; border: 1px solid var(--rg-bordo);
+   color: var(--bs-secondary-color); }
+.pillola-esito.esito-si { color: var(--bs-primary); border-color: var(--bs-primary); }
+/* Tabella leggibile (2/10): fino a due righe per cella, senza passare il mouse. La compatta resta com'è. */
+.pagina-fascicoli.leggibile table.tabella-fascicoli { font-size: var(--rg-text-sm); }
+.pagina-fascicoli.leggibile table.tabella-fascicoli tbody td { white-space: normal; }
+.pagina-fascicoli.leggibile table.tabella-fascicoli .cella-riga { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2;
+  white-space: normal; overflow: hidden; max-width: 30rem; }
+.pagina-fascicoli.leggibile table.tabella-fascicoli .cella-titolo { min-width: 16rem; }
+@media (max-width: 600px) { .pagina-fascicoli.leggibile table.tabella-fascicoli .cella-titolo { min-width: 0; max-width: calc(100vw - 14rem); } }
+.pagina-fascicoli table.tabella-fascicoli .cella-riga.cella-anno, .pagina-fascicoli.leggibile table.tabella-fascicoli .cella-riga.cella-anno { display: inline-block !important; white-space: nowrap !important; -webkit-line-clamp: unset !important; overflow: visible !important; }
+.pagina-fascicoli.leggibile table.tabella-fascicoli td:first-child, .pagina-fascicoli.leggibile table.tabella-fascicoli td.col-spunta { padding-top: .5rem; }   /* la casella sta sulla prima riga di testo */
+td .stato-core { margin-left: .5rem; }
+/* Tutta la riga apre la scheda: al passaggio il titolo si legge come un collegamento (2/10). */
+table.tabella-fascicoli tbody tr:hover td .cella-titolo { text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--bs-primary) 45%, transparent); text-underline-offset: 3px; }
+
+/* Lo scaffale: una tessera per busta */
+.scaffale { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: .5rem; }
+.tessera-busta { text-align: left; border: 1px solid var(--rg-bordo); border-radius: var(--rg-radius-md); background: var(--bs-body-bg);
+  padding: .5rem .65rem; color: var(--bs-body-color); }
+.tessera-busta:hover:not([disabled]) { border-color: var(--bs-primary); }
+.tessera-nome { font-weight: 700; }
+.tessera-numeri { font-size: var(--rg-text-xs); color: var(--bs-secondary-color); margin-bottom: .3rem; }
+.tessera-barra { height: .3rem; border-radius: 999px; background: var(--rg-bordo); overflow: hidden; }
+.tessera-barra > span { display: block; height: 100%; }
+.tessera-busta.piena  .tessera-barra > span { background: var(--rg-verde); }
+.tessera-busta.quasi  .tessera-barra > span { background: var(--rg-segnale); }
+.tessera-busta.scarsa .tessera-barra > span { background: var(--rg-pericolo); }
+.tessera-busta.scarsa { background: color-mix(in srgb, var(--rg-pericolo) 7%, var(--bs-body-bg)); }
+/* Estremi cronologici IN RILIEVO (mockup del 19/10): cifre grandi in grassetto, bordo scuro a sinistra; la tipologia è una striscia petrolio sotto. */
+.riquadro-estremi { border-left: 1px solid var(--rg-bordo) !important; border-top: 2px solid var(--bs-body-color) !important; }
+.striscia-tipologia { background: color-mix(in srgb, var(--bs-primary) 7%, var(--bs-body-bg)); border: 1px solid color-mix(in srgb, var(--bs-primary) 30%, var(--rg-bordo));
+  border-left: 1px solid var(--rg-bordo); border-top: 2px solid var(--bs-primary); border-radius: var(--rg-radius-md); padding: .55rem .8rem .4rem; margin: .2rem 0 .9rem; }
+.striscia-tipologia .control-label, .striscia-tipologia label.control-label { color: var(--bs-primary); font-weight: 700; margin-bottom: .35rem; }
